@@ -1,0 +1,1574 @@
+
+/* Medium Layout: 1200px. */
+
+@media only screen and (min-width: 992px) and (max-width: 1200px) {
+    .navbar-area .navbar-collapse .navbar-nav .nav-item {
+        display: inline-block;
+        font-size: 14px;
+        line-height: 45px;
+        text-transform: uppercase;
+        font-weight: 700;
+        padding: 20px 10px;
+        position: relative;
+    }
+    
+   .sidebar .widget-area.social-media .widget-body ul li:nth-child(3n){
+       margin-left: 0;
+       margin-right: 8px;
+   }
+   .sidebar .widget-area.social-media .widget-body ul li:nth-child(3n+1){
+       margin-left: 8px;
+   }
+   .sidebar .widget-area.social-media .widget-body ul li:first-child{
+       margin-left: 0px;
+   }
+   .sidebar .widget-area.social-media .widget-body ul li:last-child{
+       margin-left: 8px;
+   }
+   .sidebar .widget-area.social-media .widget-body ul li:nth-child(5){
+       margin-left: 0;
+   }
+   .sidebar .widget-area.crypto-tickers .widget-body .crypto-table tbody tr td .icon-details .name {
+       font-size: 12px;
+   }
+   .sidebar .widget-area.crypto-tickers .widget-body .crypto-table tbody tr td {
+       font-size: 12px;
+   }
+   .sidebar .widget-area.calculation .widget-body .calculation-form .form-element .submit-btn {
+       position: initial;
+       margin-top: 10px;
+   }
+
+   .sidebar .widget-area.calculation .widget-body .calculation-form .form-element.submit,
+   .sidebar .widget-area.calculation .widget-body .calculation-form .form-element.submit .submit-btn {
+       display: block;
+       width: 100%;
+   }
+   .sidebar .widget-area.calculation .widget-body .calculation-form .form-element .input-field {
+       width: 130px;
+   }
+  
+   .map {
+       height: 600px;
+   }
+   .header-area .header-inner .title {
+        font-size: 70px;
+        line-height: 80px;
+    }
+    .header-area .header-inner .subtitle {
+        font-size: 25px;
+        line-height: 30px;
+    }
+    .clients-story-area .clients-area-inner .right-content-area .title {
+        font-size: 50px;
+        line-height: 50px;
+    }
+    .service-area .single-service-item .content .title {
+        font-size: 28px;
+        line-height: 40px;
+    }
+    .faq-area .singla-faq-item .faq-header .title-area .title {
+        font-size: 17px;
+        line-height: 27px;
+    }
+    .section-title .title {
+        font-size: 55px;
+        line-height: 65px;
+    }
+    .call-to-action .call-to-action-inner .left-content-area .title {
+        font-size: 46px;
+        line-height: 55px;
+    }
+    .call-to-action .call-to-action-inner .left-content-area .subtitle {
+        font-size: 16px;
+    }
+    .contact-area .contact-form-wrapper .right-content-area {
+        padding-left: 25px;
+    }
+    .contact-area .contact-form-wrapper .right-content-area .content-area .contact-info-area .right-content-area ul li {
+        font-size: 14px;
+    }
+    .contact-area .contact-form-wrapper .right-content-area .content-area .contact-info-area .left-content .sigle-contact-info .content .details {
+        font-size: 14px;
+    }
+    .footer-area .footer-top .single-footer-top-item .content .title {
+        font-size: 21px;
+        line-height: 31px;
+    }
+    .footer-area .footer-top .single-footer-top-item .content .subtitle {
+        font-size: 12px;
+        line-height: 19px;
+    }
+    .footer-area .footer-bottom .sigle-footer-widget .widget-title .title {
+        font-size: 26px;
+        line-height: 35px;
+    }
+    .footer-area .footer-bottom .sigle-footer-widget.blog-feed .single-blog-feed .content .title {
+        font-size: 15px;
+        line-height: 24px;
+    }
+    .header-bottom-area .single-header-bottom-item .content p {
+        font-size: 14px;
+        line-height: 24px;
+    }
+    .header-bottom-area .single-header-bottom-item .content .title {
+        font-size: 25px;
+        line-height: 35px;
+    }
+    .header-bottom-area .single-header-bottom-item {
+        padding: 55px 8px 38px;
+    }
+    .work-with-us-area .work-with-us-inner .title {
+        font-size: 50px;
+        line-height: 60px;
+    }
+    .missiom-area .bottom-content-area .tab-content .mission-tab-content .left-content-area .title {
+        font-size: 50px;
+        line-height: 57px;
+    }
+    .missiom-area .bottom-content-area .tab-content .mission-tab-content .left-content-area .title span {
+        font-size: 41px;
+        line-height: 49px;
+    }
+    .missiom-area.hosting-page .top-content .mission-tab-nav .nav-tabs .nav-item .nav-link {
+        padding: 5px 14px 20px 14px;
+    }
+    .missiom-area.hosting-page .bottom-content-area .mission-two-tab-content .right-content .title {
+        font-size: 51px;
+        line-height: 59px;
+    }
+    .missiom-area.hosting-page .top-content .mission-tab-nav .nav-tabs .nav-item ,
+    .support-content-area .support-tab-nav .nav-tabs .nav-item{
+        margin: 0 5px;
+    }
+    .affliate-page-content .affiliate-links li.links-outer .links-wrapper .form-element {
+        display: inline-block;
+        width: 230px;
+    }
+    .affliate-page-content .affiliate-links li.links-outer .links-wrapper .form-element.has-icon .the-icon{
+        background-color: #fff;
+    }
+    .cart-page-content-area .cart-page-inner-area .table-bottom .right-content-area .btn-links a {
+        width: 230px;
+    }
+    .checkout-content-area .right-content-area .content-block .right-content {
+        float:  none;
+        margin-bottom: 15px;
+    }
+    .support-content-area .support-tab-nav .nav-tabs .nav-item .nav-link {
+        padding: 24px 20px 25px 20px;
+    }
+    .login-page-content-area .login-form-wrapper .social-logins a {
+        margin: 0 5px;
+    }
+    .login-page-content-area .login-form-wrapper .social-logins .fb-login,
+    .login-page-content-area .login-form-wrapper .social-logins .google-login {
+        width: 48%;
+    }
+    .content-area-404 .right-content-area .details {
+        font-size: 25px;
+        line-height: 35px;
+    }
+    .widget-area .widget-title h4:before,.widget-area .widget-title h4:after {
+        display: none;
+    }
+    .widget-area.social .social-links li a{
+        width: 38px;
+        height: 38px;
+        line-height: 38px;
+    }
+    .widget-area.latest-post .single-latest-post .media .media-body h5 {
+        font-size: 14px;
+        line-height: 16px;
+    }
+    .contact-area .contact-form-wrapper {
+        padding-bottom: 36px;
+    }
+}
+
+/* Tablet Layout: 768px. */
+
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+    .navbar-area .navbar-collapse {
+        position: absolute;
+        top: 80px;
+        background: #141A66;
+        z-index: 9;
+        right: 0;
+        width: 250px;
+        padding-left: 20px;
+    }
+    .navbar-area .navbar-collapse .navbar-nav .nav-item .dropdown-menu.show {
+        border: 0;
+    }
+    .navbar-area.navbar.navbar-light .navbar-toggler {
+        background: #fff;
+    }
+    .navbar-area .navbar-collapse .navbar-nav .nav-item .nav-link.pl-0 {
+        padding-left: 0.4rem !important;
+    }
+    .navbar-area .navbar-collapse .navbar-nav .nav-item {
+        padding: 0;
+    }
+    .navbar-area .navbar-collapse .navbar-nav .nav-item .dropdown-menu.show .dropdown-item {
+        color: #fff;
+    }
+    .dropdown-item {
+        background: #141A66;
+        color: #fff;
+        border: 0;
+    }
+    .logo-wrapper.navbar-brand {
+        padding-top: 0;
+    }
+    .navbar-area {
+        height: 80px;
+        top: 8px;
+    }
+
+    .logo-wrapper.navbar-brand {
+        padding-top: 0;
+    }
+
+    .navbar-area .navbar-collapse .navbar-nav .nav-item {
+        line-height: 35px;
+    }
+    
+    .blog-page-content .blog-posts-lists:after,
+    .blog-details-page-content .blog-details-post:after
+    {
+        display: none;
+    }
+    
+    .navbar-area.nav-fixed {
+        padding: 20px 0;
+    }
+    .blog-page-content .blog-posts-lists{
+        margin-right: 0;
+    }
+    .blog-page-content .blog-posts-lists .single-blog-post.gallery {
+        margin-right: 30px;
+    }
+    .sidebar {
+        margin-top: 60px;
+    }
+
+    .sidebar .widget-area.about .widget-body .about-widget-wrapper .description {
+        text-align: center;
+    }
+
+    .blog-details-page-content .blog-details-post .related-posts .single-related-post .thumb img,
+    .sidebar .widget-area.trending-video .single-trending-video-post .thumb img,
+    .sidebar .widget-area.banner .widget-body img {
+        width: 100%;
+    }
+    
+    .sidebar .widget-area.calculation .widget-body .calculation-form .form-element {
+        width: 35%;
+    }
+    .sidebar .widget-area.calculation .widget-body .calculation-form .form-element.select .input-field ,
+    .sidebar .widget-area.calculation .widget-body .calculation-form .form-element .input-field {
+        width: 100%;
+        display: block;
+    }
+    .sidebar .widget-area.calculation .widget-body .calculation-form .form-element .submit-btn {
+        width: 35%;
+    }
+    
+    .blog-details-page-content {
+        padding-bottom: 80px;
+    }
+    .navbar-area .navbar-collapse .navbar-nav .nav-item:hover .dropdown-menu {
+        border: none;
+    }
+    .navbar-area.nav-fixed .navbar-collapse {
+        top: 80px;
+    }
+    .header-area.haeder-bg,
+    .work-with-us-area.work-with-us-bg {
+        background-position: left;
+    }
+    .header-area {
+        padding: 280px 0 212px 0;
+    }
+    .header-bottom-area .single-header-bottom-item {
+        margin-bottom: 30px;
+    }
+    
+    .header-bottom-area {
+        padding-bottom: 90px;
+    }
+    .clients-story-area .clients-area-inner .left-content-area .img-wrapper img {
+        width:  100%;
+        display:  block;
+    }
+    
+    .clients-story-area .clients-area-inner .left-content-area .img-wrapper {
+        display: block;
+        margin-bottom: 20px;
+    }
+    .single-service-item {
+        margin-bottom: 35px;
+    }
+    .service-area {
+        padding-bottom: 80px;
+    }
+    .pricing-plan-area .pricing-tab-nav {
+        text-align: left;
+    }
+    
+    .pricing-plan-area .monthly-tab-content .single-pricing-plan, .pricing-plan-area .yearly-tab-content .single-pricing-plan {
+        margin-bottom: 30px;
+    }
+    .pricing-plan-area {
+        padding: 113px 0 120px 0;
+    }
+    .pricing-plan-area .price-plan-bottom {
+        bottom: 0px;
+        position: initial;
+    }
+    .faq-area {
+        padding-top: 113px;
+    }
+    .section-title .title {
+        font-size: 40px;
+        line-height: 50px;
+    }
+    .section-title .subtitle {
+        font-size: 16px;
+        line-height: 26px;
+        margin-bottom: 5px;
+    }
+    .faq-area .singla-faq-item .faq-header .title-area .title {
+        font-size: 20px;
+        line-height: 29px;
+    }
+    .testimonial-area .testimonial-carousel .single-testimonial-item .author-meta .content .post {
+        font-size: 12px;
+        line-height: 16px;
+    }
+    .testimonial-area .testimonial-carousel .single-testimonial-item .author-meta .content .title {
+        font-size: 24px;
+        line-height: 34px;
+    }
+    .testimonial-area .testimonial-carousel .single-testimonial-item .description p {
+        font-size: 14px;
+        line-height: 24px;
+    }
+    .call-to-action .call-to-action-inner .right-content-area {
+        float: none;
+        margin-bottom: 10px;
+    }
+    .contact-area .contact-form-wrapper .right-content-area {
+        padding-left:  0;
+        margin-top: 60px;
+    }
+    .contact-area .contact-form-wrapper .right-content-area .content-area .contact-info-area .right-content-area {
+        margin-top: 0;
+    }
+    .footer-area .footer-bottom .sigle-footer-widget.page-links,
+    .footer-area .footer-bottom .sigle-footer-widget.more-page {
+        margin-top: 30px;
+    }
+    .footer-area .footer-bottom .sigle-footer-widget.more-page{
+        float: none;
+    }
+    .footer-area .footer-top .single-footer-top-item .icon {
+        position:  initial;
+        margin-bottom: 20px;
+    }
+    
+    .footer-area .footer-top .single-footer-top-item .content {
+        padding-left: 0;
+    }
+    
+    .footer-area .footer-top .single-footer-top-item .content .title {
+        font-size: 20px;
+    }
+    .footer-area .footer-top .single-footer-top-item {
+        padding: 23px 20px 20px 21px;
+    }
+    .breadcrumb-area {
+        padding: 240px 0 135px 0;
+    }
+    .about-page-content-area .left-content-area {
+        text-align: left;
+    }
+    
+    .about-page-content-area .left-content-area:after {
+        display: none;
+    }
+    
+    .about-page-content-area .right-content-area {
+        padding-left: 0;
+    }
+    .header-bottom-area.about-page {
+        padding-bottom: 90px;
+    }
+    .team-member-area .team-carousel .single-team-member .content{
+        padding: 24px 15px 12px 15px;
+    }
+    .missiom-area .bottom-content-area .tab-content .mission-tab-content .left-content-area {
+        margin-bottom: 40px;
+    }
+    .breadcrumb-area.hosting{
+        padding: 240px 0 161px 0;
+    }
+    .pricing-table-one .single-price-table {
+        margin-bottom: 60px;
+    }
+    
+    .pricing-table-one {
+        padding-bottom: 80px;
+    }
+    .missiom-area.hosting-page .top-content .mission-tab-nav .nav-tabs .nav-item {
+        margin: 0 5px;
+    }
+    .missiom-area.hosting-page .top-content .mission-tab-nav .nav-tabs .nav-item .nav-link {
+        margin-bottom: 10px;
+        border-bottom: 2px solid #efefef;
+    }
+    .missiom-area.hosting-page .top-content .mission-tab-nav .nav-tabs{
+        border: none;
+    }
+    .missiom-area.hosting-page .bottom-content-area .mission-two-tab-content .left-content .video-thumb-wrapper img {
+        width: 100%;
+    }
+    .missiom-area.hosting-page .bottom-content-area .mission-two-tab-content .right-content {
+        margin-left: 0;
+    }
+    .affliate-page-content .affiliate-links li.api-links a {
+        margin-top: 20px;
+    }
+    .faq-page-content .singla-faq-item .number,
+    .support-content-area .support-tab-content .shared-hosting-tab-content .singla-faq-item .number {
+        position: initial;
+        margin-bottom: 20px;
+    }
+    
+    .faq-page-content .singla-faq-item .conetnt,
+    .support-content-area .support-tab-content .shared-hosting-tab-content .singla-faq-item .conetnt {
+        padding-left: 0;
+    }
+    .faq-page-content .singla-faq-item .conetnt .title,
+    .support-content-area .support-tab-content .shared-hosting-tab-content .singla-faq-item .conetnt .title {
+        font-size: 17px;
+        line-height: 28px;
+    }
+    .cart-page-content-area .cart-page-inner-area .table-bottom .right-content-area {
+        float:  none;
+        margin-top: 20px;
+    }
+    .support-content-area .find-doamin-form-wrapper .title {
+        font-size: 34px;
+        line-height: 44px;
+    }
+    .support-content-area .support-tab-nav .nav-tabs .nav-item {
+        margin: 0 5px;
+        margin-bottom: 10px;
+    }
+    .breadcrumb-area .page-title {
+        font-size: 60px;
+        line-height: 70px;
+    }
+    .breadcrumb-area .subtitle {
+        font-size: 25px;
+        line-height: 30px;
+    }
+    .breadcrumb-area.breadcrumb-bg {
+        background-position: left;
+    }
+    .remove-col-padding {
+        padding: 0 15px;
+    }
+    .social-logins {
+        display:  block;
+        text-align: center;
+    }
+    .content-area-404 {
+        text-align: center;
+    }
+    .blog-page-content {
+        padding-bottom: 80px;
+    }
+}
+
+/* Tablet Layout wide: 768px. */
+
+@media only screen and (max-width: 767px) {
+    .navbar-area.nav-fixed {
+        padding: 20px 0;
+    }
+    .navbar-area .navbar-collapse .navbar-nav .nav-item:hover .dropdown-menu {
+        border: none;
+    }
+    .navbar-area.nav-fixed .navbar-collapse {
+        top: 100px;
+    }
+    .navbar-area .navbar-collapse {
+        position: absolute;
+        top: 100px;
+        background: #0B1424;
+        z-index: 9;
+        right: 0;
+        width: 250px;
+        padding-left: 20px;
+    }
+    .navbar-area .navbar-collapse .navbar-nav .nav-item .dropdown-menu.show {
+        border: 0;
+    }
+    .navbar-area.navbar.navbar-light .navbar-toggler {
+        background: #fff;
+    }
+    .navbar-area .navbar-collapse .navbar-nav .nav-item .nav-link.pl-0 {
+        padding-left: 0.4rem !important;
+    }
+    .navbar-area .navbar-collapse .navbar-nav .nav-item {
+        padding: 0;
+    }
+    .navbar-area .navbar-collapse .navbar-nav .nav-item .dropdown-menu.show .dropdown-item {
+        color: #fff;
+    }
+    .dropdown-item {
+        background: #0B1424;
+        color: #fff;
+        border: 0;
+    }
+    
+    .blog-page-content .blog-posts-lists:after,
+    .blog-details-page-content .blog-details-post:after {
+        display: none;
+    }
+
+    
+    .navbar-area.nav-fixed {
+        padding: 20px 0;
+    }
+    .navbar-area{
+        height: 100px;
+    }
+    .blog-page-content .blog-posts-lists {
+        margin-right: 0;
+    }
+
+    .blog-page-content .blog-posts-lists .single-blog-post.gallery {
+        margin-right: 30px;
+    }
+
+    .sidebar {
+        margin-top: 60px;
+    }
+
+    .sidebar .widget-area.about .widget-body .about-widget-wrapper .description {
+        text-align: center;
+    }
+
+    .blog-details-page-content .blog-details-post .related-posts .single-related-post .thumb img,
+    .sidebar .widget-area.trending-video .single-trending-video-post .thumb img,
+    .sidebar .widget-area.banner .widget-body img {
+        width: 100%;
+    }
+
+    .sidebar .widget-area.calculation .widget-body .calculation-form .form-element {
+        width: 35%;
+    }
+
+    .sidebar .widget-area.calculation .widget-body .calculation-form .form-element.select .input-field,
+    .sidebar .widget-area.calculation .widget-body .calculation-form .form-element .input-field {
+        width: 100%;
+        display: block;
+    }
+
+    .sidebar .widget-area.calculation .widget-body .calculation-form .form-element .submit-btn {
+        width: 35%;
+    }
+
+    .map {
+        height: 500px;
+    }
+
+    .blog-details-page-content {
+        padding-bottom: 80px;
+    }
+
+    .blog-page-content {
+        padding-bottom: 75px;
+        padding-top: 115px;
+    }
+
+    .blog-details-page-content .blog-details-post .single-blog-details-post .content p {
+        padding-right: 0;
+    }
+    .sidebar .widget-area.calculation .widget-body .calculation-result {
+        margin-top: 0px;
+    }
+    .blog-details-page-content .blog-details-post .comments-area .comment-form-wrapper .comment-form-inner .submit-btn {
+        width: 100%;
+    }
+    .blog-details-page-content .blog-details-post {
+        margin-right: 0;
+    }
+    
+    .sidebar .widget-area.crypto-tickers .widget-body .crypto-table tbody tr td:first-child,
+    .sidebar .widget-area.crypto-tickers .widget-body .crypto-table thead tr th:first-child {
+        padding-left: 50px;
+    }
+    .sidebar .widget-area.crypto-tickers .widget-body .crypto-table tbody tr td ,
+    .blog-page-content .blog-posts-lists .single-blog-post .content p {
+        padding-right: 0;
+    }
+    
+    .sidebar .widget-area.social-media .widget-body ul li:nth-child(3n+1) {
+        margin-left: 15px;
+    }
+    .sidebar .widget-area.social-media .widget-body ul {
+        text-align: center;
+    }
+    .header-area .header-inner .title {
+        font-size: 65px;
+        line-height: 75px;
+    }
+    .header-area .header-inner .subtitle {
+        font-size: 25px;
+        line-height: 35px;
+    }
+    .breadcrumb-area.breadcrumb-bg {
+        background-position: left;
+    }
+    .header-area.haeder-bg,
+    .work-with-us-area.work-with-us-bg {
+        background-position: left;
+    }
+    .header-area {
+        padding: 280px 0 188px 0;
+    }
+    .header-bottom-area .single-header-bottom-item {
+        margin-bottom: 30px;
+    }
+    
+    .header-bottom-area {
+        padding-bottom: 90px;
+    }
+    .section-title .title,
+    .trusted-by-area .section-inner-title .title ,
+    .clients-story-area .clients-area-inner .right-content-area .title{
+        font-size: 46px;
+        line-height: 56px;
+    }
+    .service-area .single-service-item {
+        text-align:  center;
+        margin-bottom: 40px;
+    }
+    
+    .service-area {
+        padding-bottom: 75px;
+    }
+    .pricing-plan-area .page-title {
+        text-align: center;
+    }
+    
+    .pricing-plan-area .pricing-tab-nav {
+        text-align: center;
+    }
+    .pricing-plan-area .monthly-tab-content .single-pricing-plan, .pricing-plan-area .yearly-tab-content .single-pricing-plan {
+        margin-bottom: 60px;
+    }
+    .pricing-plan-area .price-plan-bottom {
+        position:  initial;
+        margin-top: 0;
+    }
+    .pricing-plan-area {
+        padding-bottom: 120px;
+    }
+    .faq-area {
+        padding-top: 113px;
+    }
+    .faq-area .singla-faq-item .faq-header .title-area {
+        min-height: 50px;
+    }
+    .faq-area .singla-faq-item {
+        margin-bottom: 30px;
+    }
+    
+    .faq-area {
+        padding-bottom: 90px;
+    }
+    .call-to-action .call-to-action-inner .left-content-area .title {
+        font-size: 48px;
+        line-height: 58px;
+    }
+    .call-to-action .call-to-action-inner .right-content-area {
+        float:  none;
+        margin-top: 15px;
+    }
+    .call-to-action .call-to-action-inner .left-content-area .subtitle {
+        font-size: 16px;
+    }
+    .contact-area .contact-form-wrapper .right-content-area {
+        padding-left:  0;
+        margin-top: 40px;
+    }
+    .footer-area .footer-top {
+        display: none;
+    }
+    .footer-area .footer-bottom .top-content {
+        margin-top: 80px;
+    }
+    .remove-col-padding{
+        padding: 0 15px;
+    }
+    .footer-area .footer-bottom .sigle-footer-widget.more-page {
+        float: left;
+    }
+    .footer-area .footer-bottom .sigle-footer-widget {
+        margin-bottom: 40px;
+    }
+    
+    .footer-area .copyright-area {
+        margin-top: 28px;
+    }
+    .breadcrumb-area {
+        padding: 240px 0 135px 0;
+    }
+    .breadcrumb-area.hosting{
+        padding: 240px 0 161px 0;
+    }
+    .about-page-content-area .left-content-area {
+        text-align: left;
+    }
+    
+    .about-page-content-area .left-content-area:after {
+        display: none;
+    }
+    
+    .about-page-content-area .right-content-area {
+        padding-left: 0;
+    }
+    .about-page-content-area .left-content-area .subtitle {
+        font-size: 25px;
+        line-height: 35px;
+    }
+    .header-bottom-area.about-page {
+        padding-bottom: 90px;
+    }
+    .work-with-us-area .work-with-us-inner .title {
+        font-size: 48px;
+        line-height: 55px;
+    }
+    .missiom-area .bottom-content-area .tab-content .mission-tab-content .left-content-area .title span {
+        font-size: 45px;
+        line-height: 60px;
+        letter-spacing: -2px;
+    }
+    .missiom-area .bottom-content-area .tab-content .mission-tab-content .left-content-area{
+        margin-bottom: 40px;
+    }
+    .footer-area.inner-pages{
+        padding-top: 0;
+    }
+    .breadcrumb-area .page-title {
+        font-size: 50px;
+        line-height: 60px;
+    }
+    .breadcrumb-area .subtitle {
+        font-size: 25px;
+        line-height: 35px;
+    }
+    .pricing-table-one .single-price-table {
+        margin-bottom: 60px;
+    }
+    
+    .pricing-table-one {
+        padding-bottom: 90px;
+    }
+    .missiom-area.hosting-page .top-content .mission-tab-nav .nav-tabs .nav-item .nav-link {
+        padding: 15px 15px 15px 15px;
+    }
+    .missiom-area.hosting-page .top-content .mission-tab-nav .nav-tabs{
+        border-bottom: none;
+    }
+    .missiom-area.hosting-page .top-content .mission-tab-nav .nav-tabs .nav-item {
+        margin: 0 5px;
+        margin-bottom: 10px;
+        border-bottom: 2px solid #eeee;
+    }
+    .missiom-area.hosting-page .bottom-content-area .mission-two-tab-content .right-content .title,
+    .missiom-area.hosting-page .bottom-content-area .mission-two-tab-content .right-content .title {
+        font-size: 50px;
+        line-height: 60px;
+    }
+    .affliate-page-content .affiliate-links li.links-outer .links-wrapper .form-element {
+        display: inline-block;
+        width: 100%;
+    }
+    .affliate-page-content .affiliate-links li{
+        margin-bottom: 10px;
+    }
+    .affliate-page-content .affiliate-links li.links-outer .links-wrapper .form-element .the-icon{
+        background-color: #fff;
+    }
+    .affliate-page-content .section-title{
+        margin-top: 103px;
+    }
+    .cart-page-content-area .cart-page-inner-area .cart-table thead th {
+        font-size: 18px;
+        line-height: 28px;
+    }
+    .cart-page-content-area .cart-page-inner-area .cart-table tbody tr td {
+        font-size: 14px;
+        line-height: 24px;
+    }
+    .cart-page-content-area .cart-page-inner-area .cart-table tbody tr td .quantity .qty-number {
+        top: -1px;
+    }
+    .cart-page-content-area .cart-page-inner-area .table-bottom .left-content-area .cupon-wrapper .form-element .input-field {
+        width: 100%;
+    }
+    
+    
+    .cart-page-content-area .cart-page-inner-area .table-bottom .left-content-area .cupon-wrapper {
+        display:  block;
+        width: 100%;
+    }
+    
+    .cart-page-content-area .cart-page-inner-area .table-bottom .left-content-area {
+        display:  block;
+        margin-bottom: 20px;
+    }
+    
+    .cart-page-content-area .cart-page-inner-area .table-bottom .right-content-area {
+        float: none;
+    }
+    .support-content-area .find-doamin-form-wrapper .domain-search-form .right-content {
+        position:  initial;
+        margin-top: 10px;
+    }
+    .support-content-area .find-doamin-form-wrapper .domain-search-form .form-element .input-field {
+        padding-right: 30px;
+    }
+    .support-content-area .find-doamin-form-wrapper .domain-search-form .right-content {
+        position:  initial;
+        margin-top: 10px;
+    }
+    
+    .support-content-area .find-doamin-form-wrapper .domain-search-form .form-element .input-field {
+        padding-right: 30px;
+    }
+    
+    .support-content-area .find-doamin-form-wrapper .domain-search-form .right-content .form-element.select {
+        width: 120px;
+        background-color: #F4F7F8;
+        padding: 0 30px;
+        border-radius:  36px;
+        position:  relative;
+        top: 5px;
+        margin-right: 5px;
+       
+    }
+    .support-content-area .find-doamin-form-wrapper .domain-search-form .form-element .input-field{
+        height:60px;
+    }
+    .support-content-area .support-tab-nav .nav-tabs .nav-item .nav-link {
+        font-size: 14px;
+        padding: 15px 20px 14px 20px;
+    }
+    .support-content-area .support-tab-nav .nav-tabs .nav-item{
+        margin: 0 5px;
+        margin-bottom: 10px;
+    }
+    .login-page-content-area .login-form-wrapper .social-logins .fb-login,
+    .login-page-content-area .login-form-wrapper .social-logins .google-login {
+        width: 45%;
+    }
+
+    .social-logins,
+    .content-area-404  {
+        text-align: center;
+    }
+    .blog-details-page-content .single-blog-post .post-bottom-content .top-content .right-content .title {
+        display: none;
+    }
+    
+    .blog-details-page-content .single-blog-post .post-bottom-content .bottom-content .right-content {
+        float:  none;
+        margin-top: 20px;
+    }
+    
+    .blog-details-page-content .single-blog-post .post-bottom-content .bottom-content .right-content .title {
+        display:  block;
+        font-size: 20px;
+        margin-bottom: 8px;
+    }
+    .blog-details-page-content .single-blog-post .post-content .bottom-content .title {
+        font-size: 26px;
+        line-height: 36px;
+    }
+    
+}
+
+/* medium tablet layout 599px */
+
+@media only screen and (max-width: 599px) {
+   .navbar-area,
+   .navbar-area.nav-fixed {
+       padding: 20px;
+   }
+   .header-area .header-inner .title {
+       font-size: 50px;
+       line-height: 60px;
+   }
+   .header-area .header-inner p {
+       font-size: 16px;
+   }
+   .feature-lists {
+       padding: 0 15px;
+   }
+   .subscription-area .subscription-inner{
+        padding: 45px 60px 50px 60px;
+   }
+   .team-member-carousel .single-team-member .content .post {
+       font-size: 14px;
+       line-height: 24px;
+   }
+   .maining-area .left-content-area {
+       padding-left: 15px;
+       padding-right: 9px;
+       margin-bottom: 30px;
+   }
+   .faq-content-conent .left-content-area .accordion-wrapper ,
+   .faq-content-conent .right-content-area {
+       padding: 0 5px;
+   }
+   .service-page-content-area .left-content-area .title {
+       font-size: 38px;
+   }
+    .sidebar .widget-area.social-media .widget-body ul li:nth-child(3n+1) {
+        margin-left: 15px;
+    }
+
+    .sidebar .widget-area.social-media .widget-body ul {
+        text-align: center;
+    }
+    .clients-story-area .clients-area-inner .right-content-area .subtitle {
+        margin-bottom: 10px;
+        margin-top: 20px;
+    }
+    .breadcrumb-area.hosting {
+        padding-bottom: 135px;
+    }
+}
+@media only screen and (max-width: 520px) {
+    .section-title .title, .trusted-by-area .section-inner-title .title, .clients-story-area .clients-area-inner .right-content-area .title {
+        font-size: 38px;
+        line-height: 45px;
+    }
+    .pricing-plan-area .page-title .title {
+        font-size: 45px;
+        line-height: 55px;
+    }
+    .pricing-plan-area .page-title .subtitle {
+        font-size: 14px;
+        margin-bottom: 8px;
+    }
+    .call-to-action .call-to-action-inner .left-content-area .title {
+        font-size: 38px;
+        line-height: 58px;
+    }
+    .contact-area .contact-form-wrapper .left-content-area .page-title .title {
+        font-size: 35px;
+        line-height: 45px;
+    }
+    .contact-area .contact-form-wrapper .left-content-area {
+        padding-right: 0;
+    }
+    
+    .contact-area .contact-form-wrapper .left-content-area:after {
+        display: none;
+    }
+    .call-to-action .call-to-action-inner .right-content-area .boxed-btn ,
+    .footer-area .footer-bottom .top-content .right-content-area .btn-wrapper .boxed-btn{
+        width: 160px;
+        display: inline-block;
+    }
+    .call-to-action .call-to-action-inner .right-content-area .btn-wrapper .boxed-btn:first-child{
+        width: 150px;
+        display: inline-block;
+        float: left;
+         margin-right: 20px;
+    }
+    .service-area .single-service-item .content .title {
+        font-size: 28px;
+    }
+    .service-area .single-service-item .icon i[class^="flaticon-"]:before {
+        font-size: 60px;
+        line-height: 60px;
+        margin-bottom: 20px;
+    }
+    .clients-story-area .clients-area-inner .right-content-area .title {
+        font-size:  35px;
+        line-height: 40px;
+    }
+    .clients-story-area .clients-area-inner .right-content-area .subtitle {
+        font-size:  14px;
+        margin-bottom: 5px;
+    }
+    .work-with-us-area .work-with-us-inner .title {
+        font-size: 38px;
+        line-height: 48px;
+    }
+    .section-title .title {
+        font-size: 35px;
+    }
+    .section-title .subtitle {
+        font-size: 14px;
+        line-height: 25px;
+        margin-bottom: 5px;
+    }
+    .missiom-area .bottom-content-area .tab-content .mission-tab-content .left-content-area .title span {
+        font-size: 35px;
+        line-height: 45px;
+        letter-spacing: -2px;
+    }
+    .about-page-content-area .left-content-area .subtitle {
+        font-size: 20px;
+        line-height: 30px;
+    }
+    .missiom-area.hosting-page .top-content .mission-tab-nav .nav-tabs .nav-item .nav-link {
+        padding: 0px 15px 15px 15px;
+    }
+    .missiom-area.hosting-page .bottom-content-area .mission-two-tab-content .right-content .title, .missiom-area.hosting-page .bottom-content-area .mission-two-tab-content .right-content .title {
+        font-size: 40px;
+        line-height: 46px;
+    }
+    .table-responsive {
+        display: block;
+        overflow-x: scroll;
+    }
+    .cart-page-content-area .cart-page-inner-area .cart-table thead th {
+        padding: 10px 26px 30px 60px;
+    }
+    .cart-page-content-area .cart-page-inner-area .table-bottom .right-content-area .btn-update-cart a {
+        width: 160px;
+        border: 2px solid #efefef;
+    }
+    .cart-page-content-area .cart-page-inner-area .table-bottom .right-content-area .btn-links a {
+        width: 200px;
+    }
+    .checkout-content-area .right-content-area .content-block .right-content {
+        display:  block;
+        float:  none;
+        margin-bottom: 25px;
+    }
+    .term-condition-content-area .term-condition-inner .single-terms-block .title {
+        font-size: 29px;
+    }
+    .support-content-area .find-doamin-form-wrapper {
+        padding: 53px 30px 60px 30px;
+    }
+    .support-content-area .find-doamin-form-wrapper .title {
+        font-size: 34px;
+    }
+    .login-page-content-area .login-form-wrapper .social-logins .fb-login, .login-page-content-area .login-form-wrapper .social-logins .google-login {
+        display:  block;
+        width:  80%;
+        margin:  0 auto;
+        margin-bottom: 20px;
+    }
+    .breadcrumb-area .subtitle {
+        font-size: 18px;
+        line-height: 26px;
+    }
+    .breadcrumb-area .page-title {
+        font-size: 38px;
+        line-height: 47px;
+    }
+    .content-area-404 .right-content-area .details {
+        font-size: 25px;
+        line-height: 34px;
+    }
+    .blog-page-content .single-blog-post .content .bottom-content .title {
+        font-size: 25px;
+        line-height: 30px;
+        margin-bottom: 20px;
+    }
+    .blog-page-content .single-blog-post .content .top-content .post-meta {
+        padding-top: 14px;
+    }
+    .blog-details-page-content .single-blog-post .post-content .top-content .post-meta {
+        padding-top: 14px;
+    }
+    .blog-details-page-content .single-blog-post .post-blockquote .content {
+        padding-left: 75px;
+        border: none;
+    }
+    .blog-details-page-content .single-blog-post .post-blockquote .icon {
+        font-size: 35px;
+        line-height: 32px;
+        padding-top: 28px;
+        padding-left: 40px;
+    }
+    .blog-details-page-content .single-blog-post .post-bottom-content .bottom-content .left-content ul li a {
+        font-size: 12px;
+        padding: 5px 10px;
+    }
+
+}
+/* mobile tablet layout 414px */
+
+@media only screen and (max-width: 414px) {
+    .breadcrumb-area ,{
+        padding: 190px 0 85px 0;
+    }
+    
+    .breadcrumb-area.hosting{
+        padding: 190px 0 90px 0;
+    }
+    .breadcrumb-area .subtitle {
+        font-size: 16px;
+        line-height: 26px;
+        margin-bottom: 0;
+    }
+    
+    .contact-area .contact-form-wrapper .right-content-area .content-area .contact-info-area .right-content-area,
+    .contact-area .contact-form-wrapper .right-content-area .content-area .contact-info-area .left-content {
+        margin-left: -15px;
+    }
+    .contact-area .contact-form-wrapper {
+        padding: 50px 30px 56px 30px;
+    }
+    .footer-area .footer-bottom .top-content .right-content-area {
+        float:  none;
+        margin-top: 22px;
+    }
+    .footer-area .copyright-area .copyright-container .left-content {
+        display:  block;
+        text-align: center;
+        margin-bottom: 10px;
+    }
+    
+    .footer-area .copyright-area .copyright-container .right-content {
+        float: none;
+        display:  block;
+        text-align: center;
+    }
+    .blog-details-page-content .single-blog-post .post-blockquote .icon {
+        padding-left: 20px;
+    }
+    .blog-details-page-content .single-blog-post .post-blockquote {
+        padding: 23px 22px 25px 9px;
+    }
+    .blog-details-page-content .comments-area .single-comment-item .thumb {
+        position:  initial;
+    }
+    
+    .blog-details-page-content .comments-area .single-comment-item .content {
+        padding-left: 0;
+    }
+    
+    .blog-details-page-content .comments-area .single-comment-item .reply-btn {
+        top: 50px;
+    }
+    .blog-page-content .single-blog-post .content .bottom-content .title {
+        font-size: 22px;
+        line-height: 26px;
+    }
+    .content-area-404 .right-content-area .details {
+        font-size: 21px;
+        line-height: 30px;
+    }
+    .support-content-area .support-tab-content .shared-hosting-tab-content .singla-faq-item .conetnt .title {
+      
+        font-size: 18px;
+        line-height: 26px;
+    }
+    .support-content-area .find-doamin-form-wrapper .domain-search-form .right-content .form-element.select {
+        width:  100%;
+        margin-bottom: 20px;
+    }
+    
+    .support-content-area .find-doamin-form-wrapper .domain-search-form .right-content .submit-btn{
+         width:  100%;
+    }
+    .cart-page-content-area .cart-page-inner-area .table-bottom .right-content-area {
+        float: none;
+        display: block;
+    }
+    .cart-page-content-area .cart-page-inner-area .table-bottom .right-content-area .btn-update-cart {
+        display: block;
+        margin-right: 0;
+    }
+    
+    .cart-page-content-area .cart-page-inner-area .table-bottom .right-content-area .btn-update-cart a {
+        width:  100%;
+        margin-bottom: 20px;
+    }
+    
+    .cart-page-content-area .cart-page-inner-area .table-bottom .right-content-area .btn-links {
+        display:  block;
+    }
+    .cart-page-content-area .cart-page-inner-area .table-bottom .right-content-area .btn-links a{
+        width:100%
+    }
+    .breadcrumb-area {
+        padding: 190px 0 85px 0;
+    }
+    .clients-story-area .clients-area-inner .right-content-area .title {
+        font-size: 30px;
+        line-height: 40px;
+    }
+    .section-title .title, .trusted-by-area .section-inner-title .title, .clients-story-area .clients-area-inner .right-content-area .title {
+        font-size: 35px;
+        line-height: 45px;
+    }
+    .missiom-area.hosting-page .bottom-content-area .mission-two-tab-content .right-content {
+        margin-left: 0;
+    }
+    .section-title .title, .trusted-by-area .section-inner-title .title, .clients-story-area .clients-area-inner .right-content-area .title {
+        font-size: 31px;
+        line-height: 45px;
+    }
+    .clients-story-area .clients-area-inner {
+        padding: 40px 30px 40px 30px;
+    }
+    .missiom-area .bottom-content-area .tab-content .mission-tab-content .left-content-area .title {
+        font-size: 45px;
+        line-height: 46px;
+    }
+    .about-page-content-area .left-content-area .title {
+        font-size: 40px;
+        line-height: 48px;
+    }
+    .about-page-content-area .left-content-area .subtitle {
+        font-size: 18px;
+        line-height: 30px;
+    }
+    .header-area .header-inner .title {
+        font-size: 45px;
+        line-height: 60px;
+    }
+    .section-title .subtitle {
+        margin-bottom: 0;
+    }
+    .faq-area .singla-faq-item .faq-header .title-area .title {
+        font-size: 20px;
+        line-height: 29px;
+    }
+    .call-to-action .call-to-action-inner .left-content-area .title {
+        font-size: 33px;
+        line-height: 42px;
+    }
+    .call-to-action .call-to-action-inner .right-content-area .btn-wrapper .boxed-btn:first-child {
+        width:  200px;
+        margin-bottom: 20px;
+    }
+    
+    .call-to-action .call-to-action-inner .right-content-area .btn-wrapper .boxed-btn:last-child {
+        width:  200px;
+        margin-left: 0;
+    }
+    .contact-area .contact-form-wrapper .left-content-area .page-title .title, .contact-area .contact-form-wrapper .right-content-area .page-title .title {
+        font-size: 30px;
+        line-height: 41px;
+    }
+    .header-area .header-inner .subtitle {
+        font-size: 22px;
+        line-height: 27px;
+    }
+    .header-area .header-inner .domain-search-form .right-content {
+        position:  initial;
+    }
+    
+    .header-area .header-inner .domain-search-form .right-content .form-element.select {
+        width:  40%;
+        background-color:  #fff;
+        border-radius: 35px;
+        height:  60px;
+        padding: 0 30px;
+    }
+    
+    .header-area .header-inner .domain-search-form .form-element .input-field {
+        height:  60px;
+        margin-bottom: 20px;
+    }
+    .header-area .header-inner .domain-search-form .form-element .input-field{
+        padding-right: 30px;
+    }
+}
+
+/* mobile tablet layout 375px */
+
+@media only screen and (max-width: 384px) {
+    .header-area .header-inner .domain-search-form .right-content .form-element.select {
+        width:  30%;
+        background-color:  #fff;
+        border-radius: 35px;
+        height:  60px;
+        padding: 0 30px;
+    }
+    .header-area .header-inner .subtitle {
+        font-size: 20px;
+        line-height: 27px;
+    }
+    .work-with-us-area .work-with-us-inner .title {
+        font-size: 34px;
+        line-height: 48px;
+    }
+    .missiom-area .bottom-content-area .tab-content .mission-tab-content .left-content-area .title span {
+        font-size: 30px;
+        line-height: 40px;
+    }
+    .faq-page-content .singla-faq-item .number,
+    .support-content-area .support-tab-content .shared-hosting-tab-content .singla-faq-item .number {
+        position:  initial;
+    }
+    
+    .faq-page-content .singla-faq-item .conetnt,
+    .support-content-area .support-tab-content .shared-hosting-tab-content .singla-faq-item .conetnt {
+        padding-left:  0;
+        margin-top: 15px;
+    }
+    .login-page-content-area .login-form-wrapper .social-logins .fb-login, .login-page-content-area .login-form-wrapper .social-logins .google-login {
+        font-size: 14px;
+    }
+    .blog-details-page-content .single-blog-post .post-content .bottom-content .title {
+        font-size: 20px;
+        line-height: 30px;
+    }
+    .contact-area .contact-form-wrapper .right-content-area .content-area .contact-info-area .right-content-area {
+        margin-top: 0;
+    }
+}
+
+/* mobile tablet layout 360px */
+
+@media only screen and (max-width: 360px) {
+    .header-area .header-inner .title {
+        font-size: 45px;
+        line-height: 50px;
+    }
+    .header-area {
+        padding: 220px 0 124px 0;
+    }
+    .header-area .header-inner .domain-search-form .right-content .form-element.select {
+        width:  100%;
+        margin-bottom: 20px;
+    }
+    .service-area .single-service-item .icon i[class^="flaticon-"]:before{
+        margin-bottom: 0;
+    }
+    .service-area .single-service-item .icon{
+        margin-bottom: 20px;
+    }
+    .pricing-plan-area .pricing-tab-nav .nav-tabs .nav-item .nav-link {
+        width: 140px;
+    }
+    .pricing-plan-area .monthly-tab-content .single-pricing-plan .price-header .price, .pricing-plan-area .yearly-tab-content .single-pricing-plan .price-header .price {
+        font-size: 40px;
+        line-height: 50px;
+    }
+    .call-to-action .call-to-action-inner .left-content-area .title {
+        font-size: 28px;
+        line-height: 38px;
+    }
+    .call-to-action .call-to-action-inner .left-content-area .subtitle {
+        font-size: 14px;
+    }
+    .contact-area .contact-form-wrapper .left-content-area .page-title .title, .contact-area .contact-form-wrapper .right-content-area .page-title .title {
+        margin-bottom: 15px;
+    }
+    .map-area {
+        height: 500px;
+        margin-top: -175px;
+    }
+    .about-page-content-area .left-content-area .subtitle {
+        font-size: 16px;
+        line-height: 30px;
+    }
+    .about-page-content-area .left-content-area .title {
+        font-size: 34px;
+        line-height: 40px;
+    }
+    .header-bottom-area .single-header-bottom-item .content .title {
+        font-size: 25px;
+        line-height: 30px;
+        margin-bottom: 10px;
+    }
+    .header-bottom-area .single-header-bottom-item .icon i[class^="flaticon-"]:before {
+        font-size: 60px;
+        line-height: 60px;
+    }
+    .header-bottom-area .single-header-bottom-item .icon {
+        font-size: 60px;
+        line-height: 60px;
+        margin-bottom: 20px;
+    }
+    .work-with-us-area .work-with-us-inner .title {
+        font-size: 27px;
+        line-height: 36px;
+        letter-spacing: 0;
+    }
+    .missiom-area .section-title .title {
+        font-size: 29px;
+        line-height: 38px;
+    }
+    .missiom-area .bottom-content-area .tab-content .mission-tab-content .left-content-area .title span {
+        font-size: 25px;
+        line-height: 37px;
+        letter-spacing: 0;
+        display: block;
+    }
+    .missiom-area .bottom-content-area .tab-content .mission-tab-content .left-content-area .subtitle {
+        font-size: 14px;
+        line-height: 25px;
+        margin-bottom: 5px;
+        display: block;
+    }
+    .pricing-table-one .single-price-table .price-body .price .price-tag {
+        font-size: 50px;
+    }
+    .missiom-area.hosting-page .bottom-content-area .mission-two-tab-content .right-content .title, .missiom-area.hosting-page .bottom-content-area .mission-two-tab-content .right-content .title {
+        font-size: 35px;
+        line-height: 40px;
+    }
+    .support-content-area .find-doamin-form-wrapper .title {
+        font-size: 30px;
+        line-height: 40px;
+    }
+    .content-area-404 .right-content-area .title {
+        font-size: 170px;
+        line-height: 170px;
+    }
+    .blog-page-content .single-blog-post .content .bottom-content .title {
+        font-size: 20px;
+        line-height: 26px;
+    }
+    .blog-page-content .blog-post-pagination .pagination li a {
+        width: 40px;
+        height: 40px;
+        line-height: 40px;
+    }
+    .widget-area .widget-title h4:before,
+    .widget-area .widget-title h4:after{
+        display: none;
+    }
+    .widget-area {
+        padding: 30px 30px 40px 30px;
+    }
+    .blog-details-page-content .single-blog-post .post-content .top-content .post-meta ul li {
+        display: inline-block;
+        margin: 0 0px;
+        font-size: 14px;
+    }
+    .blog-details-page-content .single-blog-post .post-content .top-content .post-meta {
+        padding-left: 110px;
+    }
+    .blog-details-page-content .single-blog-post .post-blockquote .icon {
+        display: none;
+    }
+    
+    .blog-details-page-content .single-blog-post .post-blockquote .content {
+        padding-left: 20px;
+    }
+    .blog-details-page-content .single-blog-post .post-bottom-content .bottom-content .left-content ul li {
+        display: inline-block;
+        margin: 0 2px;
+    }
+    .blog-page-content .single-blog-post .content .top-content .post-meta ul li {
+        display: inline-block;
+        margin: 0 0px;
+    }
+}
+
+/* mobile tablet layout 320px */
+
+@media only screen and (max-width: 333px) {
+    .logo.main-logo img {
+        max-width: 170px;
+    }
+    .blog-details-page-content .single-blog-post .post-content {
+        padding: 0px 30px 20px 30px;
+    }
+    .widget-area {
+        padding: 30px 20px 40px 20px;
+    }
+    .blog-page-content .single-blog-post .content {
+        padding: 0px 25px 20px 25px;
+    }
+    .content-area-404 .right-content-area .details {
+        font-size: 18px;
+        line-height: 27px;
+    }
+    .breadcrumb-area .page-title {
+        font-size: 30px;
+        line-height: 40px;
+    }
+    .support-content-area .find-doamin-form-wrapper .title {
+        font-size: 26px;
+        line-height: 40px;
+    }
+    .cart-page-content-area .cart-page-inner-area .table-bottom .left-content-area .cupon-wrapper .submit-btn {
+        position:  initial;
+        margin-top:  20px;
+        width: 100%;
+    }
+    .pricing-plan-area .page-title .title {
+        font-size: 40px;
+        line-height: 49px;
+    }
+    .pricing-plan-area .monthly-tab-content .single-pricing-plan .price-footer .boxed-btn, .pricing-plan-area .yearly-tab-content .single-pricing-plan .price-footer .boxed-btn {
+        width: 100%;
+    }
+    .missiom-area .section-title .title {
+        font-size: 27px;
+        line-height: 38px;
+    }
+    .work-with-us-area .work-with-us-inner .title {
+        font-size: 25px;
+        line-height: 36px;
+        letter-spacing: 0;
+    }
+    .header-area .header-inner .domain-search-form .right-content .submit-btn {
+        width: 100%;
+    }
+    .section-title .title, .trusted-by-area .section-inner-title .title, .clients-story-area .clients-area-inner .right-content-area .title {
+        font-size: 27px;
+        line-height: 45px;
+    }
+    .service-area .single-service-item .content .title {
+        font-size: 25px;
+    }
+    .service-area .single-service-item .icon {
+        margin-bottom: 20px;
+        font-size: 60px;
+        line-height: 60px;
+        margin-bottom: 10px;
+    }
+    .pricing-plan-area .pricing-tab-nav .nav-tabs .nav-item .nav-link {
+        width: 130px;
+    }
+    .header-area .header-inner .domain-search-form .right-content .submit-btn {
+        width: 100%;
+    }
+    
+    .faq-area .singla-faq-item .faq-header .number {
+        position:  initial;
+    }
+    
+    .faq-area .singla-faq-item .faq-header .title-area {
+        padding-left:  0;
+        margin-top: 15px;
+    }
+    .testimonial-area .testimonial-carousel .single-testimonial-item .author-meta .content .title {
+        font-size: 22px;
+        line-height: 33px;
+        color: #fff;
+    }
+    .testimonial-area .testimonial-carousel .single-testimonial-item .author-meta .content .post {
+        font-size: 12px;
+        line-height: 20px;
+    }
+    .contact-area .contact-form-wrapper .left-content-area .page-title .title, .contact-area .contact-form-wrapper .right-content-area .page-title .title {
+        font-size: 25px;
+        line-height: 35px;
+    }
+}
