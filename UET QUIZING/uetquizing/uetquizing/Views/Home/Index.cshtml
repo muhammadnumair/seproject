@@ -1,31 +1,483 @@
 ﻿@{
     ViewBag.Title = "Home Page";
+    Layout = "";
 }
 
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="http://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
-</div>
+<!DOCTYPE html>
+<html lang="en">
 
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+<!-- Mirrored from www.kiathemes.in/tf/kiahost/ by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 16 Oct 2018 15:57:00 GMT -->
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> UET QUZIING - THE ONLY PLATTFORM TO TEST YOUR SKILLS </title>
+    <!-- favicon -->
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <!-- bootstrap -->
+    <link rel="stylesheet" href="~/passets/css/bootstrap.min.css">
+    <!-- icofont -->
+    <link rel="stylesheet" href="~/passets/css/fontawesome.min.css">
+    <!-- animate.css -->
+    <link rel="stylesheet" href="~/passets/css/animate.css">
+    <!-- flaticon.css -->
+    <link rel="stylesheet" href="~/passets/css/flaticon.css">
+    <!-- Owl Carousel -->
+    <link rel="stylesheet" href="~/passets/css/owl.carousel.min.css">
+    <!-- magnific popup -->
+    <link rel="stylesheet" href="~/passets/css/magnific-popup.css">
+    <!-- stylesheet -->
+    <link rel="stylesheet" href="~/passets/css/style.css">
+    <!-- responsive -->
+    <link rel="stylesheet" href="~/passets/css/responsive.css">
+    <link rel="stylesheet" href="~/assets/css/jquery.toast.css">
+
+</head>
+
+<body>
+
+    <!-- navbar area start -->
+    <nav class="navbar navbar-area navbar-expand-lg navbar-light ">
+        <div class="container nav-container">
+            <div class="logo-wrapper navbar-brand">
+                <a href="index.html" class="logo main-logo">
+                    <img style="width: 120px;" src="~/assets/img/logo.png" alt="logo">
+                </a>
+            </div>
+            <div class="collapse navbar-collapse" id="mirex">
+                <!-- navbar collapse start -->
+                <ul class="navbar-nav">
+                    <!-- navbar- nav -->
+                    @{
+                        if (User.Identity.IsAuthenticated)
+                        {
+                            <li class="nav-item active">
+                                <a style="padding: 14px; background: #EC7063; border: #F39C12;" class="nav-link btn btn-danger" href="/User/Index">
+                                    Dashboard
+                                </a>
+                            </li>
+                            <li class="nav-item active">
+                                @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" }))
+                                {
+                                    @Html.AntiForgeryToken()
+                                    <a style="padding: 14px; background: #EC7063; border: #F39C12;" class="nav-link btn btn-success" href="javascript:document.getElementById('logoutForm').submit()">
+                                        Logout
+                                    </a>
+                                }
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="nav-item active">
+                                <a style="padding: 14px; background: #EC7063; border: #F39C12;" class="nav-link btn btn-danger" href="/Home/Index">
+                                    Home
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a style="padding: 14px; background: #EB984E; border: #F39C12;" class="nav-link btn btn-success" href="/Account/Login">Login</a>
+                            </li>
+                            <li class="nav-item">
+                                <a style="padding: 14px; background: #45B39D; border: #45B39D;" class="nav-link btn btn-primary" href="/Account/RegisterAs">Signup</a>
+                            </li>
+                        }
+                    }
+                    
+                </ul>
+                <!-- /.navbar-nav -->
+            </div>
+            <!-- /.navbar btn wrapper -->
+            <div class="responsive-mobile-menu">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mirex" aria-controls="mirex"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
+            <!-- navbar collapse end -->
+        </div>
+    </nav>
+    <!-- navbar area end -->
+    <!-- header area start -->
+    <div class="header-area haeder-bg" style="background: linear-gradient(0deg,rgba(52, 152, 219,0.9),rgba(255,0,150,0.3)),url(https://tiffanysinnerthoughts.files.wordpress.com/2012/01/think-like-a-hipster.jpg);">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-7">
+                    <div class="header-inner ">
+                        <!-- header inner -->
+                        <span class="subtitle">It's Your Time To Change The World</span>
+                        <h1 class="title wow fadeInDown">Begin Testing</h1>
+                        <div class="domain-search-form wow fadeInUp">
+                            <!-- domain search form wrapper -->
+                            @using (Html.BeginForm("OpenQuiz", "Home"))
+                            {
+                                <div class="form-element">
+                                    <input type="text" class="input-field" placeholder="Enter Quiz Code" name="quiz_code" id="quiz_code">
+                                </div>
+                                <div class="right-content">
+                                    <div class="form-element select has-icon">
+                                        <select class="input-field" style="visibility: hidden">
+                                            <option value="0">Com</option>
+                                            <option selected value="1">Net</option>
+                                            <option value="2">biz</option>
+                                            <option value="3">info</option>
+                                        </select>
+                                        <div class="the-icon" style="visibility: hidden">
+                                            <i class="fas fa-angle-down"></i>
+                                        </div>
+                                    </div>
+                                    <button type="submit" class="submit-btn"> <i class="fas fa-search"></i> Start Quiz</button>
+                                </div>
+                            }
+                        </div><!-- //.domain search form wrapper -->
+                    </div><!-- //. header inner -->
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
+    <!-- header area end -->
+    <!-- header bottom area start -->
+    <section class="header-bottom-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-6">
+                    <div class="single-header-bottom-item">
+                        <!-- single header bottom item -->
+                        <div class="icon">
+                            <i class="flaticon-website"></i>
+                        </div>
+                        <div class="content">
+                            <h4 class="title">Online Quizing</h4>
+                            <p>You can solve quizzes provided by your teachers online without any problem without any issue</p>
+                        </div>
+                    </div><!-- //.single header bottom item -->
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="single-header-bottom-item">
+                        <!-- single header bottom item -->
+                        <div class="icon">
+                            <i class="flaticon-rocket"></i>
+                        </div>
+                        <div class="content">
+                            <h4 class="title">Auto Marking</h4>
+                            <p>Your Quiz Will Be Auto Marked And Will Be Available For Future Use. Can See Your Mark Sheets. </p>
+                        </div>
+                    </div><!-- //.single header bottom item -->
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="single-header-bottom-item">
+                        <!-- single header bottom item -->
+                        <div class="icon">
+                            <i class="flaticon-spinner-of-dots"></i>
+                        </div>
+                        <div class="content">
+                            <h4 class="title">All Time Records</h4>
+                            <p>You can see your all time records by visiting the dashboard provided to you after signup to Uet Quizing Platform</p>
+                        </div>
+                    </div><!-- //.single header bottom item -->
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="single-header-bottom-item">
+                        <!-- single header bottom item -->
+                        <div class="icon">
+                            <i class="flaticon-file"></i>
+                        </div>
+                        <div class="content">
+                            <h4 class="title">Finals Preperation</h4>
+                            <p>You can save the quizes for future use, means you can prepare your exams from the quizes that are already stored</p>
+                        </div>
+                    </div><!-- //.single header bottom item -->
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- header bottom area end -->
+    <!-- clients stroy area start-->
+    <section class="clients-story-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 remove-col-padding">
+                    <div class="clients-area-inner">
+                        <!-- clients area inner -->
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="left-content-area">
+                                    <!-- left content area -->
+                                    <div class="img-wrapper">
+                                        <img src="passets/img/client-story-image.jpg" alt="clients story">
+                                        <div class="hover">
+                                            <a href="https://www.youtube.com/watch?v=FHPI1emZFVg" class="video-play-btn mfp-iframe"><i class="fas fa-play"></i></a>
+                                        </div>
+                                    </div>
+                                </div><!-- //. left content area -->
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="right-content-area">
+                                    <!-- right content area -->
+                                    <span class="subtitle">Teacher story</span>
+                                    <h3 class="title">Best Experience</h3>
+                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. </p>
+                                    <div class="signature">
+                                        <img src="passets/img/signature.png" alt="signature image">
+                                    </div>
+                                </div><!-- //. right content area -->
+                            </div>
+                        </div>
+                    </div><!-- //.clients area inner -->
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- clients stroy area end-->
+    <!-- testimonial area start -->
+    <section class="testimonial-area bg-gradient">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="section-title white">
+                        <!-- section title -->
+                        <h2 class="title">What People Say About Uet Quizing ?</h2>
+                    </div><!-- //. section title -->
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="testimonial-carousel" id="testimonial-carousel">
+                        <!-- testimonial carosusel -->
+                        <div class="single-testimonial-item">
+                            <!-- single testimonial item -->
+                            <div class="description">
+                                <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using.</p>
+                            </div>
+                            <div class="author-meta">
+                                <div class="thumb">
+                                    <img src="passets/img/testimonial/01.jpg" alt="testimonial item">
+                                </div>
+                                <div class="content">
+                                    <span class="post">Founder, Numair.com</span>
+                                    <h4 class="title">M. Numair</h4>
+                                </div>
+                            </div>
+                        </div><!-- //.single testimonial item -->
+                        <div class="single-testimonial-item">
+                            <!-- single testimonial item -->
+                            <div class="description">
+                                <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using.</p>
+                            </div>
+                            <div class="author-meta">
+                                <div class="thumb">
+                                    <img src="passets/img/testimonial/02.jpg" alt="testimonial item">
+                                </div>
+                                <div class="content">
+                                    <span class="post">Founder, Abdullah.com</span>
+                                    <h4 class="title">Abdullah Shiekh</h4>
+                                </div>
+                            </div>
+                        </div><!-- //.single testimonial item -->
+                        <div class="single-testimonial-item">
+                            <!-- single testimonial item -->
+                            <div class="description">
+                                <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using.</p>
+                            </div>
+                            <div class="author-meta">
+                                <div class="thumb">
+                                    <img src="passets/img/testimonial/03.jpg" alt="testimonial item">
+                                </div>
+                                <div class="content">
+                                    <span class="post">Founder, Pioliyan LTD</span>
+                                    <h4 class="title">Rana Hamza</h4>
+                                </div>
+                            </div>
+                        </div><!-- //.single testimonial item -->
+                        <div class="single-testimonial-item">
+                            <!-- single testimonial item -->
+                            <div class="description">
+                                <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using.</p>
+                            </div>
+                            <div class="author-meta">
+                                <div class="thumb">
+                                    <img src="passets/img/testimonial/04.jpg" alt="testimonial item">
+                                </div>
+                                <div class="content">
+                                    <span class="post">Founder, TSK LTD</span>
+                                    <h4 class="title">Fahad Hameed</h4>
+                                </div>
+                            </div>
+                        </div><!-- //.single testimonial item -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- testimonial area end -->
+    <!-- contact area start -->
+    <section class="contact-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="section-title">
+                        <!-- section title -->
+                        <span class="subtitle">get in touch</span>
+                        <h2 class="title">Contact Us</h2>
+                    </div> <!-- //. section title -->
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12 remove-col-padding">
+                    <div class="contact-form-wrapper">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="left-content-area">
+                                    <!-- left content area -->
+                                    <div class="page-title">
+                                        <h4 class="title">On Your Mind</h4>
+                                    </div>
+                                    <div class="contact-form-wrapper-inner">
+                                        <form action="http://www.kiathemes.in/tf/kiahost/index.html" id="get_in_touch">
+                                            <div class="form-element margin-bottom-20">
+                                                <input type="text" id="name" class="input-field" placeholder="Enter your name....">
+                                            </div>
+                                            <div class="form-element margin-bottom-20">
+                                                <input type="email" id="email" class="input-field" placeholder="Enter your email....">
+                                            </div>
+                                            <div class="form-element margin-bottom-20">
+                                                <input type="text" id="subject" class="input-field" placeholder="Enter subject....">
+                                            </div>
+                                            <div class="form-element textarea margin-bottom-30">
+                                                <textarea name="message" id="message" cols="30" rows="10" class="input-field textarea"></textarea>
+                                            </div>
+                                            <input type="submit" value="Send Message" class="submit-btn">
+                                        </form>
+                                    </div>
+                                </div><!-- //. left content area -->
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="right-content-area">
+                                    <!-- right content area -->
+                                    <div class="page-title">
+                                        <h4 class="title">Check here</h4>
+                                    </div>
+                                    <div class="content-area">
+                                        <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.</p>
+                                        <p class="strong">Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy is for everyone.</p>
+                                    </div>
+                                </div><!-- //. right content area -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- contact area end -->
+    <!-- footer area start -->
+    <footer class="footer-area">
+        <div class="footer-top">
+            <div class="container">
+            </div>
+        </div>
+        <div class="copyright-area">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 remove-col-padding copyright-container">
+                        <div class="left-content">
+                            Made with love by <a href="#">UET QUIZING</a> - &copy; 2018
+                        </div>
+                        <div class="right-content">
+                            <ul class="social-icons">
+                                <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                                <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                                <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+                                <li><a href="#"><i class="fab fa-pinterest-p"></i></a></li>
+                                <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- footer area end -->
+    <!-- footer bottom area end -->
+    <div class="back-to-top">
+        <i class="flaticon-rocket-launch"></i>
     </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
+
+    <!-- preloader area start -->
+    <div class="preloader_container" id="preloader_container">
+        <div class="preloader-inner">
+            <div class="holder">
+                <div class="preloader">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+            </div>
+        </div>
     </div>
-</div>
+    <!-- preloader area end -->
+    <!-- jquery -->
+    <script src="~/passets/js/jquery.js"></script>
+    <!-- popper -->
+    <script src="~/passets/js/popper.min.js"></script>
+    <!-- bootstrap -->
+    <script src="~/passets/js/bootstrap.min.js"></script>
+    <!-- way poin js-->
+    <script src="~/passets/js/waypoints.min.js"></script>
+    <!-- owl carousel -->
+    <script src="~/passets/js/owl.carousel.min.js"></script>
+    <!-- magnific popup -->
+    <script src="~/passets/js/jquery.magnific-popup.js"></script>
+    <!-- wow js-->
+    <script src="~/passets/js/wow.min.js"></script>
+    <!-- counterup js-->
+    <script src="~/passets/js/jquery.counterup.min.js"></script>
+    <!-- google map api -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDi-rrw9lb-uKY1vHd9gkzuBpj4-hiBsUA&amp;callback=initMap" async defer></script>
+    <!-- google map activate js -->
+    <script src="~/passets/js/goolg-map-activate.js"></script>
+    <script src="~/passets/js/contact.js"></script>
+    <!-- main -->
+    <script src="~/passets/js/main.js"></script>
+    <script type="text/javascript" src="~/assets/js/jquery.toast.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function ()
+        {
+            // SUCCESS MESSAGE
+            var jsTempDataSuccess = '@TempData["Success"]';
+            if(jsTempDataSuccess)
+            {
+                $.toast({
+                    text: jsTempDataSuccess,
+                    heading: 'Success',
+                    showHideTransition: 'slide',
+                    position: 'top-right',
+                    icon: 'success'
+                })
+            }
+
+            var jsTempDataSuccess = '@TempData["Error"]';
+            if (jsTempDataSuccess) {
+                $.toast({
+                    text: jsTempDataSuccess,
+                    heading: 'Error',
+                    showHideTransition: 'slide',
+                    position: 'top-right',
+                    icon: 'error'
+                })
+            }
+        });
+    </script>
+</body>
+
+
+<!-- Mirrored from www.kiathemes.in/tf/kiahost/ by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 16 Oct 2018 15:59:59 GMT -->
+</html>

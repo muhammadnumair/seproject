@@ -19,12 +19,15 @@ namespace uetquizing.Controllers
             // FOR VALIDATION
             var userid = User.Identity.GetUserId();
             var user = db.AspNetUsers.Where(x => x.Id == userid).SingleOrDefault();
-            var role = user.userRole;
-            if(role == "Teacher")
+            if (user != null)
             {
-                return RedirectToAction("Index", "Dashboard");
+                var role = user.userRole;
+                if (role == "Teacher")
+                {
+                    return RedirectToAction("Index", "Dashboard");
+                }
+                // END VALIDATIONS
             }
-            // END VALIDATIONS
 
             // Getting Student Quizes
             var user_id = User.Identity.GetUserId();
@@ -50,58 +53,75 @@ namespace uetquizing.Controllers
             // FOR VALIDATION
             var userid = User.Identity.GetUserId();
             var user = db.AspNetUsers.Where(x => x.Id == userid).SingleOrDefault();
-            var role = user.userRole;
-            if (role == "Teacher")
+            if (user != null)
             {
-                return RedirectToAction("Index", "Dashboard");
+                var role = user.userRole;
+                if (role == "Teacher")
+                {
+                    return RedirectToAction("Index", "Dashboard");
+                }
             }
             // END VALIDATIONS
-
-            var student_quiz = db.studentQuizzes.Where(x => x.quiz_id == id).Where(x => x.student_id == userid).SingleOrDefault();
-            if(student_quiz == null)
+            try
             {
-                var quiz = db.quizzes.Where(x => x.quiz_id == id).Single();
-
-                if (quiz.status == 1)
+                var quiz = db.quizzes.Where(x => x.quiz_id == id).SingleOrDefault();
+                if (quiz != null)
                 {
-                    var quiz_variations = db.QuizVariations.Where(x => x.quiz_id == id).ToList();
-
-                    // Fetching Random Variation
-                    Random rnd = new Random();
-
-                    // Fetching Choosed Variation Questions
-                    int questions_count = 0;
-                    var choosed_variation = new QuizVariation();
-                    var quizQuestions = new List<quizQuestion>();
-                    while (questions_count == 0)
+                    var student_quiz = db.studentQuizzes.Where(x => x.quiz_id == id).Where(x => x.student_id == userid).SingleOrDefault();
+                    if (student_quiz == null)
                     {
-                        int number = rnd.Next(0, quiz_variations.Count);
-                        choosed_variation = quiz_variations[number];
-                        quizQuestions = db.quizQuestions.Where(x => x.variation_id == choosed_variation.variation_id).ToList();
-                        questions_count = quizQuestions.Count;
-                    }
+                        if (quiz.status == 1)
+                        {
+                            var quiz_variations = db.QuizVariations.Where(x => x.quiz_id == id).ToList();
 
-                    var questions = new List<question>();
-                    foreach (var que in quizQuestions)
+                            // Fetching Random Variation
+                            Random rnd = new Random();
+
+                            // Fetching Choosed Variation Questions
+                            int questions_count = 0;
+                            var choosed_variation = new QuizVariation();
+                            var quizQuestions = new List<quizQuestion>();
+                            while (questions_count == 0)
+                            {
+                                int number = rnd.Next(0, quiz_variations.Count);
+                                choosed_variation = quiz_variations[number];
+                                quizQuestions = db.quizQuestions.Where(x => x.variation_id == choosed_variation.variation_id).ToList();
+                                questions_count = quizQuestions.Count;
+                            }
+
+                            var questions = new List<question>();
+                            foreach (var que in quizQuestions)
+                            {
+                                var question = db.questions.Where(x => x.question_id == que.question_id).SingleOrDefault();
+                                questions.Add(question);
+                            }
+
+                            // Sending Data To View
+                            ViewBag.QuizID = id;
+                            ViewBag.VariationID = choosed_variation.variation_id;
+                            ViewBag.questions = questions;
+                        }
+
+                        ViewBag.status = quiz.status;
+                        ViewBag.quiz_id = quiz.quiz_id;
+                        return View();
+                    }
+                    else
                     {
-                        var question = db.questions.Where(x => x.question_id == que.question_id).SingleOrDefault();
-                        questions.Add(question);
+                        TempData["Error"] = "You Have Already Attempted The Quiz, Please Contact To Your Respected Teacher";
+                        return RedirectToAction("Index");
                     }
-
-                    // Sending Data To View
-                    ViewBag.QuizID = id;
-                    ViewBag.VariationID = choosed_variation.variation_id;
-                    ViewBag.questions = questions;
                 }
-
-                ViewBag.status = quiz.status;
-                ViewBag.quiz_id = quiz.quiz_id;
-                return View();
+                else
+                {
+                    TempData["Error"] = "Your Quiz ID is incorrect, Please Enter a valid ID.";
+                    return RedirectToAction("Index", "Home");
+                }
             }
-            else
+            catch(Exception e)
             {
-                TempData["Error"] = "You Have Already Attempted The Quiz, Please Contact To Your Respected Teacher";
-                return RedirectToAction("Index");
+                TempData["Error"] = "Something Went Wrong With Your Quiz ID, Please Enter Valid ID";
+                return RedirectToAction("Index", "Home");
             }
         }
 
@@ -159,10 +179,13 @@ namespace uetquizing.Controllers
             // FOR VALIDATION
             var userid = User.Identity.GetUserId();
             var user = db.AspNetUsers.Where(x => x.Id == userid).SingleOrDefault();
-            var role = user.userRole;
-            if (role == "Teacher")
+            if (user != null)
             {
-                return RedirectToAction("Index", "Dashboard");
+                var role = user.userRole;
+                if (role == "Teacher")
+                {
+                    return RedirectToAction("Index", "Dashboard");
+                }
             }
             // END VALIDATIONS
 

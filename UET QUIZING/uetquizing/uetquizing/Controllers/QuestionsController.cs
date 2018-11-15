@@ -19,10 +19,13 @@ namespace uetquizing.Controllers
             // FOR VALIDATION
             var userid = User.Identity.GetUserId();
             var user = db.AspNetUsers.Where(x => x.Id == userid).SingleOrDefault();
-            var role = user.userRole;
-            if (role == "Student")
+            if (user != null)
             {
-                return RedirectToAction("Index", "User");
+                var role = user.userRole;
+                if (role == "Student")
+                {
+                    return RedirectToAction("Index", "User");
+                }
             }
             // END VALIDATIONS
 
@@ -40,10 +43,13 @@ namespace uetquizing.Controllers
             // FOR VALIDATION
             var userid = User.Identity.GetUserId();
             var user = db.AspNetUsers.Where(x => x.Id == userid).SingleOrDefault();
-            var role = user.userRole;
-            if (role == "Student")
+            if (user != null)
             {
-                return RedirectToAction("Index", "User");
+                var role = user.userRole;
+                if (role == "Student")
+                {
+                    return RedirectToAction("Index", "User");
+                }
             }
             // END VALIDATIONS
 
@@ -109,10 +115,13 @@ namespace uetquizing.Controllers
             // FOR VALIDATION
             var userid = User.Identity.GetUserId();
             var user = db.AspNetUsers.Where(x => x.Id == userid).SingleOrDefault();
-            var role = user.userRole;
-            if (role == "Student")
+            if (user != null)
             {
-                return RedirectToAction("Index", "User");
+                var role = user.userRole;
+                if (role == "Student")
+                {
+                    return RedirectToAction("Index", "User");
+                }
             }
             // END VALIDATIONS
 

@@ -20,6 +20,18 @@ namespace uetquizing.Models
         // GET: Variances
         public ActionResult Index(int? id)
         {
+            // FOR VALIDATION
+            var userid = User.Identity.GetUserId();
+            var user = db.AspNetUsers.Where(x => x.Id == userid).SingleOrDefault();
+            if (user != null)
+            {
+                var role = user.userRole;
+                if (role == "Student")
+                {
+                    return RedirectToAction("Index", "User");
+                }
+            }
+            // END VALIDATIONS
             try
             {
                 if (!User.Identity.IsAuthenticated)
@@ -48,6 +60,19 @@ namespace uetquizing.Models
         
         public ActionResult Add(int? id)
         {
+            // FOR VALIDATION
+            var userid = User.Identity.GetUserId();
+            var user = db.AspNetUsers.Where(x => x.Id == userid).SingleOrDefault();
+            if (user != null)
+            {
+                var role = user.userRole;
+                if (role == "Student")
+                {
+                    return RedirectToAction("Index", "User");
+                }
+            }
+            // END VALIDATIONS
+
             if (!User.Identity.IsAuthenticated)
             {
                 return RedirectToAction("Login", "Account");
@@ -79,6 +104,19 @@ namespace uetquizing.Models
 
         public ActionResult Details(int? id)
         {
+            // FOR VALIDATION
+            var userid = User.Identity.GetUserId();
+            var user = db.AspNetUsers.Where(x => x.Id == userid).SingleOrDefault();
+            if (user != null)
+            {
+                var role = user.userRole;
+                if (role == "Student")
+                {
+                    return RedirectToAction("Index", "User");
+                }
+            }
+            // END VALIDATIONS
+
             try
             {
                 var items = db.quizQuestions.Where(x => x.variation_id == id).ToList();
@@ -108,6 +146,18 @@ namespace uetquizing.Models
 
         public ActionResult Edit(int? id)
         {
+            // FOR VALIDATION
+            var userid = User.Identity.GetUserId();
+            var user = db.AspNetUsers.Where(x => x.Id == userid).SingleOrDefault();
+            if (user != null)
+            {
+                var role = user.userRole;
+                if (role == "Student")
+                {
+                    return RedirectToAction("Index", "User");
+                }
+            }
+            // END VALIDATIONS
 
             quizQuestionIds = new List<int>();
             addedQuestions = new List<int>();
