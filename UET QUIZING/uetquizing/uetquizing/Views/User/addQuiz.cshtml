@@ -1,0 +1,177 @@
+﻿@using uetquizing.Models
+@model QuizViewModel
+
+@{
+    ViewBag.Title = "Create New Quiz";
+    Layout = "~/Views/Shared/_Layout_Backend.cshtml";
+}
+
+<!-- Main Body Content -->
+<div class="container-fluid">
+    <div class="row justify-content-center">
+        <div class="col-12 col-lg-10 col-xl-8">
+
+            <!-- Header -->
+            <div class="header mt-md-5">
+                <div class="header-body">
+                    <div class="row align-items-center">
+                        <div class="col">
+
+                            <!-- Pretitle -->
+                            <h6 class="header-pretitle">
+                                New Quiz
+                            </h6>
+
+                            <!-- Title -->
+                            <h1 class="header-title">
+                                Create New Quiz
+                            </h1>
+
+                        </div>
+                    </div> <!-- / .row -->
+                </div>
+            </div>
+
+            <!-- Form -->
+            @using (Html.BeginForm("Login", "Account", FormMethod.Post, new { @class = "mb-4", role = "form" }))
+            {
+                <!-- Quiz title -->
+                <div class="form-group">
+                    @Html.LabelFor(m => m.quizTitle)
+                    @Html.TextBoxFor(m => m.quizTitle, new { @class = "form-control", placeholder = "eg. Quiz 01" })
+                </div>
+
+                <!-- Radio Buttons -->
+                <div class="form-group">
+                    <div class="custom-control custom-radio">
+                        <input type="radio" id="random_q" name="quizType" class="custom-control-input" value="random">
+                        <label class="custom-control-label" for="random_q" id="random_option">Random Questions</label>
+                    </div>
+                    <div class="custom-control custom-radio">
+                        <input type="radio" id="manuall_q" name="quizType" class="custom-control-input" value="manual">
+                        <label class="custom-control-label" for="manuall_q" id="manuall_option">Choose Questions Manually</label>
+                    </div>
+                </div>
+
+                <!-- Quiz title -->
+                <div id="no_of_questions" class="form-group" style="display: none;">
+                    @Html.LabelFor(m => m.totalQuestions)
+                    @Html.TextBoxFor(m => m.totalQuestions, new { @class = "form-control", placeholder = "eg. 10" })
+                </div>
+
+                <!-- Question Category -->
+                <div id="questions_category" style="display: none;" class="form-group">
+                    <label>
+                        Question Category
+                    </label>
+                    <div class="mb-3">
+                        @{
+                            List<SelectListItem> listItems = new List<SelectListItem>();
+                            listItems.Add(new SelectListItem
+                            {
+                                Text = "Select Category",
+                                Value = "",
+                                Selected = true
+                            });
+                            listItems.Add(new SelectListItem
+                            {
+                                Text = "All Categories",
+                                Value = "0",
+                            });
+                            foreach(var category in ViewBag.categories)
+                            {
+                                listItems.Add(new SelectListItem
+                                {
+                                    Text = @category.category_name,
+                                    Value = Convert.ToString(@category.category_id)
+                                });
+                            }
+                        }
+
+                        @Html.DropDownListFor(model => model.questionsCategory, listItems, "-- Select Status --", new { @class = "form-control"})
+                        
+                    </div>
+                </div>
+
+                <div id="quiz_questions" class="form-group" style="display: none;">
+                    <label>
+                        Questions
+                    </label>
+                    <select class="form-control" data-toggle="select" multiple>
+                        <option>CSS</option>
+                        <option>HTML</option>
+                        <option>JavaScript</option>
+                        <option>Bootstrap</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(m => m.marksPerQuestion)
+                    @Html.TextBoxFor(m => m.marksPerQuestion, new { @class = "form-control", placeholder = "eg. 1.5" })
+                </div>
+
+                <!-- Question Description -->
+                <div class="form-group">
+                    <label class="mb-1">
+                        Quiz Description
+                    </label>
+                    <small class="form-text text-muted">
+                        This is how others will learn about the project, so make it good!
+                    </small>
+                    <div data-toggle="quill"></div>
+                </div>
+
+                <!-- Divider -->
+                <hr class="mt-5 mb-5">
+
+                <div class="row">
+                    <div class="col-12 col-md-6">
+
+                        <!-- Private project -->
+                        <div class="form-group">
+                            <label class="mb-1">
+                                Private project
+                            </label>
+                            <small class="form-text text-muted">
+                                If you are available for hire outside of the current situation, you can encourage others to hire you.
+                            </small>
+                            <div class="custom-control custom-checkbox-toggle">
+                                <input type="checkbox" class="custom-control-input" id="exampleToggle" checked>
+                                <label class="custom-control-label" for="exampleToggle"></label>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-12 col-md-6">
+
+                        <!-- Warning -->
+                        <div class="card bg-light border">
+                            <div class="card-body">
+
+                                <h4 class="mb-2">
+                                    <i class="fe fe-alert-triangle"></i> Warning
+                                </h4>
+
+                                <p class="small text-muted mb-0">
+                                    Once a project is made private, you cannot revert it to a public project.
+                                </p>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div> <!-- / .row -->
+                <!-- Divider -->
+                <hr class="mt-5 mb-5">
+
+                <!-- Buttons -->
+                <a href="#" class="btn btn-block btn-primary">
+                    Add Quiz
+                </a>
+                <a href="#" class="btn btn-block btn-link text-muted">
+                    Cancel this quiz
+                </a>
+            }
+        </div>
+    </div> <!-- / .row -->
+</div> <!-- / .container-fluid -->

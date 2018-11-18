@@ -1,0 +1,115 @@
+﻿
+@{
+    ViewBag.Title = "Add New Question";
+    Layout = "~/Views/Shared/_Layout_Backend.cshtml";
+}
+
+<!-- Main Body Content -->
+<div class="container-fluid">
+    <div class="row justify-content-center">
+        <div class="col-12 col-lg-10 col-xl-8">
+
+            <!-- Header -->
+            <div class="header mt-md-5">
+                <div class="header-body">
+                    <div class="row align-items-center">
+                        <div class="col">
+
+                            <!-- Pretitle -->
+                            <h6 class="header-pretitle">
+                                New Question
+                            </h6>
+
+                            <!-- Title -->
+                            <h1 class="header-title">
+                                Add New Question
+                            </h1>
+
+                        </div>
+                    </div> <!-- / .row -->
+                </div>
+            </div>
+
+            <!-- Form -->
+            <form class="mb-4">
+
+                <!-- Question title -->
+                <div class="form-group">
+                    <label>
+                        Question Title
+                    </label>
+                    <input type="text" class="form-control">
+                </div>
+
+                <!-- Project tags -->
+                <div class="form-group">
+                    <label>
+                        Question Options
+                    </label>
+                    <select class="form-control" data-toggle="select" multiple>
+                        <option>CSS</option>
+                        <option>HTML</option>
+                        <option>JavaScript</option>
+                        <option>Bootstrap</option>
+                    </select>
+                </div>
+
+                <!-- Correct Answer -->
+                <div class="form-group">
+                    <label>
+                        Correct Answer
+                    </label>
+                    <div class="mb-3">
+                        <select class="form-control" data-toggle="select">
+                            <option selected="">Select Correct Answer</option>
+                            <option>CSS</option>
+                            <option>HTML</option>
+                            <option>JavaScript</option>
+                            <option>Bootstrap</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Question Category -->
+                <div class="form-group">
+                    <label>
+                        Question Category
+                    </label>
+                    <div class="mb-3">
+                        <select class="form-control" data-toggle="select">
+                            <option selected="">Select Category</option>
+                            <option>CSS</option>
+                            <option>HTML</option>
+                            <option>JavaScript</option>
+                            <option>Bootstrap</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Question Description -->
+                <div class="form-group">
+                    <label class="mb-1">
+                        Question Description
+                    </label>
+                    <small class="form-text text-muted">
+                        This is how others will learn about the project, so make it good!
+                    </small>
+                    <div data-toggle="quill"></div>
+                </div>
+
+                <!-- Divider -->
+                <hr class="mt-5 mb-5">
+
+                <!-- Buttons -->
+                <a href="#" class="btn btn-block btn-primary">
+                    Add Question
+                </a>
+                <a href="#" class="btn btn-block btn-link text-muted">
+                    Cancel this question
+                </a>
+
+            </form>
+
+        </div>
+    </div> <!-- / .row -->
+</div> <!-- / .container-fluid -->

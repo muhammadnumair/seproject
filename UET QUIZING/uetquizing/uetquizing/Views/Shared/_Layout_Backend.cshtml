@@ -1,0 +1,62 @@
+﻿<!doctype html>
+<html lang="en">
+<meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="A fully featured admin theme which can be used to build CRM, CMS, etc.">
+
+    <!-- Libs CSS -->
+    <link rel="stylesheet" href="~/assets/fonts/feather/feather.min.css">
+    <link rel="stylesheet" href="~/assets/libs/highlight/styles/vs2015.min.css">
+    <link rel="stylesheet" href="~/assets/libs/quill/dist/quill.core.css">
+    <link rel="stylesheet" href="~/assets/libs/select2/dist/css/select2.min.css">
+    <link rel="stylesheet" href="~/assets/libs/flatpickr/dist/flatpickr.min.css">
+
+    <link href="~/assets/css/theme-dark.min.css" rel="" data-toggle="theme" data-theme-mode="dark">
+    <link href="~/assets/css/theme.min.css" rel="" data-toggle="theme" data-theme-mode="light">
+
+    <style>
+        body {
+            display: none;
+        }
+    </style>
+
+    <script>
+      var themeMode = (localStorage.getItem('dashkitThemeMode')) ? localStorage.getItem('dashkitThemeMode') : 'light';
+      var themeFile = document.querySelector('[data-toggle="theme"][data-theme-mode="' + themeMode + '"]');
+
+      // Enable stylesheet
+      themeFile.rel = 'stylesheet';
+
+      // Enable body content
+      themeFile.addEventListener('load', function() {
+        document.body.style.display = 'block';
+      });
+    </script>
+    <title>Dashkit</title>
+</head>
+    @*Partial View*@
+    @if (ViewBag.Title != "Log in" && ViewBag.Title != "Register")
+    {
+        @Html.Partial("_Layout_Sidebar")
+    }
+    @RenderBody()
+    </div> <!-- / .main-content -->
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/teacherScripts")
+    @RenderSection("scripts", required: false)
+    <script type="text/javascript">
+      $("#random_option").click(function() {
+        $("#no_of_questions").show();
+        $("#quiz_questions").hide();
+        $("#questions_category").show();
+      });
+      $("#manuall_option").click(function() {
+        $("#no_of_questions").hide();
+        $("#quiz_questions").show();
+        $("#questions_category").hide();
+      });
+    </script>
+  </body>
+</html>
