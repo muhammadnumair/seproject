@@ -15,10 +15,10 @@ namespace uetquizing
     public partial class quizQuestion
     {
         public int id { get; set; }
-        public Nullable<int> quiz_id { get; set; }
+        public Nullable<int> variation_id { get; set; }
         public Nullable<int> question_id { get; set; }
     
         public virtual question question { get; set; }
-        public virtual quizze quizze { get; set; }
+        public virtual QuizVariation QuizVariation { get; set; }
     }
 }

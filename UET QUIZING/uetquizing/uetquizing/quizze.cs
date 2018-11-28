@@ -17,7 +17,7 @@ namespace uetquizing
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public quizze()
         {
-            this.quizQuestions = new HashSet<quizQuestion>();
+            this.QuizVariations = new HashSet<QuizVariation>();
         }
     
         public int quiz_id { get; set; }
@@ -26,9 +26,10 @@ namespace uetquizing
         public Nullable<int> total_questions { get; set; }
         public Nullable<double> marks_per_question { get; set; }
         public string teacher_id { get; set; }
+        public Nullable<System.DateTime> created_on { get; set; }
     
         public virtual AspNetUser AspNetUser { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<quizQuestion> quizQuestions { get; set; }
+        public virtual ICollection<QuizVariation> QuizVariations { get; set; }
     }
 }

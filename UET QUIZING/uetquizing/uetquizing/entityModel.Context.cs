@@ -30,9 +30,10 @@ namespace uetquizing
         public virtual DbSet<AspNetUserClaim> AspNetUserClaims { get; set; }
         public virtual DbSet<AspNetUserLogin> AspNetUserLogins { get; set; }
         public virtual DbSet<AspNetUser> AspNetUsers { get; set; }
+        public virtual DbSet<quizze> quizzes { get; set; }
         public virtual DbSet<category> categories { get; set; }
         public virtual DbSet<question> questions { get; set; }
-        public virtual DbSet<quizze> quizzes { get; set; }
+        public virtual DbSet<QuizVariation> QuizVariations { get; set; }
         public virtual DbSet<quizQuestion> quizQuestions { get; set; }
     }
 }

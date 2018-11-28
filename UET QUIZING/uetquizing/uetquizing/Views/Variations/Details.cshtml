@@ -1,0 +1,133 @@
+﻿
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout_Backend.cshtml";
+}
+
+<!-- Main Body Content -->
+<div class="container-fluid">
+    <div class="row justify-content-center">
+        <div class="col-12 col-lg-10 col-xl-8">
+
+            <!-- Header -->
+            <div class="header mt-md-5">
+                <div class="header-body">
+                    <div class="row align-items-center">
+                        <div class="col">
+                            <!-- Title -->
+                            <h1 class="header-title">
+                                @ViewBag.Title
+                            </h1>
+
+                        </div>
+                    </div> <!-- / .row -->
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body">
+
+                    <div class="mb-3">
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item d-flex align-items-center justify-content-between px-0">
+                                <small>@ViewBag.QuizTitle</small> <i class="fe fe-check-circle text-success"></i>
+                            </li>
+                            <li class="list-group-item d-flex align-items-center justify-content-between px-0">
+                                <small>@ViewBag.VariatonTitle</small> <i class="fe fe-check-circle text-success"></i>
+                            </li>
+                            <li class="list-group-item d-flex align-items-center justify-content-between px-0">
+                                <small>Marks Per Question</small> <small>@ViewBag.MarksPerQues</small>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <a href="#!" class="btn btn-block btn-primary">
+                        Edit Variation
+                    </a>
+
+                </div>
+            </div>
+                <div class="card" data-toggle="lists" data-lists-values="[&quot;name&quot;]">
+                    <div class="card-header">
+                        <div class="row align-items-center">
+                            <div class="col">
+
+                                <!-- Title -->
+                                <h4 class="card-header-title">
+                                    Questions In Variation
+                                </h4>
+
+                            </div>
+                        </div> <!-- / .row -->
+                    </div>
+                    <div class="card-header">
+
+                        <!-- Form -->
+                        <form>
+                            <div class="input-group input-group-flush input-group-merge">
+                                <input type="search" class="form-control form-control-prepended search" placeholder="Search">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text">
+                                        <span class="fe fe-search"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+
+                    </div>
+                    <div class="card-body">
+                        <!-- List group -->
+                        <ul class="list-group list-group-flush list my--3">
+                            @if (Model.Count > 0)
+                            {
+                                foreach (var item in Model)
+                                {
+                                    <li class="list-group-item px-0">
+                                        <div class="row align-items-center">
+                                            <div class="col ml--2">
+
+                                                <!-- Title -->
+                                                <h4 class="mb-1 name">
+                                                    <a href="#">@item.question_title</a>
+                                                </h4>
+
+                                            </div>
+                                            <div class="col-auto">
+
+                                                <!-- Button -->
+                                                <a href="#!" class="btn btn-sm btn-white">
+                                                    Details
+                                                </a>
+
+                                            </div>
+                                        </div> <!-- / .row -->
+
+                                    </li>
+                                }
+                            }
+                            else
+                            {
+                                <li class="list-group-item px-0">
+                                    <div class="row align-items-center">
+                                        <div class="col ml--2">
+
+                                            <!-- Title -->
+                                            <h4 class="mb-1 name">
+                                                No Questions Added Yet - @Html.ActionLink("Add Questions", "Edit", "Variations", new {id = 2})
+                                            </h4>
+
+                                        </div>
+                                    </div> <!-- / .row -->
+
+                                </li>
+                            }
+                        </ul>
+                    </div>
+                </div>
+        </div>
+
+    </div> <!-- / .row -->
+</div> <!-- / .container-fluid -->
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+

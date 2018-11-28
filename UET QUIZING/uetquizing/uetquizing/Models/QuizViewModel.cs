@@ -21,10 +21,16 @@ namespace uetquizing.Models
         [Display(Name = "Questions Category")]
         public int questionsCategory{ get; set; }
 
+
         [Display(Name = "Marks Per Question")]
         public float marksPerQuestion { get; set; }
-        public string teacherId { get; set; }
 
+        public string teacherId { get; set; }
+   
+        [Required]
+        [Display(Name = "No of Variations")]
+        public int NoOfVariations { get; set; }
+        public bool toggleOne { get; set;}
         public string quizType { get; set; }
     }
 }

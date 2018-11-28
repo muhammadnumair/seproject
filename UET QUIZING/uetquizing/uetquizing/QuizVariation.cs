@@ -12,27 +12,20 @@ namespace uetquizing
     using System;
     using System.Collections.Generic;
     
-    public partial class question
+    public partial class QuizVariation
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public question()
+        public QuizVariation()
         {
             this.quizQuestions = new HashSet<quizQuestion>();
         }
     
-        public int question_id { get; set; }
-        public string question_title { get; set; }
-        public string option_1 { get; set; }
-        public string option_2 { get; set; }
-        public string option_3 { get; set; }
-        public string option_4 { get; set; }
-        public string correct_answer { get; set; }
-        public string teacher_id { get; set; }
-        public Nullable<int> category_id { get; set; }
-        public Nullable<System.DateTime> added_on { get; set; }
+        public int variation_id { get; set; }
+        public Nullable<int> quiz_id { get; set; }
+        public string variation_title { get; set; }
+        public Nullable<System.DateTime> created_on { get; set; }
     
-        public virtual AspNetUser AspNetUser { get; set; }
-        public virtual category category { get; set; }
+        public virtual quizze quizze { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<quizQuestion> quizQuestions { get; set; }
     }

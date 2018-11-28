@@ -1,0 +1,139 @@
+﻿@using uetquizing.Models
+@model QuizViewModel
+
+@{
+    ViewBag.Title = "Create New Quiz";
+    Layout = "~/Views/Shared/_Layout_Backend.cshtml";
+}
+
+<!-- Main Body Content -->
+<div class="container-fluid">
+    <div class="row justify-content-center">
+        <div class="col-12 col-lg-10 col-xl-8">
+
+            <!-- Header -->
+            <div class="header mt-md-5">
+                <div class="header-body">
+                    <div class="row align-items-center">
+                        <div class="col">
+                            <!-- Title -->
+                            <h1 class="header-title">
+                                @ViewBag.Title
+                            </h1>
+
+                        </div>
+                    </div> <!-- / .row -->
+                </div>
+            </div>
+
+            <!-- Form -->
+            @using (Html.BeginForm(new { @class = "mb-4", role = "form" }))
+            {
+                <!-- Quiz title -->
+                <div class="form-group">
+                    @Html.LabelFor(m => m.quizTitle)
+                    @Html.TextBoxFor(m => m.quizTitle, new { @class = "form-control", placeholder = "eg. Quiz 01" })
+                    @Html.ValidationMessageFor(m => m.quizTitle, "", new { @class = "text-danger" })
+                </div>
+
+                if (ViewBag.Type != "Edit")
+                {
+                <!-- Radio Buttons -->
+                <div class="form-group">
+                    <div class="custom-control custom-radio">
+                        <input type="radio" id="random_q" name="quizType" class="custom-control-input" value="random">
+                        <label class="custom-control-label" for="random_q" id="random_option">Random Questions</label>
+                    </div>
+                    <div class="custom-control custom-radio">
+                        <input type="radio" id="manuall_q" name="quizType" class="custom-control-input" value="manual">
+                        <label class="custom-control-label" for="manuall_q" id="manuall_option">Choose Questions Manually</label>
+                    </div>
+                </div>
+                }
+
+                <!-- Question Category -->
+                <div id="questions_category" style="display: none;" class="form-group">
+                    <label>
+                        Choose a Category
+                    </label>
+                        <div class="mb-3">
+                            <select class="form-control" data-toggle="select" id="catgory_id" name="catgory_id">
+                                <option selected="" value="0">All Categories</option>
+                                @{
+                                    if (ViewBag.categories != null)
+                                    {
+
+                                        foreach (var category in ViewBag.categories)
+                                        {
+                                            <option value="@Convert.ToString(@category.category_id)">@category.category_name</option>
+                                        }
+                                    }
+                                }
+                            </select>
+                        </div>
+                </div>
+                
+                <!-- Total Questions -->
+                <div class="form-group">
+                    @Html.LabelFor(m => m.totalQuestions)
+                    @Html.TextBoxFor(m => m.totalQuestions, new { @class = "form-control", placeholder = "eg. 10" })
+                    @Html.ValidationMessageFor(m => m.totalQuestions, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(m => m.marksPerQuestion)
+                    @Html.TextBoxFor(m => m.marksPerQuestion, new { @class = "form-control", placeholder = "eg. 1.5" })
+                    @Html.ValidationMessageFor(m => m.marksPerQuestion, "", new { @class = "text-danger" })
+                </div>
+                                    if (ViewBag.Type != "Edit")
+                                    {
+                                        <div class="form-group">
+                                            <!-- Label -->
+                                            <label class="mb-1">
+                                                Quiz Variations
+                                            </label>
+
+                                            <!-- Form text -->
+                                            <small class="form-text text-muted">
+                                                Making quiz variations means that you will be able to create more then one version of a quiz.
+                                            </small>
+
+                                            <div class="row">
+                                                <div class="col-auto">
+
+                                                    <!-- Toggle -->
+                                                    <div class="custom-control custom-checkbox-toggle">
+                                                        <input type="checkbox" class="custom-control-input" id="toggleOne" name="toggleOne" value="true">
+                                                        <input type="hidden" value="false" name="toggleOne" />
+                                                        <label class="custom-control-label" for="toggleOne"></label>
+                                                    </div>
+
+                                                </div>
+                                                <div class="col ml--2">
+
+                                                    <!-- Help text -->
+                                                    <small class="text-muted">
+                                                        Include Variations For Quiz
+                                                    </small>
+
+                                                </div>
+                                            </div> <!-- / .row -->
+                                        </div>
+                                    }
+
+                <div id="no_of_variations" class="form-group" style="display: none;">
+                    @Html.LabelFor(m => m.NoOfVariations)
+                    @Html.TextBoxFor(m => m.NoOfVariations, new { @class = "form-control", placeholder = "eg. 3" })
+                    @Html.ValidationMessageFor(m => m.NoOfVariations, "", new { @class = "text-danger" })
+                </div>
+                <!-- Divider -->
+                            <hr class="mt-5 mb-5">
+                            <button type="submit" class="btn btn-block btn-primary">Create Quiz</button>
+                            @Html.ActionLink("Cancel this quiz", "Index", "Quizzes", new {@class="btn btn-block btn-link text-muted" })
+                            }
+        </div>
+    </div> <!-- / .row -->
+</div> <!-- / .container-fluid -->
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

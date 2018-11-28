@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="~/assets/libs/quill/dist/quill.core.css">
     <link rel="stylesheet" href="~/assets/libs/select2/dist/css/select2.min.css">
     <link rel="stylesheet" href="~/assets/libs/flatpickr/dist/flatpickr.min.css">
+    <link rel="stylesheet" href="~/assets/css/jquery.toast.css">
 
     <link href="~/assets/css/theme-dark.min.css" rel="" data-toggle="theme" data-theme-mode="dark">
     <link href="~/assets/css/theme.min.css" rel="" data-toggle="theme" data-theme-mode="light">
@@ -34,7 +35,7 @@
         document.body.style.display = 'block';
       });
     </script>
-    <title>Dashkit</title>
+    <title>@ViewBag.Title - UET Quizing</title>
 </head>
     @*Partial View*@
     @if (ViewBag.Title != "Log in" && ViewBag.Title != "Register")
@@ -46,17 +47,61 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/teacherScripts")
     @RenderSection("scripts", required: false)
+    <script type="text/javascript" src="~/assets/js/jquery.toast.js"></script>
+    
     <script type="text/javascript">
-      $("#random_option").click(function() {
-        $("#no_of_questions").show();
-        $("#quiz_questions").hide();
-        $("#questions_category").show();
-      });
-      $("#manuall_option").click(function() {
-        $("#no_of_questions").hide();
-        $("#quiz_questions").show();
-        $("#questions_category").hide();
-      });
+        $(document).ready(function ()
+        {
+            // SUCCESS MESSAGE
+            var jsTempDataSuccess = '@TempData["Success"]';
+            if(jsTempDataSuccess)
+            {
+                $.toast({
+                    text: jsTempDataSuccess,
+                    heading: 'Success',
+                    showHideTransition: 'slide',
+                    position: 'top-right',
+                    icon: 'success'
+                })
+            }
+
+            var jsTempDataSuccess = '@TempData["Error"]';
+            if (jsTempDataSuccess) {
+                $.toast({
+                    text: jsTempDataSuccess,
+                    heading: 'Error',
+                    showHideTransition: 'slide',
+                    position: 'top-right',
+                    icon: 'error'
+                })
+            }
+        });
+    </script>
+    <script type="text/javascript">
+            $("#random_option").click(function () {
+            $("#no_of_questions").show();
+            $("#quiz_questions").hide();
+            $("#questions_category").show();
+          });
+          $("#manuall_option").click(function() {
+            $("#no_of_questions").hide();
+            $("#questions_category").hide();
+          });
+    </script>
+    
+
+    @*QUIZ ADD PAGE TOOGLE*@
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('input[type="checkbox"]').click(function(){
+                if($(this).prop("checked") == true){
+                    $("#no_of_variations").show();
+                }
+                else if($(this).prop("checked") == false){
+                    $("#no_of_variations").hide();
+                }
+            });
+        });
     </script>
   </body>
 </html>
