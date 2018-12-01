@@ -63,7 +63,7 @@ namespace uetquizing.Controllers
             }
 
 
-            ViewBag.ReturnUrl = "/User";
+            ViewBag.ReturnUrl = "/Dashbaord";
             return View();
         }
 

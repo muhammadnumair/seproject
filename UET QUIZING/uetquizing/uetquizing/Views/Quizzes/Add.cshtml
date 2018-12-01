@@ -41,11 +41,11 @@
                 <!-- Radio Buttons -->
                 <div class="form-group">
                     <div class="custom-control custom-radio">
-                        <input type="radio" id="random_q" name="quizType" class="custom-control-input" value="random">
+                        <input type="radio" id="random_q" name="quizType" class="custom-control-input" value="random" checked onchange="onRandomSelect()">
                         <label class="custom-control-label" for="random_q" id="random_option">Random Questions</label>
                     </div>
                     <div class="custom-control custom-radio">
-                        <input type="radio" id="manuall_q" name="quizType" class="custom-control-input" value="manual">
+                        <input type="radio" id="manuall_q" name="quizType" class="custom-control-input" value="manual" onchange="onManuallSelect()">
                         <label class="custom-control-label" for="manuall_q" id="manuall_option">Choose Questions Manually</label>
                     </div>
                 </div>

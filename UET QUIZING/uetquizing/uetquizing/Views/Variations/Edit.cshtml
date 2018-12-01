@@ -1,0 +1,227 @@
+﻿@using uetquizing.Models
+@model VariationViewModel
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout_Backend.cshtml";
+}
+
+<!-- Main Body Content -->
+<div class="container-fluid">
+    <div class="row justify-content-center">
+        <div class="col-12 col-lg-10 col-xl-8">
+
+            <!-- Header -->
+            <div class="header mt-md-5">
+                <div class="header-body">
+                    <div class="row align-items-center">
+                        <div class="col">
+                            <!-- Title -->
+                            <h1 class="header-title">
+                                @ViewBag.Title
+                            </h1>
+                        </div>
+                    </div> <!-- / .row -->
+                </div>
+            </div>
+            <div class="card" data-toggle="lists" data-lists-values="[&quot;name&quot;]">
+                <div class="card-header">
+                    <div class="row align-items-center">
+                        <div class="col ml--2">
+
+                            <!-- Title -->
+                            <h4 class="card-header-title">
+                                Questions In Variation
+                            </h4>
+
+                        </div>
+                        <div class="col-auto">
+                            <a data-toggle="modal" data-target="#modalMembers" class="btn btn-sm btn-white"> Add New Question </a> 
+                        </div>
+                    </div> <!-- / .row -->
+                </div>
+                <div class="card-header">
+
+                    <!-- Form -->
+                    <form>
+                        <div class="input-group input-group-flush input-group-merge">
+                            <input type="search" class="form-control form-control-prepended search" placeholder="Search">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    <span class="fe fe-search"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+
+                </div>
+                <div class="card-body">
+                    <!-- List group -->
+                    <ul class="list-group list-group-flush list my--3 contentbody">
+                        
+                    </ul>
+                </div>
+
+            </div>
+            @using (Html.BeginForm(new { @class = "mb-4", role = "form" }))
+            {
+                <div class="form-group">
+                    @Html.LabelFor(m => m.VarianceTitle)
+                    @Html.TextBoxFor(m => m.VarianceTitle, new { @class = "form-control", placeholder = "eg. Chapter 01" })
+                    @Html.ValidationMessageFor(m => m.VarianceTitle, "", new { @class = "text-danger" })
+
+                </div>
+                @Html.HiddenFor(m => m.VarianceID)
+                <button type="submit" class="btn btn-block btn-primary">Save Changes</button>
+            }
+        </div>
+
+    </div> <!-- / .row -->
+</div> <!-- / .container-fluid -->
+
+<!-- Modal: Members -->
+<div class="modal fade" id="modalMembers" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-card card" data-toggle="lists" data-lists-values='["name"]'>
+                <div class="card-header">
+                    <div class="row align-items-center">
+                        <div class="col">
+
+                            <!-- Title -->
+                            <h4 class="card-header-title" id="exampleModalCenterTitle">
+                                Add New Question
+                            </h4>
+
+                        </div>
+                        <div class="col-auto">
+
+                            <!-- Close -->
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+
+                        </div>
+                    </div> <!-- / .row -->
+                </div>
+                <div class="card-header">
+
+                    <!-- Form -->
+                    <form>
+                        <div class="input-group input-group-flush input-group-merge">
+                            <input type="search" class="form-control form-control-prepended search" placeholder="Search">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    <span class="fe fe-search"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+
+                </div>
+                <div class="card-body">
+
+                    <!-- List group -->
+                    <ul class="list-group list-group-flush list my--3 contentModel">
+
+                    </ul>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
+<script>
+
+        $(document).ready(function () {
+            loadQuizQuestions();
+            loadAllQuestions();
+        });
+
+        function deleteQuestion (qid) {
+            var ans = confirm("Are you sure you want to delete this Record?");
+            if (ans) {
+                $.ajax({
+                    url: "/Variations/deleteQuestion/" + qid,
+                    type: "POST",
+                    contentType: "application/json;charset=UTF-8",
+                    dataType: "json",
+                    success: function (result) {
+                        loadQuizQuestions();
+                    },
+                    error: function (errormessage) {
+                        alert(errormessage.responseText);
+                    }
+                });
+            }
+        }
+        
+        function addQuestionToQuiz(qid) {
+            $.ajax({
+                url: "/Variations/addQuestionToQuiz/" + qid,
+                type: "POST",
+                contentType: "application/json;charset=UTF-8",
+                dataType: "json",
+                success: function (result) {
+                    loadQuizQuestions();
+                    loadAllQuestions();
+                },
+                error: function (errormessage) {
+                    alert(errormessage.responseText);
+                }
+            });
+        }
+
+        function loadQuizQuestions() {
+            var jsTempDataSuccess = '@ViewBag.VID';
+            $.ajax({
+                url: "/Variations/getQuestionsData/" + jsTempDataSuccess,
+                type: "GET",
+                contentType: "application/json;charset=utf-8",
+                dataType: "json",
+                success: function (result) {
+                    var html = '';
+                    $.each(result, function (key, item) {
+                        html += '<li class="list-group-item px-0"><div class="row align-items-center">';
+                        html += '<div class="col ml--2"><h4 class="mb-1 name"><a href="#">' + item.questionTitle + '</a></h4></div>';
+                        html += '<div class="col-auto"><a onClick="deleteQuestion(' + item.quizQuestionID + ')" class="btn btn-sm btn-white"> Remove </a> </div>';
+                        html += '</div></li>';
+                    });
+
+                    $('.contentbody').html(html);
+                },
+                error: function (errormessage) {
+                    alert(errormessage.responseText);
+                }
+            });
+        }
+
+    function loadAllQuestions() {
+        $.ajax({
+            url: "/Variations/getAllQuestions",
+            type: "GET",
+            contentType: "application/json;charset=utf-8",
+            dataType: "json",
+            success: function (result) {
+                console.log(result);
+                var htmlModel = '';
+                $.each(result, function (key, item) {
+                    htmlModel += '<li class="list-group-item px-0"><div class="row align-items-center">';
+                    htmlModel += '<div class="col ml--2"><h4 class="mb-1 name"><a href="#">' + item.question_title + '</a></h4></div>';
+                    htmlModel += '<div class="col-auto"><a onClick="addQuestionToQuiz(' + item.question_id + ')" class="btn btn-sm btn-white"> Add </a> </div>';
+                    htmlModel += '</div></li>';
+                });
+
+                $('.contentModel').html(htmlModel);
+            },
+            error: function (errormessage) {
+                alert(errormessage.responseText);
+            }
+        });
+    }
+
+
+</script>
+}

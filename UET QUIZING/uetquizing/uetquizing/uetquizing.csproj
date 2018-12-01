@@ -251,6 +251,7 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\CategoryViewModel.cs" />
+    <Compile Include="Models\EditVariationViewModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\QuestionViewModel.cs" />
@@ -444,6 +445,7 @@
     <Content Include="Views\Quizzes\Index.cshtml" />
     <Content Include="Views\Variations\Index.cshtml" />
     <Content Include="Views\Variations\Details.cshtml" />
+    <Content Include="Views\Variations\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

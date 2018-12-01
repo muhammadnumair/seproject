@@ -78,15 +78,22 @@
         });
     </script>
     <script type="text/javascript">
-            $("#random_option").click(function () {
+        $(document).ready(function () {
             $("#no_of_questions").show();
             $("#quiz_questions").hide();
             $("#questions_category").show();
-          });
-          $("#manuall_option").click(function() {
+        });
+
+        function onRandomSelect() {
+            $("#no_of_questions").show();
+            $("#quiz_questions").hide();
+            $("#questions_category").show();
+        }
+
+        function onManuallSelect() {
             $("#no_of_questions").hide();
             $("#questions_category").hide();
-          });
+        }
     </script>
     
 
