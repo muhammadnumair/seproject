@@ -13,7 +13,7 @@ namespace uetquizing.Models
         [Required]
         [Display(Name = "Quiz Title")]
         public string quizTitle { get; set; }
-        public float totalMarks { get; set; }
+        public double totalMarks { get; set; }
         
         [Display(Name = "Total Questions")]
         public int totalQuestions { get; set; }
@@ -23,7 +23,7 @@ namespace uetquizing.Models
 
 
         [Display(Name = "Marks Per Question")]
-        public float marksPerQuestion { get; set; }
+        public double marksPerQuestion { get; set; }
 
         public string teacherId { get; set; }
    

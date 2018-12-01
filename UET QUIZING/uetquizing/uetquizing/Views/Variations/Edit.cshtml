@@ -1,7 +1,7 @@
 ﻿@using uetquizing.Models
 @model VariationViewModel
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = "Edit Variation";
     Layout = "~/Views/Shared/_Layout_Backend.cshtml";
 }
 
@@ -12,16 +12,6 @@
 
             <!-- Header -->
             <div class="header mt-md-5">
-                <div class="header-body">
-                    <div class="row align-items-center">
-                        <div class="col">
-                            <!-- Title -->
-                            <h1 class="header-title">
-                                @ViewBag.Title
-                            </h1>
-                        </div>
-                    </div> <!-- / .row -->
-                </div>
             </div>
             <div class="card" data-toggle="lists" data-lists-values="[&quot;name&quot;]">
                 <div class="card-header">
@@ -35,28 +25,13 @@
 
                         </div>
                         <div class="col-auto">
-                            <a data-toggle="modal" data-target="#modalMembers" class="btn btn-sm btn-white"> Add New Question </a> 
+                            <a data-toggle="modal" data-target="#modalMembers" class="btn btn-sm btn-white" onclick="loadAllQuestions()"> Add New Question </a> 
                         </div>
                     </div> <!-- / .row -->
                 </div>
-                <div class="card-header">
-
-                    <!-- Form -->
-                    <form>
-                        <div class="input-group input-group-flush input-group-merge">
-                            <input type="search" class="form-control form-control-prepended search" placeholder="Search">
-                            <div class="input-group-prepend">
-                                <div class="input-group-text">
-                                    <span class="fe fe-search"></span>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
-
-                </div>
                 <div class="card-body">
                     <!-- List group -->
-                    <ul class="list-group list-group-flush list my--3 contentbody">
+                    <ul class="list-group list-group-flush list my--3 contentbody" style="color: #2874A6;">
                         
                     </ul>
                 </div>
@@ -121,7 +96,7 @@
                 <div class="card-body">
 
                     <!-- List group -->
-                    <ul class="list-group list-group-flush list my--3 contentModel">
+                    <ul class="list-group list-group-flush list my--3 contentModel" style="color: #2874A6;">
 
                     </ul>
 
@@ -183,12 +158,18 @@
                 dataType: "json",
                 success: function (result) {
                     var html = '';
-                    $.each(result, function (key, item) {
+                    if ($.trim(result)) {
+                        $.each(result, function (key, item) {
+                            html += '<li class="list-group-item px-0"><div class="row align-items-center">';
+                            html += '<div class="col ml--2"><h4 class="mb-1 name"><a href="#">' + item.questionTitle + '</a></h4></div>';
+                            html += '<div class="col-auto"><a onClick="deleteQuestion(' + item.quizQuestionID + ')" class="btn btn-sm btn-white"> Remove </a> </div>';
+                            html += '</div></li>';
+                        });
+                    } else {
                         html += '<li class="list-group-item px-0"><div class="row align-items-center">';
-                        html += '<div class="col ml--2"><h4 class="mb-1 name"><a href="#">' + item.questionTitle + '</a></h4></div>';
-                        html += '<div class="col-auto"><a onClick="deleteQuestion(' + item.quizQuestionID + ')" class="btn btn-sm btn-white"> Remove </a> </div>';
+                        html += '<div class="col"><h4 class="mb-1 name">No Questions In This Quiz Variation</h4></div>';
                         html += '</div></li>';
-                    });
+                    }
 
                     $('.contentbody').html(html);
                 },
@@ -207,12 +188,18 @@
             success: function (result) {
                 console.log(result);
                 var htmlModel = '';
-                $.each(result, function (key, item) {
+                if ($.trim(result)) {
+                    $.each(result, function (key, item) {
+                        htmlModel += '<li class="list-group-item px-0"><div class="row align-items-center">';
+                        htmlModel += '<div class="col ml--2"><h4 class="mb-1 name"><a href="#">' + item.question_title + '</a></h4></div>';
+                        htmlModel += '<div class="col-auto"><a onClick="addQuestionToQuiz(' + item.question_id + ')" class="btn btn-sm btn-white"> Add </a> </div>';
+                        htmlModel += '</div></li>';
+                    });
+                }else{
                     htmlModel += '<li class="list-group-item px-0"><div class="row align-items-center">';
-                    htmlModel += '<div class="col ml--2"><h4 class="mb-1 name"><a href="#">' + item.question_title + '</a></h4></div>';
-                    htmlModel += '<div class="col-auto"><a onClick="addQuestionToQuiz(' + item.question_id + ')" class="btn btn-sm btn-white"> Add </a> </div>';
+                    htmlModel += '<div class="col"><h4 class="mb-1 name">No Questions To Add In Quiz</h4></div>';
                     htmlModel += '</div></li>';
-                });
+                }
 
                 $('.contentModel').html(htmlModel);
             },

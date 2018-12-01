@@ -83,6 +83,7 @@ namespace uetquizing.Models
             try
             {
                 var variation = db.QuizVariations.Where(x => x.variation_id == id).Single();
+                
                 var quiz = db.quizzes.Where(x => x.quiz_id == variation.quiz_id).Single();
                 ViewBag.VID = id;
                 ViewBag.QuizTitle = quiz.quiz_title;
@@ -104,9 +105,9 @@ namespace uetquizing.Models
         [HttpPost]
         public ActionResult Edit(int? id, VariationViewModel collection)
         {
+            var variation = db.QuizVariations.Where(x => x.variation_id == id).Single();
             try
             {
-                var variation = db.QuizVariations.Where(x => x.variation_id == id).Single();
                 variation.variation_title = collection.VarianceTitle;
 
                 if (quizQuestionIds != null)
@@ -130,14 +131,14 @@ namespace uetquizing.Models
                         db.SaveChanges();
                     }
                 }
-
-                return RedirectToAction("Index/" + collection.VarianceID);
+                TempData["Success"] = "Records Updated Successfully";
+                return RedirectToAction("Index/" + variation.quiz_id);
             }
             catch (Exception e)
             {
                 TempData["Error"] = "Something Went Wrong, Try Again";
             }
-            return RedirectToAction("Index");
+            return RedirectToAction("Index/"+ variation.quiz_id);
         }
         
         public JsonResult getAllQuestions()
@@ -146,10 +147,24 @@ namespace uetquizing.Models
             List<QuestionViewModel> questions = new List<QuestionViewModel>();
             foreach(var item in items)
             {
-                QuestionViewModel question = new QuestionViewModel();
-                question.question_id = item.question_id;
-                question.question_title = item.question_title;
-                questions.Add(question);
+                var found = 0;
+                if (addedQuestions != null)
+                {
+                    foreach (var i in addedQuestions)
+                    {
+                        if (i == item.question_id)
+                        {
+                            found = 1;
+                        }
+                    }
+                }
+                if(found == 0)
+                {
+                    QuestionViewModel question = new QuestionViewModel();
+                    question.question_id = item.question_id;
+                    question.question_title = item.question_title;
+                    questions.Add(question);
+                }
             }
             return Json(questions, JsonRequestBehavior.AllowGet);
         }
@@ -190,7 +205,8 @@ namespace uetquizing.Models
                     question a = db.questions.Where(x => x.question_id == item).Single();
                     EditVariationViewModel ed = new EditVariationViewModel();
                     ed.questionTitle = a.question_title;
-                    ed.questionID = item;
+                    ed.questionID = a.question_id;
+                    ed.quizQuestionID = a.question_id;
                     questions.Add(ed);
                 }
             }
@@ -201,7 +217,22 @@ namespace uetquizing.Models
         public JsonResult deleteQuestion(int id)
         {
             try{
-                quizQuestionIds.Add(id);
+                var found = 0;
+                if(addedQuestions != null)
+                {
+                    foreach(var item in addedQuestions)
+                    {
+                        if(item == id)
+                        {
+                            addedQuestions.Remove(item);
+                            found = 1;
+                        }
+                    }
+                }
+                if(found == 0)
+                {
+                    quizQuestionIds.Add(id);
+                }
                 return Json(1, JsonRequestBehavior.AllowGet);
             }
             catch(Exception e)
@@ -212,22 +243,24 @@ namespace uetquizing.Models
 
         public JsonResult addQuestionToQuiz(int id)
         {
-            try
-            {
-                addedQuestions.Add(id);
-                return Json(1, JsonRequestBehavior.AllowGet);
-            }
-            catch (Exception e)
-            {
-                return Json(0, JsonRequestBehavior.AllowGet);
-            }
+            addedQuestions.Add(id);
+            return Json(addedQuestions, JsonRequestBehavior.AllowGet);
         }
 
         public ActionResult Delete(int? id)
         {
+            int quizID = 0;
             try
             {
                 var variation = db.QuizVariations.Where(x => x.variation_id == id).SingleOrDefault();
+                var variationQuestions = db.quizQuestions.Where(x => x.variation_id == variation.variation_id).ToList();
+                foreach(var item in variationQuestions)
+                {
+                    db.quizQuestions.Remove(item);
+                    db.SaveChanges();
+                }
+
+                quizID = Convert.ToInt32(variation.quiz_id);
                 var result = db.QuizVariations.Remove(variation);
                 db.SaveChanges();
                 if (result != null)
@@ -238,12 +271,13 @@ namespace uetquizing.Models
                 {
                     TempData["Error"] = "Something Went Wrong, Try Again";
                 }
+                return RedirectToAction("Index/" + quizID);
             }
             catch (Exception e)
             {
                 TempData["Error"] = "Something Went Wrong, Try Again";
+                return RedirectToAction("Index/"+quizID);
             }
-            return RedirectToAction("Index");
         }
     }
 }

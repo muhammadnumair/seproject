@@ -175,8 +175,7 @@ namespace uetquizing.Controllers
                 QuizViewModel quiz = new QuizViewModel();
                 quiz.quizTitle = item.quiz_title;
                 quiz.totalQuestions = Convert.ToInt32(item.total_questions);
-                quiz.marksPerQuestion = Convert.ToInt32(item.marks_per_question);
-
+                quiz.marksPerQuestion = double.Parse(Convert.ToString(item.marks_per_question));
 
                 ViewBag.Type = "Edit";
                 return View("Add", quiz);
@@ -196,6 +195,7 @@ namespace uetquizing.Controllers
                 item.quiz_title = collection.quizTitle;
                 item.marks_per_question = collection.marksPerQuestion;
                 item.total_questions = collection.totalQuestions;
+                item.total_marks = collection.marksPerQuestion * collection.totalQuestions;
                 var result = db.SaveChanges();
                 if (result > 0)
                 {

@@ -39,8 +39,12 @@
                             </li>
                         </ul>
                     </div>
+                    @{
+                        var id = ViewBag.VID;
+                        var action = "/Variations/Edit/" + ViewBag.VID;
+                    }
 
-                    <a href="#!" class="btn btn-block btn-primary">
+                    <a href="@action" class="btn btn-block btn-primary">
                         Edit Variation
                     </a>
 
