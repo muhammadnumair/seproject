@@ -31,6 +31,7 @@ namespace uetquizing.Models
                 if (quiz != null)
                 {
                     var variations = db.QuizVariations.Where(x => x.quiz_id == id).ToList();
+                    ViewBag.VID = id;
                     return View(variations);
                 }
                 else
@@ -45,6 +46,36 @@ namespace uetquizing.Models
             }
         }
         
+        public ActionResult Add(int? id)
+        {
+            if (!User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("Login", "Account");
+            }
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Add(int id, VariationViewModel collection)
+        {
+            if (collection.VarianceTitle != "")
+            {
+                QuizVariation c = new QuizVariation();
+
+                c.variation_title = collection.VarianceTitle;
+                c.created_on = DateTime.Now;
+                c.quiz_id = id;
+                db.QuizVariations.Add(c);
+
+                int result = db.SaveChanges();
+                if (result > 0)
+                {
+                    TempData["Success"] = "Record Added Successfully";
+                }
+                return RedirectToAction("Index/" + id);
+            }
+            return View();
+        }
 
         public ActionResult Details(int? id)
         {

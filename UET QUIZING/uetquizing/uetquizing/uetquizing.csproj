@@ -219,6 +219,7 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\QuestionsController.cs" />
     <Compile Include="Controllers\QuizzesController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="C__MigrationHistory.cs">
       <DependentUpon>entityModel.tt</DependentUpon>
     </Compile>
@@ -248,6 +249,10 @@
     <Compile Include="Migrations\201811151341176_fullName.Designer.cs">
       <DependentUpon>201811151341176_fullName.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201812091056430_Entity.cs" />
+    <Compile Include="Migrations\201812091056430_Entity.Designer.cs">
+      <DependentUpon>201812091056430_Entity.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\CategoryViewModel.cs" />
@@ -255,6 +260,7 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\QuestionViewModel.cs" />
+    <Compile Include="Models\QuizQuestions.cs" />
     <Compile Include="Models\QuizViewModel.cs" />
     <Compile Include="Controllers\VariationsController.cs" />
     <Compile Include="Models\VariationViewModel.cs" />
@@ -272,6 +278,12 @@
       <DependentUpon>entityModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Startup.cs" />
+    <Compile Include="studentMark.cs">
+      <DependentUpon>entityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="studentQuizze.cs">
+      <DependentUpon>entityModel.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="assets\css\jquery.toast.css" />
@@ -388,6 +400,7 @@
     <Content Include="entityModel.edmx.diagram">
       <DependentUpon>entityModel.edmx</DependentUpon>
     </Content>
+    <None Include="Properties\PublishProfiles\AppHosting.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -421,7 +434,7 @@
     <Content Include="Views\Account\ForgotPassword.cshtml" />
     <Content Include="Views\Account\ForgotPasswordConfirmation.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
-    <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Account\RegisterTeacher.cshtml" />
     <Content Include="Views\Account\ResetPassword.cshtml" />
     <Content Include="Views\Account\ResetPasswordConfirmation.cshtml" />
     <Content Include="Views\Account\SendCode.cshtml" />
@@ -446,6 +459,11 @@
     <Content Include="Views\Variations\Index.cshtml" />
     <Content Include="Views\Variations\Details.cshtml" />
     <Content Include="Views\Variations\Edit.cshtml" />
+    <Content Include="Views\Variations\Add.cshtml" />
+    <Content Include="Views\User\Index.cshtml" />
+    <Content Include="Views\User\Quiz.cshtml" />
+    <Content Include="Views\Account\RegisterStudent.cshtml" />
+    <Content Include="Views\Account\RegisterAs.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -465,6 +483,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201811151341176_fullName.resx">
       <DependentUpon>201811151341176_fullName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812091056430_Entity.resx">
+      <DependentUpon>201812091056430_Entity.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

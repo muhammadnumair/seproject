@@ -10,14 +10,6 @@
     <Property Name="Model" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
     <Property Name="ProductVersion" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
   </EntityType>
-  <EntityType Name="AspNetRole">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="Name" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
-    <NavigationProperty Name="AspNetUsers" Relationship="Self.AspNetUserRoles" FromRole="AspNetRoles" ToRole="AspNetUsers" />
-  </EntityType>
   <EntityType Name="AspNetUserClaim">
     <Key>
       <PropertyRef Name="Id" />
@@ -59,9 +51,12 @@
     <NavigationProperty Name="AspNetUserClaims" Relationship="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserClaims" />
     <NavigationProperty Name="AspNetUserLogins" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserLogins" />
     <NavigationProperty Name="quizzes" Relationship="Self.FK_quizzes_AspNetUsers" FromRole="AspNetUsers" ToRole="quizzes" />
-    <NavigationProperty Name="AspNetRoles" Relationship="Self.AspNetUserRoles" FromRole="AspNetUsers" ToRole="AspNetRoles" />
     <NavigationProperty Name="categories" Relationship="uetquizingModel.FK_categories_AspNetUsers" FromRole="AspNetUser" ToRole="category" />
     <NavigationProperty Name="questions" Relationship="uetquizingModel.FK_questions_AspNetUsers" FromRole="AspNetUser" ToRole="question" />
+    <NavigationProperty Name="AspNetRoles" Relationship="uetquizingModel.AspNetUserRoles" FromRole="AspNetUser" ToRole="AspNetRole" />
+    <NavigationProperty Name="studentQuizzes" Relationship="uetquizingModel.FK_studentQuizzes_AspNetUsers" FromRole="AspNetUser" ToRole="studentQuizze" />
+    <NavigationProperty Name="studentMarks" Relationship="uetquizingModel.FK_studentMarks_AspNetUsers" FromRole="AspNetUser" ToRole="studentMark" />
+    <Property Name="userRole" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="quizze">
     <Key>
@@ -76,6 +71,8 @@
     <NavigationProperty Name="AspNetUser" Relationship="Self.FK_quizzes_AspNetUsers" FromRole="quizzes" ToRole="AspNetUsers" />
     <NavigationProperty Name="QuizVariations" Relationship="uetquizingModel.FK_QuizVariations_quizzes" FromRole="quizze" ToRole="QuizVariation" />
     <Property Name="created_on" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="studentQuizzes" Relationship="uetquizingModel.FK_studentQuizzes_quizzes" FromRole="quizze" ToRole="studentQuizze" />
+    <NavigationProperty Name="studentMarks" Relationship="uetquizingModel.FK_studentMarks_quizzes" FromRole="quizze" ToRole="studentMark" />
   </EntityType>
   <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
     <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1">
@@ -117,13 +114,8 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="AspNetUserRoles">
-    <End Role="AspNetRoles" Type="Self.AspNetRole" Multiplicity="*" />
-    <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="*" />
-  </Association>
   <EntityContainer Name="uetquizingEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="C__MigrationHistory" EntityType="Self.C__MigrationHistory" />
-    <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRole" />
     <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaim" />
     <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogin" />
     <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUser" />
@@ -139,10 +131,6 @@
     <AssociationSet Name="FK_quizzes_AspNetUsers" Association="Self.FK_quizzes_AspNetUsers">
       <End Role="AspNetUsers" EntitySet="AspNetUsers" />
       <End Role="quizzes" EntitySet="quizzes" />
-    </AssociationSet>
-    <AssociationSet Name="AspNetUserRoles" Association="Self.AspNetUserRoles">
-      <End Role="AspNetRoles" EntitySet="AspNetRoles" />
-      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
     </AssociationSet>
     <EntitySet Name="categories" EntityType="uetquizingModel.category" />
     <AssociationSet Name="FK_categories_AspNetUsers" Association="uetquizingModel.FK_categories_AspNetUsers">
@@ -171,6 +159,37 @@
     <AssociationSet Name="FK_quizQuestions_variations" Association="uetquizingModel.FK_quizQuestions_variations">
       <End Role="QuizVariation" EntitySet="QuizVariations" />
       <End Role="quizQuestion" EntitySet="quizQuestions" />
+    </AssociationSet>
+    <EntitySet Name="AspNetRoles" EntityType="uetquizingModel.AspNetRole" />
+    <AssociationSet Name="AspNetUserRoles" Association="uetquizingModel.AspNetUserRoles">
+      <End Role="AspNetRole" EntitySet="AspNetRoles" />
+      <End Role="AspNetUser" EntitySet="AspNetUsers" />
+    </AssociationSet>
+    <EntitySet Name="studentQuizzes" EntityType="uetquizingModel.studentQuizze" />
+    <AssociationSet Name="FK_studentQuizzes_AspNetUsers" Association="uetquizingModel.FK_studentQuizzes_AspNetUsers">
+      <End Role="AspNetUser" EntitySet="AspNetUsers" />
+      <End Role="studentQuizze" EntitySet="studentQuizzes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_studentQuizzes_quizzes" Association="uetquizingModel.FK_studentQuizzes_quizzes">
+      <End Role="quizze" EntitySet="quizzes" />
+      <End Role="studentQuizze" EntitySet="studentQuizzes" />
+    </AssociationSet>
+    <EntitySet Name="studentMarks" EntityType="uetquizingModel.studentMark" />
+    <AssociationSet Name="FK_studentMarks_quizQuestions" Association="uetquizingModel.FK_studentMarks_quizQuestions">
+      <End Role="quizQuestion" EntitySet="quizQuestions" />
+      <End Role="studentMark" EntitySet="studentMarks" />
+    </AssociationSet>
+    <AssociationSet Name="FK_studentMarks_quizzes" Association="uetquizingModel.FK_studentMarks_quizzes">
+      <End Role="quizze" EntitySet="quizzes" />
+      <End Role="studentMark" EntitySet="studentMarks" />
+    </AssociationSet>
+    <AssociationSet Name="FK_studentMarks_AspNetUsers" Association="uetquizingModel.FK_studentMarks_AspNetUsers">
+      <End Role="AspNetUser" EntitySet="AspNetUsers" />
+      <End Role="studentMark" EntitySet="studentMarks" />
+    </AssociationSet>
+    <AssociationSet Name="FK_studentMarks_QuizVariations" Association="uetquizingModel.FK_studentMarks_QuizVariations">
+      <End Role="QuizVariation" EntitySet="QuizVariations" />
+      <End Role="studentMark" EntitySet="studentMarks" />
     </AssociationSet>
   </EntityContainer>
   <EntityType Name="category">
@@ -248,6 +267,7 @@
     <Property Name="variation_title" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
     <Property Name="created_on" Type="DateTime" Precision="3" />
     <NavigationProperty Name="quizQuestions" Relationship="uetquizingModel.FK_quizQuestions_variations" FromRole="QuizVariation" ToRole="quizQuestion" />
+    <NavigationProperty Name="studentMarks" Relationship="uetquizingModel.FK_studentMarks_QuizVariations" FromRole="QuizVariation" ToRole="studentMark" />
   </EntityType>
   <Association Name="FK_QuizVariations_quizzes">
     <End Type="uetquizingModel.quizze" Role="quizze" Multiplicity="0..1" />
@@ -270,6 +290,7 @@
     <Property Name="question_id" Type="Int32" />
     <NavigationProperty Name="question" Relationship="uetquizingModel.FK_quizQuestions_questions" FromRole="quizQuestion" ToRole="question" />
     <NavigationProperty Name="QuizVariation" Relationship="uetquizingModel.FK_quizQuestions_variations" FromRole="quizQuestion" ToRole="QuizVariation" />
+    <NavigationProperty Name="studentMarks" Relationship="uetquizingModel.FK_studentMarks_quizQuestions" FromRole="quizQuestion" ToRole="studentMark" />
   </EntityType>
   <Association Name="FK_quizQuestions_questions">
     <End Type="uetquizingModel.question" Role="question" Multiplicity="0..1" />
@@ -291,6 +312,116 @@
         <PropertyRef Name="variation_id" />
       </Principal>
       <Dependent Role="quizQuestion">
+        <PropertyRef Name="variation_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="AspNetRole">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="AspNetUsers" Relationship="uetquizingModel.AspNetUserRoles" FromRole="AspNetRole" ToRole="AspNetUser" />
+  </EntityType>
+  <Association Name="AspNetUserRoles">
+    <End Type="uetquizingModel.AspNetRole" Role="AspNetRole" Multiplicity="*" />
+    <End Type="uetquizingModel.AspNetUser" Role="AspNetUser" Multiplicity="*" />
+  </Association>
+  <EntityType Name="studentQuizze">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="student_id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="quiz_id" Type="Int32" />
+    <NavigationProperty Name="AspNetUser" Relationship="uetquizingModel.FK_studentQuizzes_AspNetUsers" FromRole="studentQuizze" ToRole="AspNetUser" />
+    <NavigationProperty Name="quizze" Relationship="uetquizingModel.FK_studentQuizzes_quizzes" FromRole="studentQuizze" ToRole="quizze" />
+  </EntityType>
+  <Association Name="FK_studentQuizzes_AspNetUsers">
+    <End Type="uetquizingModel.AspNetUser" Role="AspNetUser" Multiplicity="0..1" />
+    <End Type="uetquizingModel.studentQuizze" Role="studentQuizze" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUser">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="studentQuizze">
+        <PropertyRef Name="student_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_studentQuizzes_quizzes">
+    <End Type="uetquizingModel.quizze" Role="quizze" Multiplicity="0..1" />
+    <End Type="uetquizingModel.studentQuizze" Role="studentQuizze" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="quizze">
+        <PropertyRef Name="quiz_id" />
+      </Principal>
+      <Dependent Role="studentQuizze">
+        <PropertyRef Name="quiz_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="studentMark">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="quiz_id" Type="Int32" />
+    <Property Name="question_id" Type="Int32" />
+    <Property Name="correct" Type="Int32" />
+    <NavigationProperty Name="quizQuestion" Relationship="uetquizingModel.FK_studentMarks_quizQuestions" FromRole="studentMark" ToRole="quizQuestion" />
+    <NavigationProperty Name="quizze" Relationship="uetquizingModel.FK_studentMarks_quizzes" FromRole="studentMark" ToRole="quizze" />
+    <Property Name="choosed_option" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+    <Property Name="variation_id" Type="Int32" />
+    <Property Name="student_id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="AspNetUser" Relationship="uetquizingModel.FK_studentMarks_AspNetUsers" FromRole="studentMark" ToRole="AspNetUser" />
+    <NavigationProperty Name="QuizVariation" Relationship="uetquizingModel.FK_studentMarks_QuizVariations" FromRole="studentMark" ToRole="QuizVariation" />
+  </EntityType>
+  <Association Name="FK_studentMarks_quizQuestions">
+    <End Type="uetquizingModel.quizQuestion" Role="quizQuestion" Multiplicity="0..1" />
+    <End Type="uetquizingModel.studentMark" Role="studentMark" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="quizQuestion">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="studentMark">
+        <PropertyRef Name="question_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_studentMarks_quizzes">
+    <End Type="uetquizingModel.quizze" Role="quizze" Multiplicity="0..1" />
+    <End Type="uetquizingModel.studentMark" Role="studentMark" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="quizze">
+        <PropertyRef Name="quiz_id" />
+      </Principal>
+      <Dependent Role="studentMark">
+        <PropertyRef Name="quiz_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_studentMarks_AspNetUsers">
+    <End Type="uetquizingModel.AspNetUser" Role="AspNetUser" Multiplicity="0..1" />
+    <End Type="uetquizingModel.studentMark" Role="studentMark" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUser">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="studentMark">
+        <PropertyRef Name="student_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_studentMarks_QuizVariations">
+    <End Type="uetquizingModel.QuizVariation" Role="QuizVariation" Multiplicity="0..1" />
+    <End Type="uetquizingModel.studentMark" Role="studentMark" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="QuizVariation">
+        <PropertyRef Name="variation_id" />
+      </Principal>
+      <Dependent Role="studentMark">
         <PropertyRef Name="variation_id" />
       </Dependent>
     </ReferentialConstraint>

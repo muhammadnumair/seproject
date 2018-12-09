@@ -52,6 +52,25 @@ namespace uetquizing.Controllers
             }
         }
 
+        public ActionResult LoginSuccess()
+        {
+            uetquizingEntities db = new uetquizingEntities();
+            var user_id = User.Identity.GetUserId();
+            var user = db.AspNetUsers.Where(x => x.Id == user_id).SingleOrDefault();
+            string role = user.userRole;
+            if(role != null)
+            {
+                Session["userRole"] = role;
+            }
+            if (role == "Teacher")
+            {
+                return RedirectToAction("Index", "Dashboard");
+            }
+            else
+            {
+                return RedirectToAction("Index", "User");
+            }
+        }
         //
         // GET: /Account/Login
         [AllowAnonymous]
@@ -59,11 +78,10 @@ namespace uetquizing.Controllers
         {
             if (User.Identity.IsAuthenticated)
             {
-                return RedirectToAction("Index", "User");
+                return RedirectToAction("Index", "Dashboard");
             }
-
-
-            ViewBag.ReturnUrl = "/Dashbaord";
+            
+            ViewBag.ReturnUrl = "/Account/LoginSuccess";
             return View();
         }
 
@@ -140,10 +158,24 @@ namespace uetquizing.Controllers
             }
         }
 
-        //
-        // GET: /Account/Register
+        // GET: /Account/RegisterStudent
         [AllowAnonymous]
-        public ActionResult Register()
+        public ActionResult RegisterAs()
+        {
+            return View();
+        }
+
+        //
+        // GET: /Account/RegisterTeacher
+        [AllowAnonymous]
+        public ActionResult RegisterTeacher()
+        {
+            return View();
+        }
+
+        // GET: /Account/RegisterStudent
+        [AllowAnonymous]
+        public ActionResult RegisterStudent()
         {
             return View();
         }
@@ -157,7 +189,7 @@ namespace uetquizing.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, fullName = model.Name};
+                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, fullName = model.Name, userRole = model.userRole};
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {

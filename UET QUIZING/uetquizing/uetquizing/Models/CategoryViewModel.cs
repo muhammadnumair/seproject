@@ -11,7 +11,7 @@ namespace uetquizing.Models
         public int categoryId { get; set; }
         
         [Required]
-        [Display(Name = "Category Name")]
+        [Display(Name = "Category Name*")]
         public string categoryName { get; set; }
         public string teacherId { get; set; }
 

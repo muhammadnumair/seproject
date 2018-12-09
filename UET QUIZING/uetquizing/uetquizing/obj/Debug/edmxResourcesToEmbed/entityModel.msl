@@ -11,14 +11,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="AspNetRoles">
-      <EntityTypeMapping TypeName="uetquizingModel.AspNetRole">
-        <MappingFragment StoreEntitySet="AspNetRoles">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="Name" ColumnName="Name" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="AspNetUserClaims">
       <EntityTypeMapping TypeName="uetquizingModel.AspNetUserClaim">
         <MappingFragment StoreEntitySet="AspNetUserClaims">
@@ -41,6 +33,7 @@
     <EntitySetMapping Name="AspNetUsers">
       <EntityTypeMapping TypeName="uetquizingModel.AspNetUser">
         <MappingFragment StoreEntitySet="AspNetUsers">
+          <ScalarProperty Name="userRole" ColumnName="userRole" />
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Email" ColumnName="Email" />
           <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
@@ -70,14 +63,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <AssociationSetMapping Name="AspNetUserRoles" TypeName="uetquizingModel.AspNetUserRoles" StoreEntitySet="AspNetUserRoles">
-      <EndProperty Name="AspNetRoles">
-        <ScalarProperty Name="Id" ColumnName="RoleId" />
-      </EndProperty>
-      <EndProperty Name="AspNetUsers">
-        <ScalarProperty Name="Id" ColumnName="UserId" />
-      </EndProperty>
-    </AssociationSetMapping>
     <EntitySetMapping Name="categories">
       <EntityTypeMapping TypeName="uetquizingModel.category">
         <MappingFragment StoreEntitySet="categories">
@@ -119,6 +104,44 @@
         <MappingFragment StoreEntitySet="quizQuestions">
           <ScalarProperty Name="question_id" ColumnName="question_id" />
           <ScalarProperty Name="variation_id" ColumnName="variation_id" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AspNetRoles">
+      <EntityTypeMapping TypeName="uetquizingModel.AspNetRole">
+        <MappingFragment StoreEntitySet="AspNetRoles">
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="AspNetUserRoles" TypeName="uetquizingModel.AspNetUserRoles" StoreEntitySet="AspNetUserRoles">
+      <EndProperty Name="AspNetUser">
+        <ScalarProperty Name="Id" ColumnName="UserId" />
+      </EndProperty>
+      <EndProperty Name="AspNetRole">
+        <ScalarProperty Name="Id" ColumnName="RoleId" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <EntitySetMapping Name="studentQuizzes">
+      <EntityTypeMapping TypeName="uetquizingModel.studentQuizze">
+        <MappingFragment StoreEntitySet="studentQuizzes">
+          <ScalarProperty Name="quiz_id" ColumnName="quiz_id" />
+          <ScalarProperty Name="student_id" ColumnName="student_id" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="studentMarks">
+      <EntityTypeMapping TypeName="uetquizingModel.studentMark">
+        <MappingFragment StoreEntitySet="studentMarks">
+          <ScalarProperty Name="student_id" ColumnName="student_id" />
+          <ScalarProperty Name="variation_id" ColumnName="variation_id" />
+          <ScalarProperty Name="choosed_option" ColumnName="choosed_option" />
+          <ScalarProperty Name="correct" ColumnName="correct" />
+          <ScalarProperty Name="question_id" ColumnName="question_id" />
+          <ScalarProperty Name="quiz_id" ColumnName="quiz_id" />
           <ScalarProperty Name="id" ColumnName="id" />
         </MappingFragment>
       </EntityTypeMapping>

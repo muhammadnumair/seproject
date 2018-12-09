@@ -1,0 +1,67 @@
+﻿@using uetquizing.Models
+@model CategoryViewModel
+@{
+    ViewBag.Title = "Add New Category";
+    Layout = "~/Views/Shared/_Layout_Backend.cshtml";
+}
+
+<!-- Main Body Content -->
+<div class="container-fluid">
+    <div class="row justify-content-center">
+        <div class="col-12 col-lg-10 col-xl-8">
+
+            <!-- Header -->
+            <div class="header mt-md-5">
+                <div class="header-body">
+                    <div class="row align-items-center">
+                        <div class="col">
+
+                            <!-- Pretitle -->
+                            <h6 class="header-pretitle">
+                                New Category
+                            </h6>
+
+                            <!-- Title -->
+                            <h1 class="header-title">
+                                Add New Category
+                            </h1>
+
+                        </div>
+                    </div> <!-- / .row -->
+                </div>
+            </div>
+
+            <!-- Form -->
+            @using (Html.BeginForm(new { @class = "mb-4", role = "form" }))
+            {
+
+                <!-- Category Name -->
+                <div class="form-group">
+                    @Html.LabelFor(m => m.categoryName)
+                    @Html.TextBoxFor(m => m.categoryName, new { @class = "form-control", placeholder = "eg. Chapter 01" })
+                    @Html.ValidationMessageFor(m => m.categoryName, "", new { @class = "text-danger" })
+
+                </div>
+
+                <!-- Buttons -->
+                var button_text = "";
+                if (ViewBag.Type == "Edit")
+                {
+                    button_text = "Update Category";
+                }
+                else
+                {
+                    button_text = "Add Category";
+                }
+                <button type="submit" class="btn btn-block btn-primary">@button_text</button>
+                @Html.ActionLink("Cancel this category", "Index", "Categories", new { @class = "btn btn-block btn-link text-muted" })
+
+            }
+
+        </div>
+    </div> <!-- / .row -->
+</div> <!-- / .container-fluid -->
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

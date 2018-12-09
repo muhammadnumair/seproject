@@ -11,24 +11,24 @@ namespace uetquizing.Models
         public int quizId { get; set; }
 
         [Required]
-        [Display(Name = "Quiz Title")]
+        [Display(Name = "Quiz Title*")]
         public string quizTitle { get; set; }
         public double totalMarks { get; set; }
         
-        [Display(Name = "Total Questions")]
+        [Display(Name = "Total Questions*")]
         public int totalQuestions { get; set; }
 
-        [Display(Name = "Questions Category")]
+        [Display(Name = "Questions Category*")]
         public int questionsCategory{ get; set; }
 
 
-        [Display(Name = "Marks Per Question")]
+        [Display(Name = "Marks Per Question*")]
         public double marksPerQuestion { get; set; }
 
         public string teacherId { get; set; }
    
         [Required]
-        [Display(Name = "No of Variations")]
+        [Display(Name = "No of Variations*")]
         public int NoOfVariations { get; set; }
         public bool toggleOne { get; set;}
         public string quizType { get; set; }

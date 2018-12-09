@@ -1,0 +1,114 @@
+﻿<!doctype html>
+<html lang="en">
+<meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="A fully featured admin theme which can be used to build CRM, CMS, etc.">
+
+    <!-- Libs CSS -->
+    <link rel="stylesheet" href="~/assets/fonts/feather/feather.min.css">
+    <link rel="stylesheet" href="~/assets/libs/highlight/styles/vs2015.min.css">
+    <link rel="stylesheet" href="~/assets/libs/quill/dist/quill.core.css">
+    <link rel="stylesheet" href="~/assets/libs/select2/dist/css/select2.min.css">
+    <link rel="stylesheet" href="~/assets/libs/flatpickr/dist/flatpickr.min.css">
+    <link rel="stylesheet" href="~/assets/css/jquery.toast.css">
+
+    <link href="~/assets/css/theme-dark.min.css" rel="" data-toggle="theme" data-theme-mode="dark">
+    <link href="~/assets/css/theme.min.css" rel="" data-toggle="theme" data-theme-mode="light">
+
+    <style>
+        body {
+            display: none;
+        }
+    </style>
+
+    <script>
+      var themeMode = (localStorage.getItem('dashkitThemeMode')) ? localStorage.getItem('dashkitThemeMode') : 'light';
+      var themeFile = document.querySelector('[data-toggle="theme"][data-theme-mode="' + themeMode + '"]');
+
+      // Enable stylesheet
+      themeFile.rel = 'stylesheet';
+
+      // Enable body content
+      themeFile.addEventListener('load', function() {
+        document.body.style.display = 'block';
+      });
+    </script>
+    <title>@ViewBag.Title - UET Quizing</title>
+</head>
+    @*Partial View*@
+    @if (ViewBag.Title != "Log in" && ViewBag.Title != "Register")
+    {
+        @Html.Partial("_Layout_Sidebar")
+    }
+    @RenderBody()
+    </div> <!-- / .main-content -->
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/teacherScripts")
+    @RenderSection("scripts", required: false)
+    <script type="text/javascript" src="~/assets/js/jquery.toast.js"></script>
+    
+    <script type="text/javascript">
+        $(document).ready(function ()
+        {
+            // SUCCESS MESSAGE
+            var jsTempDataSuccess = '@TempData["Success"]';
+            if(jsTempDataSuccess)
+            {
+                $.toast({
+                    text: jsTempDataSuccess,
+                    heading: 'Success',
+                    showHideTransition: 'slide',
+                    position: 'top-right',
+                    icon: 'success'
+                })
+            }
+
+            var jsTempDataSuccess = '@TempData["Error"]';
+            if (jsTempDataSuccess) {
+                $.toast({
+                    text: jsTempDataSuccess,
+                    heading: 'Error',
+                    showHideTransition: 'slide',
+                    position: 'top-right',
+                    icon: 'error'
+                })
+            }
+        });
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#no_of_questions").show();
+            $("#quiz_questions").hide();
+            $("#questions_category").show();
+        });
+
+        function onRandomSelect() {
+            $("#no_of_questions").show();
+            $("#quiz_questions").hide();
+            $("#questions_category").show();
+        }
+
+        function onManuallSelect() {
+            $("#no_of_questions").hide();
+            $("#questions_category").hide();
+        }
+    </script>
+    
+
+    @*QUIZ ADD PAGE TOOGLE*@
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('input[type="checkbox"]').click(function(){
+                if($(this).prop("checked") == true){
+                    $("#no_of_variations").show();
+                }
+                else if($(this).prop("checked") == false){
+                    $("#no_of_variations").hide();
+                }
+            });
+        });
+    </script>
+  </body>
+</html>

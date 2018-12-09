@@ -1,0 +1,161 @@
+﻿@using uetquizing.Models
+@model QuestionViewModel
+@{
+    ViewBag.Title = "Add New Question";
+    Layout = "~/Views/Shared/_Layout_Backend.cshtml";
+}
+
+<!-- Main Body Content -->
+<div class="container-fluid">
+    <div class="row justify-content-center">
+        <div class="col-12 col-lg-10 col-xl-8">
+
+            <!-- Header -->
+            <div class="header mt-md-5">
+                <div class="header-body">
+                    <div class="row align-items-center">
+                        <div class="col">
+
+                            <!-- Pretitle -->
+                            <h6 class="header-pretitle">
+                                New Question
+                            </h6>
+
+                            <!-- Title -->
+                            <h1 class="header-title">
+                                Add New Question
+                            </h1>
+
+                        </div>
+                    </div> <!-- / .row -->
+                </div>
+            </div>
+
+            <!-- Form -->
+            @using (Html.BeginForm(new { @class = "mb-4", role = "form" }))
+            {
+
+                <!-- Question title -->
+                <div class="form-group">
+                    @Html.LabelFor(m => m.question_title)
+                    @Html.TextBoxFor(m => m.question_title, new { @class = "form-control", placeholder = "eg. What do you think about Uet Quizing..?" })
+                    @Html.ValidationMessageFor(m => m.question_title, "", new { @class = "text-danger" })
+                </div>
+
+                <!-- Project tags -->
+                <div class="form-row">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.option_1)
+                            @Html.TextBoxFor(m => m.option_1, new { @class = "form-control", placeholder = "eg. Good" })
+                            @Html.ValidationMessageFor(m => m.option_1, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.option_2)
+                            @Html.TextBoxFor(m => m.option_2, new { @class = "form-control", placeholder = "eg. Excellent" })
+                            @Html.ValidationMessageFor(m => m.option_2, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.option_3)
+                            @Html.TextBoxFor(m => m.option_3, new { @class = "form-control", placeholder = "eg. Average" })
+                            @Html.ValidationMessageFor(m => m.option_3, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.option_4)
+                            @Html.TextBoxFor(m => m.option_4, new { @class = "form-control", placeholder = "eg. Poor" })
+                            @Html.ValidationMessageFor(m => m.option_4, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="form-row">
+                        <a onclick="confirmOptions()" class="btn btn-success">Confirm Options</a>
+                    </div>
+                </div>
+                    <!-- Correct Answer -->
+                <div class="form-group">
+                    @Html.LabelFor(m => m.correct_answer)
+                    <div class="mb-3">
+                        <select class="form-control" data-toggle="select" id="correct_answer" name="correct_answer" disabled="">
+                            <option selected="" value="">Select Correct Answer</option>
+                        </select>
+                        @Html.ValidationMessageFor(m => m.correct_answer, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                    <!-- Question Category -->
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.catgory_id)
+                        <div class="mb-3">
+                            <select class="form-control" data-toggle="select" id="catgory_id" name="catgory_id">
+                                <option selected="" value="">Select Category</option>
+                                @{
+                                    if (ViewBag.categories != null)
+                                    {
+
+                                        foreach (var category in ViewBag.categories)
+                                        {
+                                            <option value="@Convert.ToString(@category.category_id)">@category.category_name</option>
+                                        }
+                                    }
+                                }
+                            </select>
+                            @Html.ValidationMessageFor(m => m.catgory_id, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <!-- Divider -->
+                                <hr class="mt-5 mb-5">
+
+                    <!-- Buttons -->
+                                <button type="submit" class="btn btn-block btn-primary">Add Question</button>
+                                @Html.ActionLink("Cancel this question", "Index", "Questions", new { @class="btn btn-block btn-link text-muted"});
+                                }
+
+        </div>
+    </div> <!-- / .row -->
+</div> <!-- / .container-fluid -->
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+
+<script>
+    function confirmOptions() {
+        var option_1 = document.getElementById("option_1").value;
+        var option_2 = document.getElementById("option_2").value;
+        var option_3 = document.getElementById("option_3").value;
+        var option_4 = document.getElementById("option_4").value;
+
+        if (option_1 && option_2 && option_3 && option_4) {
+            $("#correct_answer").prop("disabled", false);
+            var correctAnswer = document.getElementById("correct_answer");
+            var length = correctAnswer.options.length;
+            for (i = 0; i < length; i++) {
+                correctAnswer.options[i] = null;
+            }
+
+            var option01 = document.createElement("option");
+            option01.text = option_1;
+            correctAnswer.add(option01);
+            var option02 = document.createElement("option");
+            option02.text = option_2;
+            correctAnswer.add(option02);
+            var option03 = document.createElement("option");
+            option03.text = option_3;
+            correctAnswer.add(option03);
+            var option04 = document.createElement("option");
+            option04.text = option_4;
+            correctAnswer.add(option04);
+        }
+    }
+</script>

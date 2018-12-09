@@ -10,6 +10,12 @@ namespace uetquizing.Controllers
     {
         public ActionResult Index()
         {
+            // Necessary Validations
+            if(Session["userRole"] == "Teacher")
+            {
+                return RedirectToAction("Index", "Dashboard");
+            }
+
             return View();
         }
 

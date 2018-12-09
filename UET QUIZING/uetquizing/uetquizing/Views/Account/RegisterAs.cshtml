@@ -1,0 +1,72 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout_Backend.cshtml";
+    ViewBag.Title = "Register As";
+}
+
+<body class="d-flex align-items-center bg-auth border-top border-top-2 border-primary">
+
+    <!-- CONTENT
+    ================================================== -->
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-12 col-md-6 offset-xl-2 offset-md-1 order-md-2 mb-5 mb-md-0">
+
+                <!-- Image -->
+                <div class="text-center">
+                    <img src="~/assets/img//illustrations/coworking.svg" alt="..." class="img-fluid">
+                </div>
+
+            </div>
+            <div class="col-12 col-md-5 col-xl-4 order-md-1 my-5">
+
+                <div class="card-body" style="margin: 0px; padding: 0px;">
+
+                    <div class="card">
+                        <div class="card-body">
+
+                            <!-- Title -->
+                            <h2 class="card-title text-center mb-3">
+                                <a href="team-overview.html">Student</a>
+                            </h2>
+
+                            <!-- Text -->
+                            <p class="card-text text-center text-muted mb-4">
+                                Launchday is a SaaS website builder with a focus on quality, easy to build product sites.
+                            </p>
+
+                            <!-- Button -->
+                            <a style="width: 100%;" class="btn btn-success text-center" href="/Account/RegisterStudent">Join Now</a>
+
+                        </div> <!-- / .card-body -->
+                    </div>
+
+                </div>
+                <div class="card-body" style="margin: 0px; padding: 0px;">
+
+                    <div class="card">
+                        <div class="card-body">
+
+                            <!-- Title -->
+                            <h2 class="card-title text-center mb-3">
+                                <a href="team-overview.html">Teacher</a>
+                            </h2>
+
+                            <!-- Text -->
+                            <p class="card-text text-center text-muted mb-4">
+                                Launchday is a SaaS website builder with a focus on quality, easy to build product sites.
+                            </p>
+
+                            <!-- Button -->
+                            <a style="width: 100%;" class="btn btn-info" href="/Account/RegisterTeacher">Join Now</a>
+
+                        </div> <!-- / .card-body -->
+                    </div>
+
+                </div>
+            </div>
+        </div> <!-- / .row -->
+    </div> <!-- / .container -->
+</body>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

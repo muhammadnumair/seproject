@@ -61,6 +61,7 @@
     <Property Name="AccessFailedCount" Type="int" Nullable="false" />
     <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
     <Property Name="fullName" Type="nvarchar(max)" />
+    <Property Name="userRole" Type="nvarchar(max)" />
   </EntityType>
   <EntityType Name="categories">
     <Key>
@@ -114,6 +115,26 @@
     <Property Name="marks_per_question" Type="float" />
     <Property Name="teacher_id" Type="nvarchar" MaxLength="128" Nullable="false" />
     <Property Name="created_on" Type="datetime" />
+  </EntityType>
+  <EntityType Name="studentMarks">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="quiz_id" Type="int" />
+    <Property Name="question_id" Type="int" />
+    <Property Name="correct" Type="int" />
+    <Property Name="choosed_option" Type="varchar" MaxLength="128" />
+    <Property Name="variation_id" Type="int" />
+    <Property Name="student_id" Type="nvarchar" MaxLength="128" />
+  </EntityType>
+  <EntityType Name="studentQuizzes">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="student_id" Type="nvarchar" MaxLength="128" />
+    <Property Name="quiz_id" Type="int" />
   </EntityType>
   <Association Name="FK_categories_AspNetUsers">
     <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
@@ -255,6 +276,78 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_studentMarks_AspNetUsers">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="0..1" />
+    <End Role="studentMarks" Type="Self.studentMarks" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="studentMarks">
+        <PropertyRef Name="student_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_studentMarks_quizQuestions">
+    <End Role="quizQuestions" Type="Self.quizQuestions" Multiplicity="0..1" />
+    <End Role="studentMarks" Type="Self.studentMarks" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="quizQuestions">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="studentMarks">
+        <PropertyRef Name="question_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_studentMarks_QuizVariations">
+    <End Role="QuizVariations" Type="Self.QuizVariations" Multiplicity="0..1" />
+    <End Role="studentMarks" Type="Self.studentMarks" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="QuizVariations">
+        <PropertyRef Name="variation_id" />
+      </Principal>
+      <Dependent Role="studentMarks">
+        <PropertyRef Name="variation_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_studentMarks_quizzes">
+    <End Role="quizzes" Type="Self.quizzes" Multiplicity="0..1" />
+    <End Role="studentMarks" Type="Self.studentMarks" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="quizzes">
+        <PropertyRef Name="quiz_id" />
+      </Principal>
+      <Dependent Role="studentMarks">
+        <PropertyRef Name="quiz_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_studentQuizzes_AspNetUsers">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="0..1" />
+    <End Role="studentQuizzes" Type="Self.studentQuizzes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="studentQuizzes">
+        <PropertyRef Name="student_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_studentQuizzes_quizzes">
+    <End Role="quizzes" Type="Self.quizzes" Multiplicity="0..1" />
+    <End Role="studentQuizzes" Type="Self.studentQuizzes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="quizzes">
+        <PropertyRef Name="quiz_id" />
+      </Principal>
+      <Dependent Role="studentQuizzes">
+        <PropertyRef Name="quiz_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <EntityContainer Name="uetquizingModelStoreContainer">
     <EntitySet Name="__MigrationHistory" EntityType="Self.__MigrationHistory" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="dbo" store:Type="Tables" />
@@ -267,6 +360,8 @@
     <EntitySet Name="quizQuestions" EntityType="Self.quizQuestions" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="QuizVariations" EntityType="Self.QuizVariations" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="quizzes" EntityType="Self.quizzes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="studentMarks" EntityType="Self.studentMarks" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="studentQuizzes" EntityType="Self.studentQuizzes" Schema="dbo" store:Type="Tables" />
     <AssociationSet Name="FK_categories_AspNetUsers" Association="Self.FK_categories_AspNetUsers">
       <End Role="AspNetUsers" EntitySet="AspNetUsers" />
       <End Role="categories" EntitySet="categories" />
@@ -310,6 +405,30 @@
     <AssociationSet Name="FK_quizzes_AspNetUsers" Association="Self.FK_quizzes_AspNetUsers">
       <End Role="AspNetUsers" EntitySet="AspNetUsers" />
       <End Role="quizzes" EntitySet="quizzes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_studentMarks_AspNetUsers" Association="Self.FK_studentMarks_AspNetUsers">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="studentMarks" EntitySet="studentMarks" />
+    </AssociationSet>
+    <AssociationSet Name="FK_studentMarks_quizQuestions" Association="Self.FK_studentMarks_quizQuestions">
+      <End Role="quizQuestions" EntitySet="quizQuestions" />
+      <End Role="studentMarks" EntitySet="studentMarks" />
+    </AssociationSet>
+    <AssociationSet Name="FK_studentMarks_QuizVariations" Association="Self.FK_studentMarks_QuizVariations">
+      <End Role="QuizVariations" EntitySet="QuizVariations" />
+      <End Role="studentMarks" EntitySet="studentMarks" />
+    </AssociationSet>
+    <AssociationSet Name="FK_studentMarks_quizzes" Association="Self.FK_studentMarks_quizzes">
+      <End Role="quizzes" EntitySet="quizzes" />
+      <End Role="studentMarks" EntitySet="studentMarks" />
+    </AssociationSet>
+    <AssociationSet Name="FK_studentQuizzes_AspNetUsers" Association="Self.FK_studentQuizzes_AspNetUsers">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="studentQuizzes" EntitySet="studentQuizzes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_studentQuizzes_quizzes" Association="Self.FK_studentQuizzes_quizzes">
+      <End Role="quizzes" EntitySet="quizzes" />
+      <End Role="studentQuizzes" EntitySet="studentQuizzes" />
     </AssociationSet>
   </EntityContainer>
 </Schema>

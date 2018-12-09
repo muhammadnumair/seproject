@@ -14,11 +14,19 @@ namespace uetquizing
     
     public partial class quizQuestion
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public quizQuestion()
+        {
+            this.studentMarks = new HashSet<studentMark>();
+        }
+    
         public int id { get; set; }
         public Nullable<int> variation_id { get; set; }
         public Nullable<int> question_id { get; set; }
     
         public virtual question question { get; set; }
         public virtual QuizVariation QuizVariation { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<studentMark> studentMarks { get; set; }
     }
 }

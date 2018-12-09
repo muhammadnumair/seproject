@@ -1,0 +1,80 @@
+﻿@model uetquizing.Models.RegisterViewModel
+@{
+    Layout = "~/Views/Shared/_Layout_Backend.cshtml";
+    ViewBag.Title = "Register";
+}
+
+<body class="d-flex align-items-center bg-auth border-top border-top-2 border-primary">
+
+    <!-- CONTENT
+    ================================================== -->
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-12 col-md-6 offset-xl-2 offset-md-1 order-md-2 mb-5 mb-md-0">
+
+                <!-- Image -->
+                <div class="text-center">
+                    <img src="~/assets/img/illustrations/happiness.svg" alt="..." class="img-fluid">
+                </div>
+
+            </div>
+            <div class="col-12 col-md-5 col-xl-4 order-md-1 my-5">
+
+                <!-- Heading -->
+                <h1 class="display-4 text-center mb-3">
+                    Sign up
+                </h1>
+
+                <!-- Subheading -->
+                <p class="text-muted text-center mb-5">
+                    Free access to teacher's dashboard.
+                </p>
+
+               <!-- Form -->
+               @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+               {
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary("", new { @class = "text-danger" })
+                    <!-- Full Name -->
+                    <div class="form-group">
+                        <!-- Label -->
+                        @Html.LabelFor(m => m.Name)
+                        <!-- Input -->
+                        @Html.TextBoxFor(m => m.Name, new { @class = "form-control", placeholder = "name@address.com" })
+                    </div>
+                    <!-- Email address -->
+                    <div class="form-group">
+                        <!-- Label -->
+                        @Html.LabelFor(m => m.Email)
+                        <!-- Input -->
+                        @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder = "name@address.com" })
+                    </div>
+
+                    <!-- Password -->
+                    <div class="form-group">
+                        <!-- Label -->
+                        @Html.LabelFor(m => m.Password)
+                        <!-- Input -->
+                        @Html.PasswordFor(m => m.Password, new { @class = "form-control", placeholder = "Enter your password" })
+                    </div>
+
+                    <!-- Submit -->
+                    <button class="btn btn-lg btn-block btn-primary mb-3">
+                        Sign up
+                    </button>
+
+                    <!-- Link -->
+                    <div class="text-center">
+                        <small class="text-muted text-center">
+                            Already have an account? <a href="/Account/Login">Log in</a>.
+                        </small>
+                    </div>
+               }
+            </div>
+        </div> <!-- / .row -->
+    </div> <!-- / .container -->
+</body>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -83,3 +83,4 @@ F:\SE Projects\uetquizing\uetquizing\obj\Debug\uetquizing.pdb
 F:\SE Projects\uetquizing\uetquizing\obj\Debug\uetquizing.Migrations.InitialCreate.resources
 F:\SE Projects\uetquizing\uetquizing\obj\Debug\uetquizing.csproj.GenerateResource.Cache
 F:\SE Projects\uetquizing\uetquizing\obj\Debug\uetquizing.Migrations.fullName.resources
+F:\SE Projects\uetquizing\uetquizing\obj\Debug\uetquizing.Migrations.Entity.resources

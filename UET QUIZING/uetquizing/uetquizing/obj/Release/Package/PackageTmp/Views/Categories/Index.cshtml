@@ -1,0 +1,155 @@
+﻿@{
+    ViewBag.Title = "Categories";
+    Layout = "~/Views/Shared/_Layout_Backend.cshtml";
+}
+
+<!-- Main Body Content -->
+<div class="container-fluid">
+    <div class="row justify-content-center">
+        <div class="col-12">
+
+            <!-- Header -->
+            <div class="header mt-md-5">
+                <div class="header-body">
+                    <div class="row align-items-center">
+                        <div class="col">
+
+                            <!-- Pretitle -->
+                            <h6 class="header-pretitle">
+                                Overview
+                            </h6>
+
+                            <!-- Title -->
+                            <h1 class="header-title">
+                                @ViewBag.Title
+                            </h1>
+
+                        </div>
+                        <div class="col-auto">
+
+                            <!-- Button -->
+                            @Html.ActionLink("Add New Category", "Add","Categories", new { @class = "btn btn-primary" })
+                        </div>
+                    </div> <!-- / .row -->
+                </div>
+            </div>
+
+            <!-- Card -->
+            <div class="card" data-toggle="lists" data-lists-values='["orders-order", "orders-product", "orders-date", "orders-total", "orders-status", "orders-method"]'>
+                <div class="card-header">
+                    <div class="row align-items-center">
+                        <div class="col">
+
+                            <!-- Search -->
+                            <form class="row align-items-center">
+                                <div class="col-auto pr-0">
+                                    <span class="fe fe-search text-muted"></span>
+                                </div>
+                                <div class="col">
+                                    <input type="search" class="form-control form-control-flush search" placeholder="Search">
+                                </div>
+                            </form>
+
+                        </div>
+                        <div class="col-auto">
+
+                            <!-- Button -->
+
+                            <div class="dropdown">
+                                <button class="btn btn-sm btn-white dropdown-toggle" type="button" id="bulkActionDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Bulk action
+                                </button>
+                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="bulkActionDropdown">
+                                    <a class="dropdown-item" href="#!">Delete</a>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div> <!-- / .row -->
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-sm table-nowrap card-table">
+                        <thead>
+                            <tr>
+                                <th>
+                                    <div class="custom-control custom-checkbox table-checkbox">
+                                        <input type="checkbox" class="custom-control-input" name="ordersSelect" id="ordersSelectAll">
+                                        <label class="custom-control-label" for="ordersSelectAll">
+                                            &nbsp;
+                                        </label>
+                                    </div>
+                                </th>
+                                <th>
+                                    <a href="#" class="text-muted sort" data-sort="orders-order">
+                                        Category No
+                                    </a>
+                                </th>
+                                <th>
+                                    <a href="#" class="text-muted sort" data-sort="orders-product">
+                                        Question Name
+                                    </a>
+                                </th>
+                                <th colspan="2">
+                                    <a href="#" class="text-muted sort" data-sort="orders-date">
+                                        Added Date
+                                    </a>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody class="list">
+                            @{
+                                int counter = 1;
+                                if (Model.Count > 0)
+                                {
+                                    foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <td>
+                                                <div class="custom-control custom-checkbox table-checkbox">
+                                                    <input type="checkbox" class="custom-control-input" name="ordersSelect" id="ordersSelectOne">
+                                                    <label class="custom-control-label" for="ordersSelectOne">
+                                                        &nbsp;
+                                                    </label>
+                                                </div>
+                                            </td>
+                                            <td class="orders-order">
+                                                @counter
+                                            </td>
+                                            <td class="orders-product">
+                                                @item.category_name
+                                            </td>
+                                            <td class="orders-date">
+
+                                                <time datetime="2018-07-30">@if (@item.created_on != null)
+                                                {@item.created_on.ToString("yyyy/MM/dd")}</time>
+                                            </td>
+                                            <td class="text-right">
+                                                <div class="dropdown">
+                                                    <a href="#!" class="dropdown-ellipses dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                        <i class="fe fe-more-vertical"></i>
+                                                    </a>
+                                                    <div class="dropdown-menu dropdown-menu-right">
+                                                        @Html.ActionLink("Edit", "Edit", new { id = item.category_id }, new { @class = "dropdown-item" })
+                                                        @Html.ActionLink("Delete", "Delete", new { id = item.category_id }, new { @class = "dropdown-item" })
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        counter++;
+                                    }
+                                }
+                                else
+                                {
+                                    <tr>
+                                        <td colspan="4" style="text-align: center;"><b>No Categories Found - @Html.ActionLink("Add New Category", "Add")</b></td>
+                                    </tr>
+                                }
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </div> <!-- / .row -->
+</div> <!-- / .container-fluid -->
