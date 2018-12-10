@@ -16,19 +16,20 @@ namespace uetquizing.Controllers
         // GET: User
         public ActionResult Index()
         {
-            return Content(Convert.ToString(Session["userRole"]));
             // Getting Student Quizes
             var user_id = User.Identity.GetUserId();
             var student_quizes = db.studentQuizzes.Where(x => x.student_id == user_id).ToList();
 
-            var quizes = new List<quizze>();
+            var quizes = new List<StudentQuiz>();
             // Fetching Quizes Data
             if(student_quizes != null)
             {
                 foreach(var item in student_quizes)
                 {
-                    var quiz = db.quizzes.Where(x => x.quiz_id == item.quiz_id).SingleOrDefault();
-                    quizes.Add(quiz);
+                    StudentQuiz s = new StudentQuiz();
+                    s.attempted_on = item.attempted_on;
+                    s.studentQuiz = db.quizzes.Where(x => x.quiz_id == item.quiz_id).SingleOrDefault();
+                    quizes.Add(s);
                 }
             }
             return View(quizes);
@@ -70,12 +71,7 @@ namespace uetquizing.Controllers
         [HttpPost]
         public ActionResult SubmitQuiz(QuizQuestions collection)
         {
-            studentQuizze quiz = new studentQuizze();
-            quiz.student_id = User.Identity.GetUserId();
-            quiz.quiz_id = collection.quizID;
-            db.studentQuizzes.Add(quiz);
-            db.SaveChanges();
-
+            double? obtained_marks = 0;
             foreach(var que in collection.Questions)
             {
                 studentMark questionMarks = new studentMark();
@@ -83,7 +79,8 @@ namespace uetquizing.Controllers
                 questionMarks.quiz_id = collection.quizID;
                 questionMarks.student_id = User.Identity.GetUserId();
                 questionMarks.variation_id = collection.variations_id;
-                questionMarks.question_id = db.quizQuestions.Where(x => x.variation_id == collection.variations_id).Where(x => x.question_id == que.questionID).Single().id;
+                questionMarks.quizQuestionID = db.quizQuestions.Where(x => x.variation_id == collection.variations_id).Where(x => x.question_id == que.questionID).Single().id;
+                questionMarks.question_id = que.questionID;
 
                 var question_id = que.questionID;
                 var choosed_answer = que.selectedOption;
@@ -92,6 +89,7 @@ namespace uetquizing.Controllers
                 if(question.correct_answer == choosed_answer)
                 {
                     questionMarks.correct = 1;
+                    obtained_marks += db.quizzes.Where(x => x.quiz_id == collection.quizID).SingleOrDefault().marks_per_question;
                 }
                 else
                 {
@@ -100,7 +98,44 @@ namespace uetquizing.Controllers
                 db.studentMarks.Add(questionMarks);
             }
             db.SaveChanges();
+
+
+            studentQuizze quiz = new studentQuizze();
+            quiz.student_id = User.Identity.GetUserId();
+            quiz.quiz_id = collection.quizID;
+            quiz.attempted_on = DateTime.Now;
+            quiz.marks = obtained_marks;
+            db.studentQuizzes.Add(quiz);
+            db.SaveChanges();
             return RedirectToAction("Index");
+        }
+
+        public ActionResult Result(int id)
+        {
+            string token = User.Identity.GetUserId();
+            var student_data = db.AspNetUsers.Where(x => x.Id == token).SingleOrDefault();
+            var studentQuiz = db.studentQuizzes.Where(x => x.quiz_id == id).Where(x => x.student_id == token).SingleOrDefault();
+            var quiz = db.quizzes.Where(x => x.quiz_id == id).SingleOrDefault();
+            var studentAnswers = db.studentMarks.Where(x => x.quiz_id == id).Where(x => x.student_id == token).ToList();
+            var variationQuestions = db.quizQuestions.Where(x => x.variation_id == 103).ToList();
+
+            var quizQuestions = new List<question>();
+            foreach (var que in variationQuestions)
+            {
+                var question = db.questions.Where(x => x.question_id == que.question_id).SingleOrDefault();
+                quizQuestions.Add(question);
+            }
+
+            StudentQuiz s = new StudentQuiz();
+            s.token = token;
+            s.StudentName = student_data.fullName;
+            s.studentRollNo = "2016-CS-213";
+            s.obtainedMarks = studentQuiz.marks;
+            s.attempted_on = studentQuiz.attempted_on;
+            s.QuizQuestions = quizQuestions;
+            s.StudentAnswers = studentAnswers;
+            s.studentQuiz = quiz;
+            return View(s);
         }
     }
 }

@@ -18,6 +18,7 @@ namespace uetquizing
         public question()
         {
             this.quizQuestions = new HashSet<quizQuestion>();
+            this.studentMarks = new HashSet<studentMark>();
         }
     
         public int question_id { get; set; }
@@ -35,5 +36,7 @@ namespace uetquizing
         public virtual category category { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<quizQuestion> quizQuestions { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<studentMark> studentMarks { get; set; }
     }
 }

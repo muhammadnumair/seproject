@@ -127,6 +127,8 @@
     <EntitySetMapping Name="studentQuizzes">
       <EntityTypeMapping TypeName="uetquizingModel.studentQuizze">
         <MappingFragment StoreEntitySet="studentQuizzes">
+          <ScalarProperty Name="marks" ColumnName="marks" />
+          <ScalarProperty Name="attempted_on" ColumnName="attempted_on" />
           <ScalarProperty Name="quiz_id" ColumnName="quiz_id" />
           <ScalarProperty Name="student_id" ColumnName="student_id" />
           <ScalarProperty Name="id" ColumnName="id" />
@@ -136,11 +138,12 @@
     <EntitySetMapping Name="studentMarks">
       <EntityTypeMapping TypeName="uetquizingModel.studentMark">
         <MappingFragment StoreEntitySet="studentMarks">
+          <ScalarProperty Name="question_id" ColumnName="question_id" />
           <ScalarProperty Name="student_id" ColumnName="student_id" />
           <ScalarProperty Name="variation_id" ColumnName="variation_id" />
           <ScalarProperty Name="choosed_option" ColumnName="choosed_option" />
           <ScalarProperty Name="correct" ColumnName="correct" />
-          <ScalarProperty Name="question_id" ColumnName="question_id" />
+          <ScalarProperty Name="quizQuestionID" ColumnName="quizQuestionID" />
           <ScalarProperty Name="quiz_id" ColumnName="quiz_id" />
           <ScalarProperty Name="id" ColumnName="id" />
         </MappingFragment>

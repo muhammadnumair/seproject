@@ -41,7 +41,26 @@
             <div class="collapse navbar-collapse" id="sidebarCollapse">
                 <!-- Navigation -->
                 @{
-                    if (Session["userRole"] == "Teacher")
+                    if (ViewBag.Role == "Student")
+                    {
+                        <ul class="navbar-nav">
+                            <li class="nav-item">
+                                <a class="nav-link " href="/User">
+                                    <i class="fe fe-home"></i> My Quizes
+                                </a>
+                            </li>
+                        </ul>
+
+                        <hr class="my-3">
+                        <ul class="navbar-nav">
+                            <li class="nav-item">
+                                <a class="nav-link " href="User/Settings">
+                                    <i class="fe fe-settings"></i> Profile Settings
+                                </a>
+                            </li>
+                        </ul>
+                    }
+                    else
                     {
                         <ul class="navbar-nav">
                             <li class="nav-item">
@@ -112,25 +131,6 @@
                         <ul class="navbar-nav">
                             <li class="nav-item">
                                 <a class="nav-link " href="teacher-settings.html">
-                                    <i class="fe fe-settings"></i> Profile Settings
-                                </a>
-                            </li>
-                        </ul>
-                    }
-                    else
-                    {
-                        <ul class="navbar-nav">
-                            <li class="nav-item">
-                                <a class="nav-link " href="/User">
-                                    <i class="fe fe-home"></i> My Quizes
-                                </a>
-                            </li>
-                        </ul>
-
-                        <hr class="my-3">
-                        <ul class="navbar-nav">
-                            <li class="nav-item">
-                                <a class="nav-link " href="User/Settings">
                                     <i class="fe fe-settings"></i> Profile Settings
                                 </a>
                             </li>

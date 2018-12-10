@@ -1,6 +1,7 @@
 ﻿@{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout_Backend.cshtml";
+    ViewBag.Role = "Student";
 }
 
 <div class="main-content" style="margin-top: 10px;">
@@ -26,7 +27,7 @@
 
                                     <!-- Title -->
                                     <h2 class="card-title text-center mb-3">
-                                        <a href="team-overview.html">@item.quiz_title</a>
+                                        <a href="team-overview.html">@item.studentQuiz.quiz_title</a>
                                     </h2>
 
                                     <!-- Text -->
@@ -42,7 +43,7 @@
 
                                             <!-- Time -->
                                             <p class="card-text small text-muted">
-                                                <i class="fe fe-clock"></i> Updated 2hr ago
+                                                <i class="fe fe-clock"></i> Attempted On @item.attempted_on
                                             </p>
 
                                         </div>

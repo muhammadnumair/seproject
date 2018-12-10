@@ -263,6 +263,7 @@
     <Compile Include="Models\QuizQuestions.cs" />
     <Compile Include="Models\QuizViewModel.cs" />
     <Compile Include="Controllers\VariationsController.cs" />
+    <Compile Include="Models\StudentQuiz.cs" />
     <Compile Include="Models\VariationViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="question.cs">
@@ -464,6 +465,9 @@
     <Content Include="Views\User\Quiz.cshtml" />
     <Content Include="Views\Account\RegisterStudent.cshtml" />
     <Content Include="Views\Account\RegisterAs.cshtml" />
+    <Content Include="Views\Quizzes\Marksheet.cshtml" />
+    <Content Include="Views\Quizzes\Result.cshtml" />
+    <Content Include="Views\User\Result.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

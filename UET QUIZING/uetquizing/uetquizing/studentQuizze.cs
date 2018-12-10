@@ -17,6 +17,8 @@ namespace uetquizing
         public int id { get; set; }
         public string student_id { get; set; }
         public Nullable<int> quiz_id { get; set; }
+        public Nullable<System.DateTime> attempted_on { get; set; }
+        public Nullable<double> marks { get; set; }
     
         public virtual AspNetUser AspNetUser { get; set; }
         public virtual quizze quizze { get; set; }

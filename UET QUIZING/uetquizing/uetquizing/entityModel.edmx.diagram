@@ -25,14 +25,15 @@
         <AssociationConnector Association="uetquizingModel.FK_quizQuestions_variations" />
         <EntityTypeShape EntityType="uetquizingModel.AspNetRole" Width="1.5" PointX="0.75" PointY="6.375" />
         <AssociationConnector Association="uetquizingModel.AspNetUserRoles" />
-        <EntityTypeShape EntityType="uetquizingModel.studentQuizze" Width="1.5" PointX="7.375" PointY="0.75" />
+        <EntityTypeShape EntityType="uetquizingModel.studentQuizze" Width="1.5" PointX="10.5" PointY="3.875" />
         <AssociationConnector Association="uetquizingModel.FK_studentQuizzes_AspNetUsers" />
         <AssociationConnector Association="uetquizingModel.FK_studentQuizzes_quizzes" />
-        <EntityTypeShape EntityType="uetquizingModel.studentMark" Width="1.5" PointX="12" PointY="9.125" />
-        <AssociationConnector Association="uetquizingModel.FK_studentMarks_quizQuestions" />
-        <AssociationConnector Association="uetquizingModel.FK_studentMarks_quizzes" />
+        <EntityTypeShape EntityType="uetquizingModel.studentMark" Width="1.5" PointX="12" PointY="7.625" />
         <AssociationConnector Association="uetquizingModel.FK_studentMarks_AspNetUsers" />
+        <AssociationConnector Association="uetquizingModel.FK_studentMarks_questions" />
+        <AssociationConnector Association="uetquizingModel.FK_studentMarks_quizQuestions1" />
         <AssociationConnector Association="uetquizingModel.FK_studentMarks_QuizVariations" />
+        <AssociationConnector Association="uetquizingModel.FK_studentMarks_quizzes" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

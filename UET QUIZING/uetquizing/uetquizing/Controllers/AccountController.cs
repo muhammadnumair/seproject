@@ -62,6 +62,7 @@ namespace uetquizing.Controllers
             {
                 Session["userRole"] = role;
             }
+            
             if (role == "Teacher")
             {
                 return RedirectToAction("Index", "Dashboard");

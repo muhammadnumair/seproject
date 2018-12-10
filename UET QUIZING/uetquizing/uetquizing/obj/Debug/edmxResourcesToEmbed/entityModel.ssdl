@@ -122,11 +122,12 @@
     </Key>
     <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="quiz_id" Type="int" />
-    <Property Name="question_id" Type="int" />
+    <Property Name="quizQuestionID" Type="int" />
     <Property Name="correct" Type="int" />
     <Property Name="choosed_option" Type="varchar" MaxLength="128" />
     <Property Name="variation_id" Type="int" />
     <Property Name="student_id" Type="nvarchar" MaxLength="128" />
+    <Property Name="question_id" Type="int" />
   </EntityType>
   <EntityType Name="studentQuizzes">
     <Key>
@@ -135,6 +136,8 @@
     <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="student_id" Type="nvarchar" MaxLength="128" />
     <Property Name="quiz_id" Type="int" />
+    <Property Name="attempted_on" Type="datetime" />
+    <Property Name="marks" Type="float" />
   </EntityType>
   <Association Name="FK_categories_AspNetUsers">
     <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
@@ -288,7 +291,19 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_studentMarks_quizQuestions">
+  <Association Name="FK_studentMarks_questions">
+    <End Role="questions" Type="Self.questions" Multiplicity="0..1" />
+    <End Role="studentMarks" Type="Self.studentMarks" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="questions">
+        <PropertyRef Name="question_id" />
+      </Principal>
+      <Dependent Role="studentMarks">
+        <PropertyRef Name="question_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_studentMarks_quizQuestions1">
     <End Role="quizQuestions" Type="Self.quizQuestions" Multiplicity="0..1" />
     <End Role="studentMarks" Type="Self.studentMarks" Multiplicity="*" />
     <ReferentialConstraint>
@@ -296,7 +311,7 @@
         <PropertyRef Name="id" />
       </Principal>
       <Dependent Role="studentMarks">
-        <PropertyRef Name="question_id" />
+        <PropertyRef Name="quizQuestionID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -410,7 +425,11 @@
       <End Role="AspNetUsers" EntitySet="AspNetUsers" />
       <End Role="studentMarks" EntitySet="studentMarks" />
     </AssociationSet>
-    <AssociationSet Name="FK_studentMarks_quizQuestions" Association="Self.FK_studentMarks_quizQuestions">
+    <AssociationSet Name="FK_studentMarks_questions" Association="Self.FK_studentMarks_questions">
+      <End Role="questions" EntitySet="questions" />
+      <End Role="studentMarks" EntitySet="studentMarks" />
+    </AssociationSet>
+    <AssociationSet Name="FK_studentMarks_quizQuestions1" Association="Self.FK_studentMarks_quizQuestions1">
       <End Role="quizQuestions" EntitySet="quizQuestions" />
       <End Role="studentMarks" EntitySet="studentMarks" />
     </AssociationSet>

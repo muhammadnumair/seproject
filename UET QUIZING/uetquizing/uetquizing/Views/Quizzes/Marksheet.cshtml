@@ -1,5 +1,5 @@
 ﻿@{
-    ViewBag.Title = "Quizzes";
+    ViewBag.Title = "Marksheet";
     Layout = "~/Views/Shared/_Layout_Backend.cshtml";
 }
 
@@ -27,7 +27,7 @@
                         </div>
                         <div class="col-auto">
                             <!-- Button -->
-                            @Html.ActionLink("Add New Quiz", "Add", "Quizzes", new {@class="btn btn-primary" })
+                            @Html.ActionLink("Print Marksheet", "Add", "Quizzes", new { @class = "btn btn-primary" })
                         </div>
                     </div> <!-- / .row -->
                 </div>
@@ -80,22 +80,22 @@
                                 </th>
                                 <th>
                                     <a href="#" class="text-muted sort" data-sort="orders-order">
-                                        Quiz No
+                                        #
                                     </a>
                                 </th>
                                 <th>
                                     <a href="#" class="text-muted sort" data-sort="orders-product">
-                                        Quiz Title
+                                        Name
                                     </a>
                                 </th>
                                 <th>
                                     <a href="#" class="text-muted sort" data-sort="orders-date">
-                                        Created Date
+                                        Registeration Number
                                     </a>
                                 </th>
                                 <th>
                                     <a href="#" class="text-muted sort" data-sort="orders-date">
-                                        Total Questions
+                                        Obtained Marks
                                     </a>
                                 </th>
                                 <th>
@@ -117,37 +117,34 @@
                                     var counter = 1;
                                     foreach (var item in Model)
                                     {
-                                    <tr>
-                                        <td>
-                                            <div class="custom-control custom-checkbox table-checkbox">
-                                                <input type="checkbox" class="custom-control-input" name="ordersSelect" id="ordersSelectOne">
-                                                <label class="custom-control-label" for="ordersSelectOne">
-                                                    &nbsp;
-                                                </label>
-                                            </div>
-                                        </td>
-                                        <td class="orders-order">
-                                            @counter
-                                        </td>
-                                        <td class="orders-product">
-                                            @item.quiz_title
-                                        </td>
-                                        <td class="orders-date">
-                                            <time datetime="@item.created_on">@if (@item.created_on != null)
-                                            {@item.created_on.ToString("yyyy/MM/dd") }</time>
-                                        </td>
-                                        <td class="orders-product">
-                                            @item.total_questions
+                                        <tr>
+                                            <td>
+                                                <div class="custom-control custom-checkbox table-checkbox">
+                                                    <input type="checkbox" class="custom-control-input" name="ordersSelect" id="ordersSelectOne">
+                                                    <label class="custom-control-label" for="ordersSelectOne">
+                                                        &nbsp;
+                                                    </label>
+                                                </div>
+                                            </td>
+                                            <td class="orders-order">
+                                                @counter
+                                            </td>
+                                            <td class="orders-product">
+                                                @item.StudentName
+                                            </td>
+                                            <td>
+                                                @item.studentRollNo
                                         </td>
                                         <td class="orders-product">
-                                            @item.total_marks
+                                            @item.obtainedMarks
                                         </td>
                                         <td class="orders-product">
-
-                                            @Html.ActionLink("Variations", "Index", "Variations", new { id = item.quiz_id }, new { @class = "btn btn-primary btn-sm" })
-                                            @Html.ActionLink("Marksheet", "Marksheet", "Quizzes", new { id = item.quiz_id }, new { @class = "btn btn-success btn-sm" })
+                                            @item.studentQuiz.total_marks
                                         </td>
-                                        <td class="text-right">
+                                        <td class="orders-product">
+                                            @Html.ActionLink("Result Details", "Result", "Quizzes", new { id = item.studentQuiz.quiz_id, @token = item.token}, new { @class = "btn btn-primary btn-sm" })
+                                        </td>
+                                        @*<td class="text-right">
                                             <div class="dropdown">
                                                 <a href="#!" class="dropdown-ellipses dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                     <i class="fe fe-more-vertical"></i>
@@ -157,7 +154,7 @@
                                                     @Html.ActionLink("Delete", "Delete", "Quizzes", new { id = item.quiz_id }, new { @class = "dropdown-item", onclick = "return confirm('Are you sure you wish to delete this article?');" })
                                                 </div>
                                             </div>
-                                        </td>
+                                        </td>*@
                                     </tr>
                                         counter++;
                                     }
@@ -165,7 +162,7 @@
                                 else
                                 {
                                     <tr>
-                                        <td colspan="7" style="text-align: center;"><b>No Quiz Found - @Html.ActionLink("Add New Quiz", "Add")</b></td>
+                                        <td colspan="7" style="text-align: center;"><b>No Student Solved The Quiz</b></td>
                                     </tr>
                                 }
                             }
@@ -177,3 +174,4 @@
         </div>
     </div> <!-- / .row -->
 </div> <!-- / .container-fluid -->
+

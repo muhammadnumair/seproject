@@ -16,15 +16,17 @@ namespace uetquizing
     {
         public int id { get; set; }
         public Nullable<int> quiz_id { get; set; }
-        public Nullable<int> question_id { get; set; }
+        public Nullable<int> quizQuestionID { get; set; }
         public Nullable<int> correct { get; set; }
         public string choosed_option { get; set; }
         public Nullable<int> variation_id { get; set; }
         public string student_id { get; set; }
+        public Nullable<int> question_id { get; set; }
     
-        public virtual quizQuestion quizQuestion { get; set; }
-        public virtual quizze quizze { get; set; }
         public virtual AspNetUser AspNetUser { get; set; }
+        public virtual question question { get; set; }
+        public virtual quizQuestion quizQuestion { get; set; }
         public virtual QuizVariation QuizVariation { get; set; }
+        public virtual quizze quizze { get; set; }
     }
 }
