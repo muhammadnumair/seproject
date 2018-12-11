@@ -120,6 +120,7 @@
           <Property Name="marks_per_question" Type="float" />
           <Property Name="teacher_id" Type="nvarchar" MaxLength="128" Nullable="false" />
           <Property Name="created_on" Type="datetime" />
+          <Property Name="status" Type="int" />
         </EntityType>
         <EntityType Name="studentMarks">
           <Key>
@@ -532,6 +533,7 @@
           <Property Name="created_on" Type="DateTime" Precision="3" />
           <NavigationProperty Name="studentQuizzes" Relationship="uetquizingModel.FK_studentQuizzes_quizzes" FromRole="quizze" ToRole="studentQuizze" />
           <NavigationProperty Name="studentMarks" Relationship="uetquizingModel.FK_studentMarks_quizzes" FromRole="quizze" ToRole="studentMark" />
+          <Property Name="status" Type="Int32" />
         </EntityType>
         <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
           <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1">
@@ -964,6 +966,7 @@
           <EntitySetMapping Name="quizzes">
             <EntityTypeMapping TypeName="uetquizingModel.quizze">
               <MappingFragment StoreEntitySet="quizzes">
+                <ScalarProperty Name="status" ColumnName="status" />
                 <ScalarProperty Name="created_on" ColumnName="created_on" />
                 <ScalarProperty Name="quiz_id" ColumnName="quiz_id" />
                 <ScalarProperty Name="quiz_title" ColumnName="quiz_title" />

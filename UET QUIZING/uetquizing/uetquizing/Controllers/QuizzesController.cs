@@ -16,6 +16,16 @@ namespace uetquizing.Controllers
         // GET: Quizzes
         public ActionResult Index()
         {
+            // FOR VALIDATION
+            var userid = User.Identity.GetUserId();
+            var user = db.AspNetUsers.Where(x => x.Id == userid).SingleOrDefault();
+            var role = user.userRole;
+            if (role == "Student")
+            {
+                return RedirectToAction("Index", "User");
+            }
+            // END VALIDATIONS
+
             if (!User.Identity.IsAuthenticated)
             {
                 return RedirectToAction("Login", "Account");
@@ -26,8 +36,34 @@ namespace uetquizing.Controllers
             return View(quizzes);
         }
 
+        public ActionResult StartQuiz(int id)
+        {
+            var quiz = db.quizzes.Where(x => x.quiz_id == id).SingleOrDefault();
+            quiz.status = 1;
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+        public ActionResult StopQuiz(int id)
+        {
+            var quiz = db.quizzes.Where(x => x.quiz_id == id).SingleOrDefault();
+            quiz.status = 0;
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
         public ActionResult Add()
         {
+            // FOR VALIDATION
+            var userid = User.Identity.GetUserId();
+            var user = db.AspNetUsers.Where(x => x.Id == userid).SingleOrDefault();
+            var role = user.userRole;
+            if (role == "Student")
+            {
+                return RedirectToAction("Index", "User");
+            }
+            // END VALIDATIONS
+
             if (!User.Identity.IsAuthenticated)
             {
                 return RedirectToAction("Login", "Account");
@@ -69,7 +105,7 @@ namespace uetquizing.Controllers
                 quiz.teacher_id = User.Identity.GetUserId();
                 quiz.total_marks = collection.marksPerQuestion * collection.totalQuestions;
                 quiz.created_on = DateTime.Now;
-
+                quiz.status = 0;
                 db.quizzes.Add(quiz);
                 int result = db.SaveChanges();
 
@@ -169,6 +205,16 @@ namespace uetquizing.Controllers
 
         public ActionResult Edit(int? id)
         {
+            // FOR VALIDATION
+            var userid = User.Identity.GetUserId();
+            var user = db.AspNetUsers.Where(x => x.Id == userid).SingleOrDefault();
+            var role = user.userRole;
+            if (role == "Student")
+            {
+                return RedirectToAction("Index", "User");
+            }
+            // END VALIDATIONS
+
             try
             {
                 var item = db.quizzes.Where(x => x.quiz_id == id).Single();
@@ -215,6 +261,17 @@ namespace uetquizing.Controllers
 
         public ActionResult Marksheet(int? id)
         {
+            // FOR VALIDATION
+            var userid = User.Identity.GetUserId();
+            var user = db.AspNetUsers.Where(x => x.Id == userid).SingleOrDefault();
+            var role = user.userRole;
+            if (role == "Student")
+            {
+                return RedirectToAction("Index", "User");
+            }
+            // END VALIDATIONS
+
+
             var students = db.studentQuizzes.Where(x => x.quiz_id == id).ToList();
             var studentMarks = new List<StudentQuiz>();
             foreach (var student in students)
@@ -238,11 +295,26 @@ namespace uetquizing.Controllers
 
         public ActionResult Result(int id, string token)
         {
+            // FOR VALIDATION
+            var userid = User.Identity.GetUserId();
+            var user = db.AspNetUsers.Where(x => x.Id == userid).SingleOrDefault();
+            var role = user.userRole;
+            if (role == "Student")
+            {
+                return RedirectToAction("Index", "User");
+            }
+            // END VALIDATIONS
+
             var student_data = db.AspNetUsers.Where(x => x.Id == token).SingleOrDefault();
             var studentQuiz = db.studentQuizzes.Where(x => x.quiz_id == id).Where(x => x.student_id == token).SingleOrDefault();
             var quiz = db.quizzes.Where(x => x.quiz_id == id).SingleOrDefault();
             var studentAnswers = db.studentMarks.Where(x => x.quiz_id == id).Where(x => x.student_id == token).ToList();
-            var variationQuestions = db.quizQuestions.Where(x => x.variation_id == 103).ToList();
+            int? vid = 0;
+            if(studentAnswers != null)
+            {
+                vid = studentAnswers[0].variation_id;
+            }
+            var variationQuestions = db.quizQuestions.Where(x => x.variation_id == vid).ToList();
 
             var quizQuestions = new List<question>();
             foreach (var que in variationQuestions)

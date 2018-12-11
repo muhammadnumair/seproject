@@ -43,72 +43,82 @@
                                 </div>
                             </div> <!-- / .row -->
                         </div>
-
-                        @using (Html.BeginForm("SubmitQuiz", "User", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                        @if (ViewBag.status == 1)
                         {
-                        <div class="card-body">
-                                <input type="hidden" name="quizID" value="@ViewBag.QuizID"/>
-                                <input type="hidden" name="variations_id" value="@ViewBag.VariationID" />
-                                <ul class="list-group list-group-lg list-group-flush list my--4">
-                                    @{
-                                        if (ViewBag.questions.Count > 0)
-                                        {
-                                            var count = 1;
-                                            foreach (var question in ViewBag.questions)
+                            using (Html.BeginForm("SubmitQuiz", "User", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form", id="myForm" }))
+                            {
+                                <div class="card-body">
+                                    <input type="hidden" name="quizID" value="@ViewBag.QuizID" />
+                                    <input type="hidden" name="variations_id" value="@ViewBag.VariationID" />
+                                    <ul class="list-group list-group-lg list-group-flush list my--4">
+                                        @{
+                                            if (ViewBag.questions.Count > 0)
                                             {
-                                                <li class="list-group-item px-0">
+                                                var count = 1;
+                                                foreach (var question in ViewBag.questions)
+                                                {
+                                                    <li class="list-group-item px-0">
 
-                                                    <div class="row align-items-center">
-                                                        <div class="col-12">
+                                                        <div class="row align-items-center">
+                                                            <div class="col-12">
 
-                                                            <!-- Question Title -->
-                                                            <h4 class="card-title mb-1 name">
-                                                                <a href="#!">@(count + ". " + question.question_title)</a>
-                                                            </h4>
-                                                            <input type="hidden" name="Questions[@(count - 1)].questionID" value="@question.question_id" />
-                                                            <!-- Question Options -->
-                                                            <div style="margin: 20px 20px 0px 20px;">
-                                                                <input type="radio" name="Questions[@(count - 1)].selectedOption" value="@question.option_1"> @question.option_1<br>
-                                                                <input type="radio" name="Questions[@(count - 1)].selectedOption" value="@question.option_2"> @question.option_2<br>
-                                                                <input type="radio" name="Questions[@(count - 1)].selectedOption" value="@question.option_3"> @question.option_3<br>
-                                                                <input type="radio" name="Questions[@(count - 1)].selectedOption" value="@question.option_4"> @question.option_4<br>
+                                                                <!-- Question Title -->
+                                                                <h4 class="card-title mb-1 name">
+                                                                    <a href="#!">@(count + ". " + question.question_title)</a>
+                                                                </h4>
+                                                                <input type="hidden" name="Questions[@(count - 1)].questionID" value="@question.question_id" />
+                                                                <!-- Question Options -->
+                                                                <div style="margin: 20px 20px 0px 20px;">
+                                                                    <input type="radio" name="Questions[@(count - 1)].selectedOption" value="@question.option_1"> @question.option_1<br>
+                                                                    <input type="radio" name="Questions[@(count - 1)].selectedOption" value="@question.option_2"> @question.option_2<br>
+                                                                    <input type="radio" name="Questions[@(count - 1)].selectedOption" value="@question.option_3"> @question.option_3<br>
+                                                                    <input type="radio" name="Questions[@(count - 1)].selectedOption" value="@question.option_4"> @question.option_4<br>
+                                                                </div>
                                                             </div>
-                                                        </div>
-                                                    </div> <!-- / .row -->
-                                                </li>
-                                                count++;
+                                                        </div> <!-- / .row -->
+                                                    </li>
+                                                    count++;
+                                                }
                                             }
                                         }
-                                    }
-                                </ul>
-                        </div>
+                                    </ul>
+                                </div>
                             <!-- Buttons -->
-                            <div class="mb-3">
-                                <div class="row">
-                                    <div class="col">
+                                            <div class="mb-3">
+                                                <div class="row">
+                                                    <div class="col">
 
-                                        <a href="#!" class="btn btn-sm btn-white">
-                                            😬 1
-                                        </a>
-                                        <a href="#!" class="btn btn-sm btn-white">
-                                            👍 2
-                                        </a>
-                                        <a href="#!" class="btn btn-sm btn-white">
-                                            Add Reaction
-                                        </a>
+                                                        <a href="#!" class="btn btn-sm btn-white">
+                                                            😬 1
+                                                        </a>
+                                                        <a href="#!" class="btn btn-sm btn-white">
+                                                            👍 2
+                                                        </a>
+                                                        <a href="#!" class="btn btn-sm btn-white">
+                                                            Add Reaction
+                                                        </a>
 
-                                    </div>
-                                </div> <!-- / .row -->
-                            </div>
+                                                    </div>
+                                                </div> <!-- / .row -->
+                                            </div>
 
                             <!-- Divider -->
-                            <hr>
+                                            <hr>
 
                             <!-- Comments -->
 
-                            <button type="submit" class="btn btn-block btn-primary">Submit Quiz</button>
+                                            <button type="submit" class="btn btn-block btn-primary">Submit Quiz</button>
 
-                                        }
+                                                }
+                                            }
+                                            else
+                                            {
+                                                <hr />
+                                                <div class="alert alert-dark" role="alert">
+                                                    Your Teacher Has Not Started The Quiz Yet, Please Check Back Later
+                                                </div>
+                                            }
+
                         </div>
                 </div>
             </div>
@@ -129,7 +139,7 @@
                             </div>
                             <div class="col-auto">
 
-                                <time class="small text-muted" datetime="1988-10-24">
+                                <time class="small text-muted" datetime="1988-10-24" @if (ViewBag.status != 1) { <text> style="filter: blur(3px)"</text>}>
                                     10/24/88
                                 </time>
 
@@ -149,7 +159,7 @@
                             </div>
                             <div class="col-auto">
 
-                                <time class="small text-muted" datetime="2018-10-28">
+                                <time class="small text-muted" datetime="2018-10-28" @if (ViewBag.status != 1) { <text> style="filter: blur(3px)"</text>}>
                                     10/24/18
                                 </time>
 
@@ -169,7 +179,7 @@
                             </div>
                             <div class="col-auto">
 
-                                <small class="text-muted">
+                                <small class="text-muted" @if (ViewBag.status != 1) { <text> style="filter: blur(3px)"</text>}>
                                     Los Angeles, CA
                                 </small>
 
@@ -189,7 +199,7 @@
                             </div>
                             <div class="col-auto">
 
-                                <a href="#!" class="small">
+                                <a href="#!" class="small" @if (ViewBag.status != 1) { <text> style="filter: blur(3px)"</text>}>
                                     themes.getbootstrap.com
                                 </a>
 
@@ -202,3 +212,29 @@
         </div> <!-- / .row -->
     </div>
 </div>
+
+@if (ViewBag.status == 1)
+{
+    @section Scripts {
+        <script>
+            $(document).ready(function () {
+                sendRequest();
+                function sendRequest() {
+                    $.ajax({
+                        url: "/User/check_status/"+@ViewBag.quiz_id,
+                        success:
+                          function (data) {
+                              if(data == 1){
+                                  setInterval(sendRequest, 10000);
+                              }
+
+                              if(data == 0){ //Quiz Band Ho Gyaa Hai
+                                  document.getElementById("myForm").submit();
+                              }
+                          }
+                    });
+                };
+            });
+        </script>
+    }
+}

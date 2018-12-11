@@ -35,6 +35,7 @@
                 @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
                 {
                     @Html.AntiForgeryToken()
+                    @Html.ValidationSummary("", new { @class = "text-danger" })
                     <!-- Email address -->
                     <div class="form-group">
                         <!-- Label -->

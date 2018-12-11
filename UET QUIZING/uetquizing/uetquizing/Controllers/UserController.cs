@@ -16,6 +16,16 @@ namespace uetquizing.Controllers
         // GET: User
         public ActionResult Index()
         {
+            // FOR VALIDATION
+            var userid = User.Identity.GetUserId();
+            var user = db.AspNetUsers.Where(x => x.Id == userid).SingleOrDefault();
+            var role = user.userRole;
+            if(role == "Teacher")
+            {
+                return RedirectToAction("Index", "Dashboard");
+            }
+            // END VALIDATIONS
+
             // Getting Student Quizes
             var user_id = User.Identity.GetUserId();
             var student_quizes = db.studentQuizzes.Where(x => x.student_id == user_id).ToList();
@@ -37,35 +47,62 @@ namespace uetquizing.Controllers
 
         public ActionResult Quiz(int? id)
         {
-            var quiz_variations = db.QuizVariations.Where(x => x.quiz_id == id).ToList();
-
-            // Fetching Random Variation
-            Random rnd = new Random();
-
-            // Fetching Choosed Variation Questions
-            int questions_count = 0;
-            var choosed_variation = new QuizVariation();
-            var quizQuestions = new List<quizQuestion>();
-            while (questions_count == 0)
+            // FOR VALIDATION
+            var userid = User.Identity.GetUserId();
+            var user = db.AspNetUsers.Where(x => x.Id == userid).SingleOrDefault();
+            var role = user.userRole;
+            if (role == "Teacher")
             {
-                int number = rnd.Next(0, quiz_variations.Count);
-                choosed_variation = quiz_variations[number];
-                quizQuestions = db.quizQuestions.Where(x => x.variation_id == choosed_variation.variation_id).ToList();
-                questions_count = quizQuestions.Count;
+                return RedirectToAction("Index", "Dashboard");
             }
+            // END VALIDATIONS
 
-            var questions = new List<question>();
-            foreach(var que in quizQuestions)
+            var student_quiz = db.studentQuizzes.Where(x => x.quiz_id == id).Where(x => x.student_id == userid).SingleOrDefault();
+            if(student_quiz == null)
             {
-                var question = db.questions.Where(x => x.question_id == que.question_id).SingleOrDefault();
-                questions.Add(question);
-            }
+                var quiz = db.quizzes.Where(x => x.quiz_id == id).Single();
 
-            // Sending Data To View
-            ViewBag.QuizID = id;
-            ViewBag.VariationID = choosed_variation.variation_id;
-            ViewBag.questions = questions;
-            return View();
+                if (quiz.status == 1)
+                {
+                    var quiz_variations = db.QuizVariations.Where(x => x.quiz_id == id).ToList();
+
+                    // Fetching Random Variation
+                    Random rnd = new Random();
+
+                    // Fetching Choosed Variation Questions
+                    int questions_count = 0;
+                    var choosed_variation = new QuizVariation();
+                    var quizQuestions = new List<quizQuestion>();
+                    while (questions_count == 0)
+                    {
+                        int number = rnd.Next(0, quiz_variations.Count);
+                        choosed_variation = quiz_variations[number];
+                        quizQuestions = db.quizQuestions.Where(x => x.variation_id == choosed_variation.variation_id).ToList();
+                        questions_count = quizQuestions.Count;
+                    }
+
+                    var questions = new List<question>();
+                    foreach (var que in quizQuestions)
+                    {
+                        var question = db.questions.Where(x => x.question_id == que.question_id).SingleOrDefault();
+                        questions.Add(question);
+                    }
+
+                    // Sending Data To View
+                    ViewBag.QuizID = id;
+                    ViewBag.VariationID = choosed_variation.variation_id;
+                    ViewBag.questions = questions;
+                }
+
+                ViewBag.status = quiz.status;
+                ViewBag.quiz_id = quiz.quiz_id;
+                return View();
+            }
+            else
+            {
+                TempData["Error"] = "You Have Already Attempted The Quiz, Please Contact To Your Respected Teacher";
+                return RedirectToAction("Index");
+            }
         }
 
         [HttpPost]
@@ -110,14 +147,36 @@ namespace uetquizing.Controllers
             return RedirectToAction("Index");
         }
 
+        public JsonResult check_status(int id)
+        {
+            var quiz = db.quizzes.Where(x => x.quiz_id == id).Single();
+            var status = quiz.status;
+            return Json(status, JsonRequestBehavior.AllowGet);
+        }
+        
         public ActionResult Result(int id)
         {
+            // FOR VALIDATION
+            var userid = User.Identity.GetUserId();
+            var user = db.AspNetUsers.Where(x => x.Id == userid).SingleOrDefault();
+            var role = user.userRole;
+            if (role == "Teacher")
+            {
+                return RedirectToAction("Index", "Dashboard");
+            }
+            // END VALIDATIONS
+
             string token = User.Identity.GetUserId();
             var student_data = db.AspNetUsers.Where(x => x.Id == token).SingleOrDefault();
             var studentQuiz = db.studentQuizzes.Where(x => x.quiz_id == id).Where(x => x.student_id == token).SingleOrDefault();
             var quiz = db.quizzes.Where(x => x.quiz_id == id).SingleOrDefault();
             var studentAnswers = db.studentMarks.Where(x => x.quiz_id == id).Where(x => x.student_id == token).ToList();
-            var variationQuestions = db.quizQuestions.Where(x => x.variation_id == 103).ToList();
+            int? vid = 0;
+            if (studentAnswers != null)
+            {
+                vid = studentAnswers[0].variation_id;
+            }
+            var variationQuestions = db.quizQuestions.Where(x => x.variation_id == vid).ToList();
 
             var quizQuestions = new List<question>();
             foreach (var que in variationQuestions)

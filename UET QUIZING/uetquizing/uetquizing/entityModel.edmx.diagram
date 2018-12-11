@@ -5,30 +5,30 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="2ce20fd01f874970a1675b37e48febca" Name="Diagram1">
-        <EntityTypeShape EntityType="uetquizingModel.C__MigrationHistory" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="uetquizingModel.C__MigrationHistory" Width="1.5" PointX="3.375" PointY="2.25" IsExpanded="true" />
         <EntityTypeShape EntityType="uetquizingModel.AspNetUserClaim" Width="1.5" PointX="5.25" PointY="2.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="uetquizingModel.AspNetUserLogin" Width="1.5" PointX="5.25" PointY="4.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="uetquizingModel.AspNetUser" Width="1.5" PointX="3" PointY="4.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="uetquizingModel.quizze" Width="1.5" PointX="5.25" PointY="10.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="uetquizingModel.AspNetUserLogin" Width="1.5" PointX="5.25" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="uetquizingModel.AspNetUser" Width="1.5" PointX="3.375" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="uetquizingModel.quizze" Width="1.5" PointX="5.25" PointY="8.375" IsExpanded="true" />
         <AssociationConnector Association="uetquizingModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
         <AssociationConnector Association="uetquizingModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
         <AssociationConnector Association="uetquizingModel.FK_quizzes_AspNetUsers" ManuallyRouted="false" />
         <EntityTypeShape EntityType="uetquizingModel.category" Width="1.5" PointX="5.25" PointY="0.75" />
         <AssociationConnector Association="uetquizingModel.FK_categories_AspNetUsers" />
-        <EntityTypeShape EntityType="uetquizingModel.question" Width="1.5" PointX="7.5" PointY="3.5" />
+        <EntityTypeShape EntityType="uetquizingModel.question" Width="1.5" PointX="7.125" PointY="4.25" />
         <AssociationConnector Association="uetquizingModel.FK_questions_AspNetUsers" />
         <AssociationConnector Association="uetquizingModel.FK_questions_categories" />
-        <EntityTypeShape EntityType="uetquizingModel.QuizVariation" Width="1.5" PointX="7.5" PointY="10.75" />
+        <EntityTypeShape EntityType="uetquizingModel.QuizVariation" Width="1.5" PointX="7.125" PointY="8.375" />
         <AssociationConnector Association="uetquizingModel.FK_QuizVariations_quizzes" />
-        <EntityTypeShape EntityType="uetquizingModel.quizQuestion" Width="1.5" PointX="9.75" PointY="7.25" />
+        <EntityTypeShape EntityType="uetquizingModel.quizQuestion" Width="1.5" PointX="9.125" PointY="7" />
         <AssociationConnector Association="uetquizingModel.FK_quizQuestions_questions" />
         <AssociationConnector Association="uetquizingModel.FK_quizQuestions_variations" />
-        <EntityTypeShape EntityType="uetquizingModel.AspNetRole" Width="1.5" PointX="0.75" PointY="6.375" />
+        <EntityTypeShape EntityType="uetquizingModel.AspNetRole" Width="1.5" PointX="5.25" PointY="6.5" />
         <AssociationConnector Association="uetquizingModel.AspNetUserRoles" />
-        <EntityTypeShape EntityType="uetquizingModel.studentQuizze" Width="1.5" PointX="10.5" PointY="3.875" />
+        <EntityTypeShape EntityType="uetquizingModel.studentQuizze" Width="1.5" PointX="9.125" PointY="4.25" />
         <AssociationConnector Association="uetquizingModel.FK_studentQuizzes_AspNetUsers" />
         <AssociationConnector Association="uetquizingModel.FK_studentQuizzes_quizzes" />
-        <EntityTypeShape EntityType="uetquizingModel.studentMark" Width="1.5" PointX="12" PointY="7.625" />
+        <EntityTypeShape EntityType="uetquizingModel.studentMark" Width="1.5" PointX="9.125" PointY="9.5" />
         <AssociationConnector Association="uetquizingModel.FK_studentMarks_AspNetUsers" />
         <AssociationConnector Association="uetquizingModel.FK_studentMarks_questions" />
         <AssociationConnector Association="uetquizingModel.FK_studentMarks_quizQuestions1" />

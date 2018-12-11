@@ -53,6 +53,7 @@
     <EntitySetMapping Name="quizzes">
       <EntityTypeMapping TypeName="uetquizingModel.quizze">
         <MappingFragment StoreEntitySet="quizzes">
+          <ScalarProperty Name="status" ColumnName="status" />
           <ScalarProperty Name="created_on" ColumnName="created_on" />
           <ScalarProperty Name="quiz_id" ColumnName="quiz_id" />
           <ScalarProperty Name="quiz_title" ColumnName="quiz_title" />

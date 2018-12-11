@@ -146,6 +146,18 @@
 
                                             @Html.ActionLink("Variations", "Index", "Variations", new { id = item.quiz_id }, new { @class = "btn btn-primary btn-sm" })
                                             @Html.ActionLink("Marksheet", "Marksheet", "Quizzes", new { id = item.quiz_id }, new { @class = "btn btn-success btn-sm" })
+                                            @if (item.status == 0)
+                                            {
+                                                <a href="/Quizzes/StartQuiz/@item.quiz_id" class="btn btn-warning btn-sm">Start</a>
+                                            }
+                                            else
+                                            {
+                                                <a href="/Quizzes/StartQuiz/@item.quiz_id" class="btn btn-warning btn-sm disabled">Start</a>
+                                            }
+                                            @if (item.status == 1)
+                                            {
+                                                <a href="/Quizzes/StopQuiz/@item.quiz_id" class="btn btn-danger btn-sm">Stop</a>
+                                            }
                                         </td>
                                         <td class="text-right">
                                             <div class="dropdown">

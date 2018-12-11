@@ -16,6 +16,16 @@ namespace uetquizing.Controllers
         // GET: Categories
         public ActionResult Index()
         {
+            // FOR VALIDATION
+            var userid = User.Identity.GetUserId();
+            var user = db.AspNetUsers.Where(x => x.Id == userid).SingleOrDefault();
+            var role = user.userRole;
+            if (role == "Student")
+            {
+                return RedirectToAction("Index", "User");
+            }
+            // END VALIDATIONS
+
             if (!User.Identity.IsAuthenticated)
             {
                 return RedirectToAction("Login", "Account");
@@ -28,6 +38,16 @@ namespace uetquizing.Controllers
         // CATEGORIES
         public ActionResult Add()
         {
+            // FOR VALIDATION
+            var userid = User.Identity.GetUserId();
+            var user = db.AspNetUsers.Where(x => x.Id == userid).SingleOrDefault();
+            var role = user.userRole;
+            if (role == "Student")
+            {
+                return RedirectToAction("Index", "User");
+            }
+            // END VALIDATIONS
+
             if (!User.Identity.IsAuthenticated)
             {
                 return RedirectToAction("Login", "Account");
@@ -81,6 +101,16 @@ namespace uetquizing.Controllers
 
         public ActionResult Edit(int? id)
         {
+            // FOR VALIDATION
+            var userid = User.Identity.GetUserId();
+            var user = db.AspNetUsers.Where(x => x.Id == userid).SingleOrDefault();
+            var role = user.userRole;
+            if (role == "Student")
+            {
+                return RedirectToAction("Index", "User");
+            }
+            // END VALIDATIONS
+
             try
             {
                 var cat = db.categories.Where(x => x.category_id == id).SingleOrDefault();

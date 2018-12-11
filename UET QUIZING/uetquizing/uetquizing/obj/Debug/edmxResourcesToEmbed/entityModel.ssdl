@@ -115,6 +115,7 @@
     <Property Name="marks_per_question" Type="float" />
     <Property Name="teacher_id" Type="nvarchar" MaxLength="128" Nullable="false" />
     <Property Name="created_on" Type="datetime" />
+    <Property Name="status" Type="int" />
   </EntityType>
   <EntityType Name="studentMarks">
     <Key>

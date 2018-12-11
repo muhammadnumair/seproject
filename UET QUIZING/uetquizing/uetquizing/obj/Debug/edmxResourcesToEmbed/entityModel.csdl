@@ -73,6 +73,7 @@
     <Property Name="created_on" Type="DateTime" Precision="3" />
     <NavigationProperty Name="studentQuizzes" Relationship="uetquizingModel.FK_studentQuizzes_quizzes" FromRole="quizze" ToRole="studentQuizze" />
     <NavigationProperty Name="studentMarks" Relationship="uetquizingModel.FK_studentMarks_quizzes" FromRole="quizze" ToRole="studentMark" />
+    <Property Name="status" Type="Int32" />
   </EntityType>
   <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
     <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1">

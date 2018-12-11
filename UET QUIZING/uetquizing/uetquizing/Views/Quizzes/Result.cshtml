@@ -84,14 +84,11 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach (var st_ans in Model.StudentAnswers)
-                                        {
-                                            @st_ans.question_id
-                                        }
                                         @{
                                             var solved = 0;
                                             var choosed_option = "";
                                             var correct = 0;
+                                            var total_marks = 0;
                                             foreach (var question in Model.QuizQuestions)
                                             {
                                                 <tr>
@@ -129,7 +126,8 @@
                                                     <td class="px-0">
                                                         @if (correct == 1)
                                                         {
-                                                            @Model.studentQuiz.marks_per_question
+                                                            @Model.studentQuiz.marks_per_question;
+                                                            total_marks += @Model.studentQuiz.marks_per_question;
                                                         }
                                                         else
                                                         {
@@ -146,7 +144,7 @@
                                                 </td>
                                                 <td class="px-0 border-top border-top-2">
                                                     <span class="h3">
-                                                        8/@Model.studentQuiz.total_marks
+                                                        @total_marks/@Model.studentQuiz.total_marks
                                                     </span>
                                                 </td>
                                             </tr>
